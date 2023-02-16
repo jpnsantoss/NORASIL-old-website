@@ -30,7 +30,7 @@ const Dashboard = () => {
                         Obras
                       </h2>
                       <NavLink
-                        to="/obras/add"
+                        to="/admin/obras/editor"
                         className="m-t15 site-button outline green text-uppercase m-r15"
                       >
                         Adicionar Obra

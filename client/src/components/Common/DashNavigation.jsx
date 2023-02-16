@@ -17,13 +17,13 @@ const DashNavigation = (props) => {
         document.body.removeChild(script);
       });
     }
-    loadScript('./assets/js/masonary.js');
+    loadScript('/assets/js/masonary.js');
   }, []);
 
   return (
     <>
       <div className="header-nav">
-        <ul className='nav navbar-nav'>
+        <ul className="nav navbar-nav">
           <li>
             <NavLink to={'/admin/obras'}>Obras</NavLink>
           </li>

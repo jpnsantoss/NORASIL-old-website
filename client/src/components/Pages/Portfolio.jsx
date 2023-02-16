@@ -107,21 +107,17 @@ const Portfolio = () => {
   return (
     <>
       <Header />
-      <div className='page-content'>
-        <Banner
-          title='Portfólio'
-          pagename='Portfólio'
-          bgimage={bnrimg}
-        />
+      <div className="page-content">
+        <Banner title="Portfólio" pagename="Portfólio" bgimage={bnrimg} />
 
         {/* SECTION CONTENT START */}
-        <div className='section-full p-tb80 inner-page-padding'>
-          <div className='container'>
+        <div className="section-full p-tb80 inner-page-padding">
+          <div className="container">
             {/* PAGINATION START */}
-            <div className='filter-wrap p-b30 text-center'>
-              <ul className='filter-navigation inline-navigation masonry-filter link-style  text-uppercase'>
-                <li className='active'>
-                  <NavLink to={'#'} data-filter='*' data-hover='All'>
+            <div className="filter-wrap p-b30 text-center">
+              <ul className="filter-navigation inline-navigation masonry-filter link-style  text-uppercase">
+                <li className="active">
+                  <NavLink to={'#'} data-filter="*" data-hover="All">
                     Geral
                   </NavLink>
                 </li>
@@ -137,18 +133,18 @@ const Portfolio = () => {
                   </li>
                 ))}
               </ul>
-              <div className='container portfolio-search'>
-                <div className='col-md-6'>
-                  <div className='input-group'>
+              <div className="container">
+                <div className="col-md-6 col-md-offset-3">
+                  <div className="input-group">
                     <input
-                      name='news-letter'
-                      className='form-control'
-                      placeholder='Procurar Obra'
-                      type='text'
+                      name="news-letter"
+                      className="form-control"
+                      placeholder="Procurar Obra"
+                      type="text"
                     />
-                    <span className='input-group-btn'>
-                      <button type='submit' className='site-button'>
-                        <i className='fa fa-search' />
+                    <span className="input-group-btn">
+                      <button type="submit" className="site-button">
+                        <i className="fa fa-search" />
                       </button>
                     </span>
                   </div>
@@ -157,29 +153,31 @@ const Portfolio = () => {
             </div>
             {/* PAGINATION END */}
             {/* GALLERY CONTENT START */}
-            <div className='portfolio-wrap mfp-gallery work-grid row clearfix'>
+            <div className="portfolio-wrap mfp-gallery work-grid row clearfix">
               {projects.map((item, index) => (
                 <div
                   key={index}
                   className={`${item.filter} masonry-item col-md-4 col-sm-6 m-b30`}
                 >
-                  <div className='image-effect-two hover-shadow'>
-                    <img src={item.thumb} alt='' />
-                    <div className='figcaption'>
-                      <h4 className='mt-title' style={{ fontSize: "24px" }}>{item.title}</h4>
-                      <ul className='portfolio-card'>
+                  <div className="image-effect-two hover-shadow">
+                    <img src={item.thumb} alt="" />
+                    <div className="figcaption">
+                      <h4 className="mt-title" style={{ fontSize: '24px' }}>
+                        {item.title}
+                      </h4>
+                      <ul className="portfolio-card">
                         <li>{item.areaintervencao}</li>
                         <li>{item.client}</li>
                         <li>Prazo: {item.prazo}</li>
                       </ul>
                       <NavLink
-                        to='/obra'
-                        className='read-more site-button btn-effect'
+                        to="/obra"
+                        className="read-more site-button btn-effect"
                       >
                         Ver Mais
                       </NavLink>
-                      <a className='mfp-link' href={item.image}>
-                        <i className='fa fa-arrows-alt' />
+                      <a className="mfp-link" href={item.image}>
+                        <i className="fa fa-arrows-alt" />
                       </a>
                     </div>
                   </div>
@@ -187,8 +185,8 @@ const Portfolio = () => {
               ))}
             </div>
             {/* GALLERY CONTENT END */}
-            <div className='m-t50 text-center'>
-              <NavLink to={'#'} className='site-button btn-effect'>
+            <div className="m-t50 text-center">
+              <NavLink to={'#'} className="site-button btn-effect">
                 Load More
               </NavLink>
             </div>

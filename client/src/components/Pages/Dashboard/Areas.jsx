@@ -30,7 +30,7 @@ const Areas = () => {
                         Intervenção
                       </h2>
                       <NavLink
-                        to="/obras/add"
+                        to="./editor"
                         className="m-t15 site-button outline green text-uppercase m-r15"
                       >
                         Adicionar Categoria

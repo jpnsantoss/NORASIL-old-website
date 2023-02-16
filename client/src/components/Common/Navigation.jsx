@@ -19,7 +19,7 @@ const Navigation = (props) => {
         document.body.removeChild(script);
       });
     }
-    loadScript('./assets/js/masonary.js');
+    loadScript('/assets/js/masonary.js');
   }, []);
 
   return (
@@ -31,14 +31,14 @@ const Navigation = (props) => {
             : 'header-nav navbar-collapse collapse'
         }
       >
-        <ul className='nav navbar-nav'>
+        <ul className="nav navbar-nav">
           <li>
             <NavLink to={'/'}>Início</NavLink>
           </li>
           <li>
-          {/* eslint-disable-next-line */}
+            {/* eslint-disable-next-line */}
             <a href="#">Empresa</a>
-            <ul className='sub-menu'>
+            <ul className="sub-menu">
               <li>
                 <NavLink to={'/empresa/apresentacao'}>Apresentação</NavLink>
               </li>
@@ -58,16 +58,16 @@ const Navigation = (props) => {
             </ul>
           </li>
           <li>
-          {/* eslint-disable-next-line */}
+            {/* eslint-disable-next-line */}
             <a href="#">Documentos</a>
-            <ul className='sub-menu'>
+            <ul className="sub-menu">
               <li>
-                <a href={AlvaraDeConstrucao} rel='noreferrer' target='_blank'>
+                <a href={AlvaraDeConstrucao} rel="noreferrer" target="_blank">
                   Alvará de Construção
                 </a>
               </li>
               <li>
-                <a href={RelatorioDeContas} rel='noreferrer' target='_blank'>
+                <a href={RelatorioDeContas} rel="noreferrer" target="_blank">
                   Relatório de Contas
                 </a>
               </li>

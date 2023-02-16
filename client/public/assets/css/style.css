@@ -6147,6 +6147,8 @@ label {
   font-size: 13px;
   line-height: 20px;
   padding: 9px 12px 9px 12px;
+  margin-bottom: 14px;
+  resize: vertical;
 }
 
 .form-control:focus {
@@ -10339,6 +10341,8 @@ button.scroltop span {
 @media only screen and (max-width: 1024px) {
   .section-full {
     background-attachment: scroll !important;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
@@ -14936,4 +14940,63 @@ Image Effect Two
 .table > thead > tr > td,
 .table > thead > tr > th {
   vertical-align: middle;
+}
+
+.form-group label {
+  font-size: 1.2em;
+  margin-right: 20px;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.form-group option {
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-size: 16px;
+  margin-right: 1rem;
+}
+
+.react-datepicker__month-container {
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+.form-group input[type='file'] {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.form-group input[type='file']:hover {
+  background-color: #e8e8e8;
+}
+
+.form-group input[type='file']:focus {
+  outline: none;
+  border-color: #6ac045;
 }
