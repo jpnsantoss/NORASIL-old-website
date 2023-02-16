@@ -3,6 +3,7 @@ import Header from '../../Common/Header';
 import DashHeader from '../../Common/DashHeader';
 import Footer from '../../Common/Footer';
 import Banner from '../../Elements/Banner';
+import { NavLink } from 'react-router-dom';
 
 var bnrimg = require('./../../../images/banner.jpg');
 
@@ -10,29 +11,35 @@ const Dashboard = () => {
   return (
     <>
       <Header />
-      <div className='page-content'>
-        <Banner title='Obras' pagename='Dashboard' bgimage={bnrimg} />
+      <div className="page-content">
+        <Banner title="Dashboard" pagename="Dashboard" bgimage={bnrimg} />
         <DashHeader />
         {/* SECTION CONTENTG START */}
-        <div className='section-full p-tb150'>
-          <div className='container'>
-            <div className='section-content'>
-              <div className='section-content m-b50'>
+        <div className="section-full p-tb150">
+          <div className="container">
+            <div className="section-content">
+              <div className="section-content m-b50">
                 {/* TITLE START */}
-                <div className='section-head'>
-                  <div className='mt-separator-outer separator-left'>
-                    <div className='mt-separator'>
-                      <h2 className='text-black text-uppercase sep-line-one '>
-                        <span className='font-weight-300 text-primary'>
+                <div className="section-head">
+                  <div className="mt-separator-outer separator-left">
+                    <div className="mt-separator">
+                      <h2 className="text-black text-uppercase sep-line-one ">
+                        <span className="font-weight-300 text-primary">
                           Lista de{' '}
                         </span>{' '}
                         Obras
                       </h2>
+                      <NavLink
+                        to="/obras/add"
+                        className="m-t15 site-button outline green text-uppercase m-r15"
+                      >
+                        Adicionar Obra
+                      </NavLink>
                     </div>
                   </div>
                 </div>
                 {/* TITLE END */}
-                <table className='table table-bordered'>
+                <table className="table table-bordered">
                   <thead>
                     <tr>
                       <th>Título</th>
@@ -45,18 +52,18 @@ const Dashboard = () => {
                       <td>Isto é uma seca e tou farto desta aula</td>
                       <td>Centro comercial</td>
                       <td>
-                        <div className='botoes'>
+                        <div className="botoes">
                           <button
-                            className='site-button text-uppercase blue m-r5'
-                            type='button'
+                            className="site-button text-uppercase blue m-r5"
+                            type="button"
                           >
-                            <i className='fa fa-pencil' />{' '}
+                            <i className="fa fa-pencil" />{' '}
                           </button>
                           <button
-                            className='site-button text-uppercase red'
-                            type='button'
+                            className="site-button text-uppercase red"
+                            type="button"
                           >
-                            <i className='fa fa-close' />{' '}
+                            <i className="fa fa-close" />{' '}
                           </button>
                         </div>
                       </td>
@@ -65,18 +72,18 @@ const Dashboard = () => {
                       <td>Alimentari Riuniti</td>
                       <td>Moe</td>
                       <td>
-                        <div className='botoes'>
+                        <div className="botoes">
                           <button
-                            className='site-button text-uppercase blue m-r5'
-                            type='button'
+                            className="site-button text-uppercase blue m-r5"
+                            type="button"
                           >
-                            <i className='fa fa-pencil' />{' '}
+                            <i className="fa fa-pencil" />{' '}
                           </button>
                           <button
-                            className='site-button text-uppercase red'
-                            type='button'
+                            className="site-button text-uppercase red"
+                            type="button"
                           >
-                            <i className='fa fa-close' />{' '}
+                            <i className="fa fa-close" />{' '}
                           </button>
                         </div>
                       </td>
@@ -85,18 +92,18 @@ const Dashboard = () => {
                       <td>Ernst Handel</td>
                       <td>Island Trading</td>
                       <td>
-                        <div className='botoes'>
+                        <div className="botoes">
                           <button
-                            className='site-button text-uppercase blue m-r5'
-                            type='button'
+                            className="site-button text-uppercase blue m-r5"
+                            type="button"
                           >
-                            <i className='fa fa-pencil' />{' '}
+                            <i className="fa fa-pencil" />{' '}
                           </button>
                           <button
-                            className='site-button text-uppercase red'
-                            type='button'
+                            className="site-button text-uppercase red"
+                            type="button"
                           >
-                            <i className='fa fa-close' />{' '}
+                            <i className="fa fa-close" />{' '}
                           </button>
                         </div>
                       </td>
