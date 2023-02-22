@@ -3908,6 +3908,11 @@ ol.list-num-count.list-outline-none > li:before {
   padding-left: 0;
 }
 
+button.site-button-link {
+  background: none;
+  border: none;
+}
+
 .site-button-link i {
   display: inline-block;
   margin: -4px 0px 0px 5px;
@@ -8315,6 +8320,7 @@ HEADER (top part of page)
 
 .header-style-1 .is-fixed.color-fill .main-bar {
   background: #fff;
+  border-bottom: 2px solid #f5be23;
 }
 
 .top-bar.bg-gray {
@@ -14999,4 +15005,10 @@ Image Effect Two
 .form-group input[type='file']:focus {
   outline: none;
   border-color: #6ac045;
+}
+
+@media only screen and (max-width: 768px) {
+  .operation-button {
+    padding: 4px 10px;
+  }
 }

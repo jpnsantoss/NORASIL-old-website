@@ -1,13 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../Common/Header';
 import DashHeader from '../../Common/DashHeader';
 import Footer from '../../Common/Footer';
 import Banner from '../../Elements/Banner';
-import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 var bnrimg = require('./../../../images/banner.jpg');
 
 const Areas = () => {
+  const [cats, setCats] = useState([]);
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/categories`);
+        setCats(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleDelete = async (categoryId) => {
+    try {
+      await axios.delete(`/categories/${categoryId}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('/categories', { name });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -25,85 +57,72 @@ const Areas = () => {
                     <div className="mt-separator">
                       <h2 className="text-black text-uppercase sep-line-one ">
                         <span className="font-weight-300 text-primary">
-                          Áreas de{' '}
+                          Adicionar{' '}
                         </span>{' '}
-                        Intervenção
+                        Área
                       </h2>
-                      <NavLink
-                        to="./editor"
-                        className="m-t15 site-button outline green text-uppercase m-r15"
-                      >
-                        Adicionar Categoria
-                      </NavLink>
                     </div>
                   </div>
                 </div>
                 {/* TITLE END */}
+                <div className="col-md-6 p-l0">
+                  <div className="input-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={name}
+                      placeholder="Nome"
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <span className="input-group-btn">
+                      <button
+                        type="submit"
+                        onClick={handleCreate}
+                        className="site-button green"
+                      >
+                        Criar
+                      </button>
+                    </span>
+                  </div>
+                </div>
+                <div className="section-head m-t150">
+                  <div className="mt-separator-outer separator-left">
+                    <div className="mt-separator">
+                      <h2 className="text-black text-uppercase sep-line-one ">
+                        <span className="font-weight-300 text-primary">
+                          Lista de{' '}
+                        </span>{' '}
+                        Áreas
+                      </h2>
+                    </div>
+                  </div>
+                </div>
                 <table className="table table-bordered">
                   <thead>
                     <tr>
+                      <th className="text-center">Id</th>
                       <th>Título</th>
-                      <th>Operações</th>
+                      <th className="text-center">Operações</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Isto é uma seca e tou farto desta aula</td>
-                      <td>
-                        <div className="botoes">
-                          <button
-                            className="site-button text-uppercase blue m-r5"
-                            type="button"
-                          >
-                            <i className="fa fa-pencil" />{' '}
-                          </button>
-                          <button
-                            className="site-button text-uppercase red"
-                            type="button"
-                          >
-                            <i className="fa fa-close" />{' '}
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Alimentari Riuniti</td>
-                      <td>
-                        <div className="botoes">
-                          <button
-                            className="site-button text-uppercase blue m-r5"
-                            type="button"
-                          >
-                            <i className="fa fa-pencil" />{' '}
-                          </button>
-                          <button
-                            className="site-button text-uppercase red"
-                            type="button"
-                          >
-                            <i className="fa fa-close" />{' '}
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Ernst Handel</td>
-                      <td>
-                        <div className="botoes">
-                          <button
-                            className="site-button text-uppercase blue m-r5"
-                            type="button"
-                          >
-                            <i className="fa fa-pencil" />{' '}
-                          </button>
-                          <button
-                            className="site-button text-uppercase red"
-                            type="button"
-                          >
-                            <i className="fa fa-close" />{' '}
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
+                    {cats.map((item) => (
+                      <tr key={item.id}>
+                        <td className="col-md-1 text-center">{item.id}</td>
+                        <td>{item.name}</td>
+                        <td className="col-md-2">
+                          <div className="botoes">
+                            <button
+                              className="site-button operation-button text-uppercase red"
+                              type="button"
+                              onClick={() => handleDelete(item.id)}
+                            >
+                              <i className="fa fa-close" />{' '}
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

@@ -31,7 +31,7 @@ const Dashboard = () => {
                       </h2>
                       <NavLink
                         to="/admin/obras/editor"
-                        className="m-t15 site-button outline green text-uppercase m-r15"
+                        className="m-t15 site-button outline green text-uppercase operation-button  m-r15"
                       >
                         Adicionar Obra
                       </NavLink>
@@ -54,13 +54,13 @@ const Dashboard = () => {
                       <td>
                         <div className="botoes">
                           <button
-                            className="site-button text-uppercase blue m-r5"
+                            className="site-button text-uppercase operation-button blue m-r5"
                             type="button"
                           >
                             <i className="fa fa-pencil" />{' '}
                           </button>
                           <button
-                            className="site-button text-uppercase red"
+                            className="site-button text-uppercase red operation-button"
                             type="button"
                           >
                             <i className="fa fa-close" />{' '}
@@ -74,13 +74,13 @@ const Dashboard = () => {
                       <td>
                         <div className="botoes">
                           <button
-                            className="site-button text-uppercase blue m-r5"
+                            className="site-button text-uppercase operation-button  blue m-r5"
                             type="button"
                           >
                             <i className="fa fa-pencil" />{' '}
                           </button>
                           <button
-                            className="site-button text-uppercase red"
+                            className="site-button text-uppercase operation-button  red"
                             type="button"
                           >
                             <i className="fa fa-close" />{' '}
@@ -94,13 +94,13 @@ const Dashboard = () => {
                       <td>
                         <div className="botoes">
                           <button
-                            className="site-button text-uppercase blue m-r5"
+                            className="site-button text-uppercase operation-button  blue m-r5"
                             type="button"
                           >
                             <i className="fa fa-pencil" />{' '}
                           </button>
                           <button
-                            className="site-button text-uppercase red"
+                            className="site-button text-uppercase operation-button  red"
                             type="button"
                           >
                             <i className="fa fa-close" />{' '}

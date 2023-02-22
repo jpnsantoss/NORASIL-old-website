@@ -76,9 +76,7 @@ const Navigation = (props) => {
           <li>
             <NavLink to={'/portfolio'}>Portfólio</NavLink>
           </li>
-          <li>
-            <NavLink to={'/recrutamento'}>Recrutamento</NavLink>
-          </li>
+          {/* <li> <NavLink to={'/recrutamento'}>Recrutamento</NavLink> </li> */}
           <li>
             <NavLink to={'/localizacao'}>Localização</NavLink>
           </li>

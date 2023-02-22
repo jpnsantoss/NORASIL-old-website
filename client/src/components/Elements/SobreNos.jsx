@@ -56,44 +56,44 @@ const SobreNos = () => {
   return (
     <>
       <div
-        className='section-full mobile-page-padding p-t80 p-b30 bg-dark bg-repeat square_shape2 bg-moving'
+        className="section-full mobile-page-padding p-t80 p-b30 bg-dark bg-repeat square_shape2 bg-moving"
         style={{ backgroundImage: 'url(' + bnr1 + ')' }}
       >
-        <div className='container'>
+        <div className="container">
           {/* TITLE START */}
-          <div className='section-head'>
-            <div className='mt-separator-outer separator-center'>
-              <div className='mt-separator'>
-                <h2 className='text-white text-uppercase sep-line-one '>
-                  <span className='font-weight-300 text-primary'>Sobre a</span>{' '}
+          <div className="section-head">
+            <div className="mt-separator-outer separator-center">
+              <div className="mt-separator">
+                <h2 className="text-white text-uppercase sep-line-one ">
+                  <span className="font-weight-300 text-primary">Sobre a</span>{' '}
                   Empresa
                 </h2>
               </div>
             </div>
           </div>
           {/* TITLE END */}
-          <div className='section-content'>
-            <div className='row'>
-              <div className='col-md-9 col-sm-12'>
+          <div className="section-content">
+            <div className="row">
+              <div className="col-md-9 col-sm-12">
                 <OwlCarousel
-                  className='owl-carousel about-home owl-btn-vertical-center'
+                  className="owl-carousel about-home owl-btn-vertical-center"
                   {...options}
                 >
                   {images.map((item, index) => (
-                    <div className='item' key={index}>
-                      <div className='mt-img-effect zoom-slow'>
-                        <NavLink to='/about'>
-                          <img src={item} alt='' />
+                    <div className="item" key={index}>
+                      <div className="mt-img-effect zoom-slow">
+                        <NavLink to="/empresa/apresentacao">
+                          <img src={item} alt="" />
                         </NavLink>
                       </div>
                     </div>
                   ))}
                 </OwlCarousel>
               </div>
-              <div className='col-md-3 col-sm-12'>
-                <div className='about-home-right bg-white p-a30'>
-                  <h3 className='m-t0'>
-                    <span className='font-weight-100'>Committed</span> to
+              <div className="col-md-3 col-sm-12">
+                <div className="about-home-right bg-white p-a30">
+                  <h3 className="m-t0">
+                    <span className="font-weight-100">Committed</span> to
                     superior quality and results.
                   </h3>
                   <p>
@@ -109,14 +109,14 @@ const SobreNos = () => {
                     inject humour, or randomised words which don't look even
                     slightly believable.{' '}
                   </p>
-                  <div className='text-right'>
+                  <div className="text-right">
                     <NavLink
-                      to='/about'
-                      className='site-button-link'
-                      data-hover='Read More'
+                      to="/empresa/apresentacao"
+                      className="site-button-link"
+                      data-hover="Read More"
                     >
                       Ler Mais{' '}
-                      <i className='fa fa-angle-right arrow-animation' />
+                      <i className="fa fa-angle-right arrow-animation" />
                     </NavLink>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ const SobreNos = () => {
             </div>
           </div>
         </div>
-        <div className='hilite-title text-left p-l50 text-uppercase hilite-dark'>
+        <div className="hilite-title text-left p-l50 text-uppercase hilite-dark">
           <strong>Sobre Nós</strong>
         </div>
       </div>

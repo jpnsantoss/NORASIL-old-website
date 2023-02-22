@@ -31,73 +31,73 @@ const NossoValor = () => {
   }, []);
   return (
     <>
-      <div className='section-full mobile-page-padding p-t80 p-b30 bg-white'>
-        <div className='container'>
-          <div className='section-content'>
-            <div className='row'>
-              <div className='col-md-6 col-sm-12'>
+      <div className="section-full mobile-page-padding p-t80 p-b30 bg-white">
+        <div className="container">
+          <div className="section-content">
+            <div className="row">
+              <div className="col-md-6 col-sm-12">
                 {/* TITLE START */}
-                <div className='section-head'>
-                  <div className='mt-separator-outer separator-left'>
-                    <div className='mt-separator'>
-                      <h2 className='text-uppercase sep-line-one '>
-                        <span className='font-weight-300 text-primary'>
+                <div className="section-head">
+                  <div className="mt-separator-outer separator-left">
+                    <div className="mt-separator">
+                      <h2 className="text-uppercase sep-line-one ">
+                        <span className="font-weight-300 text-primary">
                           O Nosso
                         </span>{' '}
                         Valor
                       </h2>
                     </div>
                     <p>
-                      It is a long established fact that a reader will be
-                      distracted by the readable content of a page when looking
-                      at its layout. <br />
-                      <br /> It is a long established fact that a reader will be
-                      distracted by the readable content of a page when looking
-                      at its layout.{' '}
+                      Na Norasil, o valor está na construção de relações
+                      duradouras com os nossos clientes, baseadas na confiança e
+                      no compromisso com a excelência. <br />
+                      <br />
+                      <br />
+                      <br />
                     </p>
                   </div>
                 </div>
                 {/* TITLE END */}
-                <div className='col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20'>
-                  <div className='counter font-30 font-weight-800 m-b15 text-primary'>
+                <div className="col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20">
+                  <div className="counter font-30 font-weight-800 m-b15 text-primary">
                     <CountUp end={670} duration={5} />
                   </div>
-                  <h4 className='m-tb0'>Obras</h4>
+                  <h4 className="m-tb0">Obras</h4>
                 </div>
-                <div className='col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20'>
-                  <div className='counter font-30 font-weight-800 m-b15  text-primary'>
+                <div className="col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20">
+                  <div className="counter font-30 font-weight-800 m-b15  text-primary">
                     <CountUp end={670} duration={5} />
                   </div>
-                  <h4 className='m-tb0'>Colaboradores</h4>
+                  <h4 className="m-tb0">Colaboradores</h4>
                 </div>
-                <div className='col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20'>
-                  <div className='counter font-30 font-weight-800 m-b15 text-primary'>
+                <div className="col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20">
+                  <div className="counter font-30 font-weight-800 m-b15 text-primary">
                     <CountUp end={1500} duration={5} />
                   </div>
-                  <h4 className='m-tb0'>Distinções</h4>
+                  <h4 className="m-tb0">Distinções</h4>
                 </div>
               </div>
               <div
-                className='video-section-full bg-no-repeat bg-cover overlay-wraper'
+                className="video-section-full bg-no-repeat bg-cover overlay-wraper"
                 style={{ backgroundImage: 'url(' + img1 + ')' }}
               >
-                <div className='overlay-main bg-black opacity-07' />
-                <div className='video-section-inner'>
-                  <div className='video-section-content'>
-                    <div className='video-section-left'>
+                <div className="overlay-main bg-black opacity-07" />
+                <div className="video-section-inner">
+                  <div className="video-section-content">
+                    <div className="video-section-left">
                       <NavLink
                         to={'#'}
-                        className='play-now'
+                        className="play-now"
                         onClick={openModal}
                       >
-                        <i className='icon fa fa-play' />
-                        <span className='ripple' />
+                        <i className="icon fa fa-play" />
+                        <span className="ripple" />
                       </NavLink>
                     </div>
-                    <div className='video-section-right'>
+                    <div className="video-section-right">
                       <NavLink
                         to={'#'}
-                        className='font-weight-600 text-uppercase'
+                        className="font-weight-600 text-uppercase"
                         onClick={openModal}
                       >
                         Video Presentation
@@ -112,9 +112,9 @@ const NossoValor = () => {
       </div>
 
       <ModalVideo
-        channel='vimeo'
+        channel="vimeo"
         isOpen={isOpen}
-        videoId='34741214'
+        videoId="34741214"
         onClose={() => setIsOpen(false)}
       />
     </>

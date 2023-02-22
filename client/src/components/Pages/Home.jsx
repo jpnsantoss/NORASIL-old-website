@@ -8,27 +8,23 @@ import SobreNos from '../Elements/SobreNos';
 import NossoValor from '../Elements/NossoValor';
 import AreasIntervencao from '../Elements/AreasIntervencao';
 import PoliticaDeQualidade from '../Elements/PoliticaDeQualidade';
-import Callus from './../Elements/Callus';
-import Sqa from '../Elements/Sqa';
 
 const Home = () => {
-    return (
-        <>
-            <Header />
-            <div className="page-content">
-                <Slider />
-                <ObrasRecentes />
-                <PropostaDeValor />
-                <SobreNos />
-                <NossoValor />
-                <AreasIntervencao />
-                <PoliticaDeQualidade />
-                <Callus />
-                <Sqa />
-            </div>
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <div className="page-content">
+        <Slider />
+        <ObrasRecentes />
+        <PropostaDeValor />
+        <SobreNos />
+        <NossoValor />
+        <AreasIntervencao />
+        <PoliticaDeQualidade />
+      </div>
+      <Footer />
+    </>
+  );
 };
 
 export default Home;

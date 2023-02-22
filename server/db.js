@@ -19,20 +19,12 @@ export async function runQueries() {
     );
   `;
 
-  const rolesTableQuery = `
-    CREATE TABLE IF NOT EXISTS roles (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      name VARCHAR(255) NOT NULL
-    );
-  `;
-
   const usersTableQuery = `
     CREATE TABLE IF NOT EXISTS users (
       id INT AUTO_INCREMENT PRIMARY KEY,
       username VARCHAR(255) NOT NULL,
       password VARCHAR(255) NOT NULL,
-      role INT NOT NULL,
-      FOREIGN KEY (role) REFERENCES roles(id)
+      admin BOOLEAN NOT NULL
     );
   `;
 
@@ -59,35 +51,25 @@ export async function runQueries() {
     );
   `;
 
-  const insertRoleQuery = `
-    INSERT INTO roles (name)
-    SELECT * FROM (SELECT 'admin') AS tmp
-    WHERE NOT EXISTS (
-      SELECT name FROM roles WHERE name = 'admin'
-    ) LIMIT 1;
-  `;
-
   async function insertAdminUser(username, password) {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
-  
+
     // Check if the user already exists
     const [existingUserRows] = await db.query(`SELECT * FROM users WHERE username = ?`, [username]);
     const existingUser = existingUserRows[0];
-  
+
     if (!existingUser) {
       // Insert the new admin user if they don't already exist
-      await db.query(`INSERT INTO users (username, password, role) VALUES (?, ?, 1)`, [username, hashedPassword]);
+      await db.query(`INSERT INTO users (username, password, admin) VALUES (?, ?, 1)`, [username, hashedPassword]);
     }
   }
 
   try {
     await db.query(categoriesTableQuery)
-    await db.query(rolesTableQuery)
     await db.query(usersTableQuery)
     await db.query(buildsTableQuery)
     await db.query(additionalImagesTableQuery)
-    await db.query(insertRoleQuery)
     insertAdminUser(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD);
   } catch (error) {
     console.error(error);

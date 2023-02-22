@@ -25,7 +25,6 @@ export const getBuild = async (req, res) => {
 
   try {
     const [data] = await db.query(q, [req.params.id]);
-    if (err) return res.status(500).json(err);
 
     if (data.length === 0) return res.status(404).json({ error: "Build not found" });
   } catch (err) {

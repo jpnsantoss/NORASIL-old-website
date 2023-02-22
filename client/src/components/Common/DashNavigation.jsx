@@ -33,9 +33,6 @@ const DashNavigation = (props) => {
           <li>
             <NavLink to={'/admin/users'}>Utilizadores</NavLink>
           </li>
-          <li>
-            <NavLink to={'/admin/cargos'}>Cargos</NavLink>
-          </li>
         </ul>
       </div>
     </>

@@ -7,42 +7,36 @@ import { FaRegBuilding, FaRegHospital } from 'react-icons/fa';
 import { MdOutlineOtherHouses } from 'react-icons/md';
 
 const services = [
-    {
-        count: 1,
-        title: 'Educação e Saúde',
-        icon: <FaRegHospital />,
-        description: 'lorem Ipsum available, but the majority have suffered alterati on in some form, by ious by accident.',
-    },
-    {
-        count: 2,
-        title: 'Comércio e Serviços',
-        icon: <RiStore2Line />,
-        description: 'lorem Ipsum available, but the majority have suffered alterati on in some form, by ious by accident.',
-    },
-    {
-        count: 3,
-        title: 'Industrial',
-        icon: <TbBuildingFactory2 />,
-        description: 'lorem Ipsum available, but the majority have suffered alterati on in some form, by ious by accident.',
-    },
-    {
-        count: 4,
-        title: 'Escritórios',
-        icon: <FaRegBuilding />,
-        description: 'lorem Ipsum available, but the majority have suffered alterati on in some form, by ious by accident.',
-    },
-    {
-        count: 5,
-        title: 'Habitação',
-        icon: <BsHouseDoor />,
-        description: 'lorem Ipsum available, but the majority have suffered alterati on in some form, by ious by accident.',
-    },
-    {
-        count: 6,
-        title: 'Diversos',
-        icon: <MdOutlineOtherHouses />,
-        description: 'lorem Ipsum available, but the majority have suffered alterati on in some form, by ious by accident.',
-    },
+  {
+    count: 1,
+    title: 'Educação e Saúde',
+    icon: <FaRegHospital />,
+  },
+  {
+    count: 2,
+    title: 'Comércio e Serviços',
+    icon: <RiStore2Line />,
+  },
+  {
+    count: 3,
+    title: 'Industrial',
+    icon: <TbBuildingFactory2 />,
+  },
+  {
+    count: 4,
+    title: 'Escritórios',
+    icon: <FaRegBuilding />,
+  },
+  {
+    count: 5,
+    title: 'Habitação',
+    icon: <BsHouseDoor />,
+  },
+  {
+    count: 6,
+    title: 'Diversos',
+    icon: <MdOutlineOtherHouses />,
+  },
 ];
 
 var img1 = require('./../../images/background/bg-5.png');
@@ -69,16 +63,16 @@ const AreasIntervencao = () => {
   return (
     <>
       <div
-        className='section-full p-t80 p-b50 bg-white mobile-page-padding'
+        className="section-full p-t80 p-b50 bg-white mobile-page-padding"
         style={{ backgroundImage: 'url(' + img1 + ')' }}
       >
-        <div className='container'>
+        <div className="container">
           {/* TITLE START */}
-          <div className='section-head'>
-            <div className='mt-separator-outer separator-center'>
-              <div className='mt-separator'>
-                <h2 className='text-uppercase sep-line-one '>
-                  <span className='font-weight-300 text-primary'>Áreas de</span>{' '}
+          <div className="section-head">
+            <div className="mt-separator-outer separator-center">
+              <div className="mt-separator">
+                <h2 className="text-uppercase sep-line-one ">
+                  <span className="font-weight-300 text-primary">Áreas de</span>{' '}
                   Intervenção
                 </h2>
               </div>
@@ -86,31 +80,30 @@ const AreasIntervencao = () => {
           </div>
           {/* TITLE END */}
           {/* IMAGE CAROUSEL START */}
-          <div className='section-content'>
-            <div className='row'>
+          <div className="section-content">
+            <div className="row">
               {services.map((item, index) => (
-                <div key={index} className='col-md-4 col-sm-6'>
-                  <div className='mt-icon-box-wraper p-a30 center m-b30 box-shadow bg-white'>
+                <div key={index} className="col-md-4 col-sm-6">
+                  <div className="mt-icon-box-wraper p-a30 center m-b30 box-shadow bg-white">
                     <div
-                      className='mt-icon-box-sm inline-icon text-primary  m-b20 radius bg-primary  scale-in-center bg-moving'
+                      className="mt-icon-box-sm inline-icon text-primary  m-b20 radius bg-primary  scale-in-center bg-moving"
                       style={{ backgroundImage: 'url(' + img2 + ')' }}
                     >
-                      <span className='icon-cell text-secondry'>
+                      <span className="icon-cell text-secondry">
                         {item.icon}
                       </span>
                     </div>
-                    <div className='icon-content'>
-                      <h4 className='mt-tilte text-uppercase font-weight-600 m-b20'>
+                    <div className="icon-content">
+                      <h4 className="mt-tilte text-uppercase font-weight-600 m-b20">
                         {item.title}
                       </h4>
-                      <p>{item.description}</p>
                       <NavLink
                         to={'/portfolio'}
-                        className='site-button-link'
-                        data-hover='Read More'
+                        className="site-button-link"
+                        data-hover="Read More"
                       >
                         Ver Mais{' '}
-                        <i className='fa fa-angle-right arrow-animation' />
+                        <i className="fa fa-angle-right arrow-animation" />
                       </NavLink>
                     </div>
                   </div>

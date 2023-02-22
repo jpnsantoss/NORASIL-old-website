@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home';
 import Error from './Pages/Error';
 import Localizacao from './Pages/Localizacao';
@@ -15,15 +15,25 @@ import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Users from './Pages/Dashboard/Users';
 import Areas from './Pages/Dashboard/Areas';
-import Cargos from './Pages/Dashboard/Cargos';
-import CreateArea from './Pages/Dashboard/Forms/CreateArea';
 import CreateUser from './Pages/Dashboard/Forms/CreateUser';
 import CreateBuild from './Pages/Dashboard/Forms/CreateBuild';
-import CreateRole from './Pages/Dashboard/Forms/CreateRole';
+import { AuthContext } from '../context/authContext';
+import ScrollToTop from './Common/ScrollToTop';
 
 const Components = () => {
+  const ProtectedRoute = ({ children }) => {
+    const { currentUser } = useContext(AuthContext);
+
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
+
   return (
     <BrowserRouter basename="/">
+      <ScrollToTop />
       <div className="page-wraper">
         <Routes>
           <Route path="/" exact element={<Home />} />
@@ -50,23 +60,67 @@ const Components = () => {
           </Route>
 
           <Route path="admin">
-            <Route index element={<Dashboard />} />
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <Dashboard />{' '}
+                </ProtectedRoute>
+              }
+            />
+
             <Route path="obras">
-              <Route index element={<Dashboard />} />
-              <Route path="editor" element={<CreateBuild />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    {' '}
+                    <Dashboard />{' '}
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="editor"
+                element={
+                  <ProtectedRoute>
+                    {' '}
+                    <CreateBuild />{' '}
+                  </ProtectedRoute>
+                }
+              />
             </Route>
+
             <Route path="users">
-              <Route index element={<Users />} />
-              <Route path="editor" element={<CreateUser />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    {' '}
+                    <Users />{' '}
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="editor"
+                element={
+                  <ProtectedRoute>
+                    {' '}
+                    <CreateUser />{' '}
+                  </ProtectedRoute>
+                }
+              />
             </Route>
-            <Route path="areas">
-              <Route index element={<Areas />} />
-              <Route path="editor" element={<CreateArea />} />
-            </Route>
-            <Route path="cargos">
-              <Route index element={<Cargos />} />
-              <Route path="editor" element={<CreateRole />} />
-            </Route>
+
+            <Route
+              path="areas"
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <Areas />{' '}
+                </ProtectedRoute>
+              }
+            />
           </Route>
         </Routes>
       </div>
