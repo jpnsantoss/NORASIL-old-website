@@ -5,8 +5,8 @@ import ScrolToTop from './components/Elements/ScrolToTop';
 const App = () => {
   return (
     <div className="App">
-      <Components />  
-      <ScrolToTop/>
+      <Components />
+      <ScrolToTop />
     </div>
   );
 }

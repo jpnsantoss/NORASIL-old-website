@@ -1,44 +1,96 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from '../../Common/Header';
 import DashHeader from '../../Common/DashHeader';
 import Footer from '../../Common/Footer';
 import Banner from '../../Elements/Banner';
 import axios from 'axios';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 var bnrimg = require('./../../../images/banner.jpg');
 
 const Areas = () => {
-  const [cats, setCats] = useState([]);
+  const queryClient = useQueryClient();
+
   const [name, setName] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`/categories`);
-        setCats(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const handleDelete = async (categoryId) => {
-    try {
-      await axios.delete(`/categories/${categoryId}`);
-    } catch (err) {
-      console.log(err);
-    }
+  const fetchCategories = async () => {
+    const { data } = await axios.get('/categories');
+    return data;
   };
+
+  const {
+    data: cats,
+    isLoading,
+    error,
+  } = useQuery('categories', fetchCategories);
+
+  const createCategory = useMutation(
+    (newCategory) => axios.post('/categories', newCategory),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('categories');
+      },
+    }
+  );
+
+  const deleteCategory = useMutation(
+    (categoryId) => axios.delete(`/categories/${categoryId}`),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('categories');
+      },
+    }
+  );
 
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/categories', { name });
+      await createCategory.mutateAsync({ name });
+      setName('');
     } catch (err) {
       console.log(err);
     }
   };
+
+  const handleDelete = async (categoryId) => {
+    try {
+      await deleteCategory.mutateAsync(categoryId);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // const [cats, setCats] = useState([]);
+  // const [name, setName] = useState('');
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await axios.get(`/categories`);
+  //       setCats(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
+  // const handleDelete = async (categoryId) => {
+  //   try {
+  //     await axios.delete(`/categories/${categoryId}`);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  // const handleCreate = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.post('/categories', { name });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <>
@@ -70,6 +122,7 @@ const Areas = () => {
                     <input
                       type="text"
                       className="form-control"
+                      required
                       value={name}
                       placeholder="Nome"
                       onChange={(e) => setName(e.target.value)}
@@ -97,34 +150,40 @@ const Areas = () => {
                     </div>
                   </div>
                 </div>
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th className="text-center">Id</th>
-                      <th>Título</th>
-                      <th className="text-center">Operações</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cats.map((item) => (
-                      <tr key={item.id}>
-                        <td className="col-md-1 text-center">{item.id}</td>
-                        <td>{item.name}</td>
-                        <td className="col-md-2">
-                          <div className="botoes">
-                            <button
-                              className="site-button operation-button text-uppercase red"
-                              type="button"
-                              onClick={() => handleDelete(item.id)}
-                            >
-                              <i className="fa fa-close" />{' '}
-                            </button>
-                          </div>
-                        </td>
+                {isLoading ? (
+                  <div>Loading...</div>
+                ) : error ? (
+                  <div>Error: {error.message}</div>
+                ) : (
+                  <table className="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th className="text-center">Id</th>
+                        <th>Título</th>
+                        <th className="text-center">Operações</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {cats.map((item) => (
+                        <tr key={item.id}>
+                          <td className="col-md-1 text-center">{item.id}</td>
+                          <td>{item.name}</td>
+                          <td className="col-md-2">
+                            <div className="botoes">
+                              <button
+                                className="site-button operation-button text-uppercase red"
+                                type="button"
+                                onClick={() => handleDelete(item.id)}
+                              >
+                                <i className="fa fa-close" />{' '}
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
           </div>

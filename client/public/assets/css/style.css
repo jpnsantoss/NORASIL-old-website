@@ -6214,8 +6214,7 @@ label {
 
 input[type='checkbox'],
 input[type='radio'] {
-  opacity: 0;
-  margin-left: 1px !important;
+  margin-left: 5px !important;
 }
 
 input[type='checkbox'] + label,

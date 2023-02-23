@@ -27,34 +27,45 @@ export const getCategory = async (req, res) => {
   }
 };
 
-export const addCategory = async (req, res) => {
+export const addCategory = (req, res) => {
 
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
 
-  jwt.verify(token, "jwtkey", (err, userInfo) => {
+  jwt.verify(token, "jwtkey", async (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const q = "INSERT INTO categories(`name`) VALUES (?)";
+    const q = "SELECT * FROM users WHERE username = ?";
+
     try {
-      db.query(q, [req.body.name]);
-      return res.json("Category has been created.");
+      const data = await db.query(q, [req.body.username]);
+      if (data.length) return res.status(409).json("Area already exists!");
+
+      const q = "INSERT INTO categories(`name`) VALUES (?)";
+      try {
+        await db.query(q, [req.body.name]);
+        return res.json("Category has been created.");
+      } catch (err) {
+        return res.status(500).json(err)
+      }
     } catch (err) {
-      return res.status(500).json(err)
+      return res.status(500).json(err);
     }
+
+
   });
 };
 
 export const deleteCategory = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated.");
-  jwt.verify(token, "jwtkey", (err, userInfo) => {
+  jwt.verify(token, "jwtkey", async (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
     const categoryId = req.params.id;
     const q = "DELETE FROM categories WHERE `id` = ?"
 
     try {
-      db.query(q, [categoryId]);
+      await db.query(q, [categoryId]);
 
       return res.json("Category has been deleted!");
     } catch (err) {

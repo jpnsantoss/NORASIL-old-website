@@ -15,7 +15,6 @@ import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Users from './Pages/Dashboard/Users';
 import Areas from './Pages/Dashboard/Areas';
-import CreateUser from './Pages/Dashboard/Forms/CreateUser';
 import CreateBuild from './Pages/Dashboard/Forms/CreateBuild';
 import { AuthContext } from '../context/authContext';
 import ScrollToTop from './Common/ScrollToTop';
@@ -26,6 +25,15 @@ const Components = () => {
 
     if (!currentUser) {
       return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
+
+  const AdminRoute = ({ children }) => {
+    const { currentUser } = useContext(AuthContext);
+    if (!currentUser.admin) {
+      return <Navigate to="/" />;
     }
 
     return children;
@@ -91,26 +99,15 @@ const Components = () => {
               />
             </Route>
 
-            <Route path="users">
-              <Route
-                index
-                element={
-                  <ProtectedRoute>
-                    {' '}
-                    <Users />{' '}
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="editor"
-                element={
-                  <ProtectedRoute>
-                    {' '}
-                    <CreateUser />{' '}
-                  </ProtectedRoute>
-                }
-              />
-            </Route>
+            <Route
+              path="users"
+              element={
+                <AdminRoute>
+                  {' '}
+                  <Users />{' '}
+                </AdminRoute>
+              }
+            />
 
             <Route
               path="areas"
