@@ -1,62 +1,56 @@
-import React, { useState } from 'react';
-import Header from '../../Common/Header';
-import DashHeader from '../../Common/DashHeader';
-import Footer from '../../Common/Footer';
-import Banner from '../../Elements/Banner';
-import axios from 'axios';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import React, { useState } from "react";
+import Header from "../../Common/Header";
+import DashHeader from "../../Common/DashHeader";
+import Footer from "../../Common/Footer";
+import Banner from "../../Elements/Banner";
+import axios from "axios";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
-var bnrimg = require('./../../../images/banner.jpg');
+var bnrimg = require("./../../../images/banner.jpg");
 
 const Users = () => {
   const queryClient = useQueryClient();
   const [inputs, setInputs] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
     admin: false,
   });
 
   const fetchUsers = async () => {
-    const { data } = await axios.get('/users');
+    const { data } = await axios.get("/users");
     return data;
   };
 
-  const { data: users, isLoading, error } = useQuery('users', fetchUsers);
+  const { data: users, isLoading, error } = useQuery("users", fetchUsers);
 
-  const createUser = useMutation((newUser) => axios.post('/users', newUser), {
+  const createUser = useMutation((newUser) => axios.post("/users", newUser), {
     onSuccess: () => {
-      queryClient.invalidateQueries('users');
+      queryClient.invalidateQueries("users");
     },
   });
 
   const deleteUser = useMutation((userId) => axios.delete(`/users/${userId}`), {
     onSuccess: () => {
-      queryClient.invalidateQueries('users');
+      queryClient.invalidateQueries("users");
     },
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    const newValue = type === 'checkbox' ? checked : value;
-
-    setInputs((prev) => ({ ...prev, [name]: newValue }));
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSelect = (e) => {
     const { name, value } = e.target;
-    const newValue = value === '1';
+    const newValue = value === "1";
     setInputs((prev) => ({ ...prev, [name]: newValue }));
   };
 
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      console.log(inputs);
       const result = await createUser.mutateAsync(inputs);
-      console.log(result); // add this line
     } catch (err) {
-      console.log(err.response.data);
+      console.log(err);
     }
   };
 
@@ -85,8 +79,8 @@ const Users = () => {
                     <div className="mt-separator">
                       <h2 className="text-black text-uppercase sep-line-one ">
                         <span className="font-weight-300 text-primary">
-                          Adicionar{' '}
-                        </span>{' '}
+                          Adicionar{" "}
+                        </span>{" "}
                         User
                       </h2>
                     </div>
@@ -122,7 +116,7 @@ const Users = () => {
                       <select
                         name="admin"
                         onChange={handleSelect}
-                        value={inputs.admin ? '1' : '0'}
+                        value={inputs.admin ? "1" : "0"}
                       >
                         <option value="0">Não</option>
                         <option value="1">Sim</option>
@@ -147,8 +141,8 @@ const Users = () => {
                     <div className="mt-separator">
                       <h2 className="text-black text-uppercase sep-line-one ">
                         <span className="font-weight-300 text-primary">
-                          Lista de{' '}
-                        </span>{' '}
+                          Lista de{" "}
+                        </span>{" "}
                         Users
                       </h2>
                     </div>
@@ -179,7 +173,7 @@ const Users = () => {
                                 className="site-button text-uppercase operation-button  blue m-r5"
                                 type="button"
                               >
-                                <i className="fa fa-pencil" />{' '}
+                                <i className="fa fa-pencil" />{" "}
                               </button>
                               <button
                                 className="site-button operation-button text-uppercase red"
@@ -187,7 +181,7 @@ const Users = () => {
                                 onClick={() => handleDelete(item.id)}
                                 // onClick={() => handleDelete(item.id)}
                               >
-                                <i className="fa fa-close" />{' '}
+                                <i className="fa fa-close" />{" "}
                               </button>
                             </div>
                           </td>

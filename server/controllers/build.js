@@ -1,18 +1,33 @@
 import { db } from "../db.js";
+import jwt from "jsonwebtoken";
 
 export const getBuilds = async (req, res) => {
-  const q = req.query.category
-    ? "SELECT * FROM builds WHERE category=?"
-    : "SELECT * FROM builds";
+  const limit = 20;
+  const offset = req.query.page ? (req.query.page - 1) * limit : 0;
+  const searchTerm = req.query.search ? `%${req.query.search}%` : "%";
+  const category = req.query.category ? req.query.category : "%";
 
   try {
-    const [data] = await db.query(q, [req.query.category]);
+    const [data] = await db.query(
+      `
+      SELECT b.*, c.name AS category_name
+      FROM builds b
+      JOIN categories c ON b.category = c.name
+      WHERE (c.name LIKE ? )
+      AND (b.title LIKE ? OR b.client LIKE ? OR b.description LIKE ?)
+      ORDER BY b.date DESC
+      LIMIT ? OFFSET ?
+      `,
+      [category, searchTerm, limit, offset]
+    );
 
     return res.status(200).json(data);
   } catch (err) {
     return res.status(500).send(err);
   }
 };
+
+
 
 export const getBuild = async (req, res) => {
   const q = `
@@ -52,15 +67,48 @@ export const getBuild = async (req, res) => {
 
 
 export const addBuild = (req, res) => {
-  console.log("In construction");
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not authenticated!");
+
+  jwt.verify(token, "jwtkey", async (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    const q = "INSERT INTO builds(`title`, `description`, `client`, `time`, `date`, `category`, `mainImage`) VALUES (?)";
+
+    const values = [
+      req.body.title,
+      req.body.description,
+      req.body.client,
+      req.body.time,
+      req.body.date,
+      req.body.category,
+      req.body.mainImage
+    ]
+    try {
+      await db.query(q, [values]);
+      return res.json("Build has been created.");
+    } catch (err) {
+      return res.status(500).json(err)
+    }
+  });
 };
 
 export const deleteBuild = (req, res) => {
-  console.log("In construction");
-};
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not authenticated.");
+  jwt.verify(token, "jwtkey", async (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+    const buildId = req.params.id;
+    const q = "DELETE FROM builds WHERE `id` = ?"
 
-export const updateBuild = (req, res) => {
-  console.log("In construction");
+    try {
+      await db.query(q, [buildId]);
+
+      return res.json("Build has been deleted!");
+    } catch (err) {
+      return res.status(500).json(err)
+    }
+  })
 };
 
 export const getBuildAdditionalImages = (req, res) => {

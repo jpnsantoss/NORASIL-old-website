@@ -1,22 +1,22 @@
-import React from 'react';
-import Header from '../../Common/Header';
-import Footer from '../../Common/Footer';
-import Banner from '../../Elements/Banner';
+import React from "react";
+import Header from "../../Common/Header";
+import Footer from "../../Common/Footer";
+import Banner from "../../Elements/Banner";
 
-var bnrimg = require('./../../../images/banner.jpg');
+var bnrimg = require("./../../../images/banner.jpg");
 
 const Apresentacao = () => {
   return (
     <>
       <Header />
-      <div className='page-content'>
-        <Banner title='Apresentação' pagename='Empresa' bgimage={bnrimg} />
+      <div className="page-content">
+        <Banner title="Apresentação" pagename="Empresa" bgimage={bnrimg} />
 
         {/* SECTION CONTENTG START */}
-        <div className='section-full p-tb150'>
-          <div className='container'>
-            <div className='section-content'>
-              <div className='empresa-text'>
+        <div className="section-full p-tb150">
+          <div className="container">
+            <div className="section-content">
+              <div className="empresa-text">
                 <p>
                   Fundada em Maio de 1983, a Norasil – Sociedade de Construção
                   Civil, S.A., (com Sede e Estaleiro Central em Matosinhos) tem
@@ -64,10 +64,10 @@ const Apresentacao = () => {
                   Na perspectiva de evolução e melhoria, e com base quer na
                   envolvente e na conjuntura, quer na experiência e antecedentes
                   da empresa, nos últimos anos estabelecemos e mantemos algumas
-                  outras opções estratégicas, nomeadamente:{' '}
+                  outras opções estratégicas, nomeadamente:{" "}
                 </p>
                 <p>
-                  ✓ Criação de parcerias, para desenvolver e negociar de forma a
+                  Criação de parcerias, para desenvolver e negociar de forma a
                   assegurar níveis concorrenciais e aumento de sinergias.
                 </p>
               </div>

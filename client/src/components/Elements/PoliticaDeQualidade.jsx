@@ -1,49 +1,49 @@
-import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const services = [
   {
     count: 1,
     title: `Missão`,
-    icon: require('./../../images/icon/crane-1.png'),
+    icon: require("./../../images/icon/crane-1.png"),
     description:
-      'A nossa missão é oferecer soluções inovadoras, combinando qualidade e eficiência para a realização de projetos de sucesso.',
+      "A nossa missão é oferecer soluções inovadoras, combinando qualidade e eficiência para a realização de projetos de sucesso.",
   },
   {
     count: 2,
-    title: 'Visão',
-    icon: require('./../../images/icon/renovation.png'),
+    title: "Visão",
+    icon: require("./../../images/icon/renovation.png"),
     description:
-      'A nossa visão é ser reconhecidos como uma empresa que oferece soluções de alta qualidade, visando o sucesso dos nossos clientes.',
+      "A nossa visão é ser reconhecidos como uma empresa que oferece soluções de alta qualidade, visando o sucesso dos nossos clientes.",
   },
   {
     count: 3,
-    title: 'Valores e Objetivos',
-    icon: require('./../../images/icon/toolbox.png'),
+    title: "Valores e Objetivos",
+    icon: require("./../../images/icon/toolbox.png"),
     description:
-      'Na Norasil, o nosso objetivo é sempre alcançar a excelência em tudo o que fazemos, preservando os nossos valores éticos e profissionais.',
+      "Na Norasil, o nosso objetivo é sempre alcançar a excelência em tudo o que fazemos, preservando os nossos valores éticos e profissionais.",
   },
   {
     count: 4,
-    title: 'Estratégia',
-    icon: require('./../../images/icon/compass.png'),
+    title: "Estratégia",
+    icon: require("./../../images/icon/compass.png"),
     description:
-      'Na Norasil, trabalhamos na promoção e valorização da sua imagem, consolidando-se como referência no mercado da construção civil.',
+      "Na Norasil, trabalhamos na promoção e valorização da sua imagem, consolidando-se como referência no mercado da construção civil.",
   },
 ];
 
-var img1 = require('./../../images/background/bg-6.png');
+var img1 = require("./../../images/background/bg-6.png");
 
 const PoliticaDeQualidade = () => {
   useEffect(() => {
     function loadScript(src) {
       return new Promise(function (resolve, reject) {
-        var script = document.createElement('script');
+        var script = document.createElement("script");
         script.src = src;
-        script.addEventListener('load', function () {
+        script.addEventListener("load", function () {
           resolve();
         });
-        script.addEventListener('error', function (e) {
+        script.addEventListener("error", function (e) {
           reject(e);
         });
         document.body.appendChild(script);
@@ -51,7 +51,7 @@ const PoliticaDeQualidade = () => {
       });
     }
 
-    loadScript('./assets/js/masonary.js');
+    loadScript("./assets/js/masonary.js");
   }, []);
 
   return (
@@ -60,7 +60,7 @@ const PoliticaDeQualidade = () => {
         <div className="section-content">
           <div
             className="Service-half-top p-t80  bg-dark bg-moving"
-            style={{ backgroundImage: 'url(' + img1 + ')' }}
+            style={{ backgroundImage: "url(" + img1 + ")" }}
           >
             <div className="container">
               {/* TITLE START */}
@@ -70,15 +70,12 @@ const PoliticaDeQualidade = () => {
                     <h2 className="text-white text-uppercase sep-line-one ">
                       <span className="font-weight-300 text-primary">
                         Política da
-                      </span>{' '}
+                      </span>{" "}
                       Qualidade
                     </h2>
                   </div>
                 </div>
-                <h3>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration
-                </h3>
+                <h3>Comprometidos com a excelência em cada projeto.</h3>
               </div>
               {/* TITLE END */}
             </div>
@@ -102,13 +99,11 @@ const PoliticaDeQualidade = () => {
                           </h4>
                           <p>{item.description}</p>
                           <NavLink
-                            to={'/empresa/politicadequalidade'}
+                            to={"/empresa/politicadequalidade"}
                             className="site-button-link"
                             data-hover="Read More"
-                            data-toggle="tab"
-                            href="#cat2"
                           >
-                            Ler Mais{' '}
+                            Ler Mais{" "}
                             <i className="fa fa-angle-right arrow-animation" />
                           </NavLink>
                         </div>

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import CountUp from 'react-countup';
-import ModalVideo from 'react-modal-video';
-import '../../../node_modules/react-modal-video/css/modal-video.min.css';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import CountUp from "react-countup";
+import ModalVideo from "react-modal-video";
+import "../../../node_modules/react-modal-video/css/modal-video.min.css";
 
-var img1 = require('./../../images/video-bg.jpg');
+var img1 = require("./../../images/video-bg.jpg");
 
 const NossoValor = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,12 +13,12 @@ const NossoValor = () => {
 
   const loadScript = (src) => {
     return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
+      const script = document.createElement("script");
       script.src = src;
-      script.addEventListener('load', () => {
+      script.addEventListener("load", () => {
         resolve();
       });
-      script.addEventListener('error', (e) => {
+      script.addEventListener("error", (e) => {
         reject(e);
       });
       document.body.appendChild(script);
@@ -27,7 +27,7 @@ const NossoValor = () => {
   };
 
   useEffect(() => {
-    loadScript('./assets/js/masonary.js');
+    loadScript("./assets/js/masonary.js");
   }, []);
   return (
     <>
@@ -43,16 +43,16 @@ const NossoValor = () => {
                       <h2 className="text-uppercase sep-line-one ">
                         <span className="font-weight-300 text-primary">
                           O Nosso
-                        </span>{' '}
+                        </span>{" "}
                         Valor
                       </h2>
                     </div>
                     <p>
                       Na Norasil, o valor está na construção de relações
                       duradouras com os nossos clientes, baseadas na confiança e
-                      no compromisso com a excelência. <br />
-                      <br />
-                      <br />
+                      no compromisso com a excelência, refletido em cada etapa
+                      do projeto, desde o planeamento até à entrega final,
+                      sempre com rigor. <br />
                       <br />
                     </p>
                   </div>
@@ -60,33 +60,33 @@ const NossoValor = () => {
                 {/* TITLE END */}
                 <div className="col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20">
                   <div className="counter font-30 font-weight-800 m-b15 text-primary">
-                    <CountUp end={670} duration={5} />
+                    <CountUp end={676} duration={3} />
                   </div>
                   <h4 className="m-tb0">Obras</h4>
                 </div>
                 <div className="col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20">
                   <div className="counter font-30 font-weight-800 m-b15  text-primary">
-                    <CountUp end={670} duration={5} />
+                    <CountUp end={66} duration={3} />
                   </div>
                   <h4 className="m-tb0">Colaboradores</h4>
                 </div>
                 <div className="col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20">
                   <div className="counter font-30 font-weight-800 m-b15 text-primary">
-                    <CountUp end={1500} duration={5} />
+                    <CountUp end={7} duration={3} />
                   </div>
                   <h4 className="m-tb0">Distinções</h4>
                 </div>
               </div>
               <div
                 className="video-section-full bg-no-repeat bg-cover overlay-wraper"
-                style={{ backgroundImage: 'url(' + img1 + ')' }}
+                style={{ backgroundImage: "url(" + img1 + ")" }}
               >
                 <div className="overlay-main bg-black opacity-07" />
                 <div className="video-section-inner">
                   <div className="video-section-content">
                     <div className="video-section-left">
                       <NavLink
-                        to={'#'}
+                        to={"#"}
                         className="play-now"
                         onClick={openModal}
                       >
@@ -96,7 +96,7 @@ const NossoValor = () => {
                     </div>
                     <div className="video-section-right">
                       <NavLink
-                        to={'#'}
+                        to={"#"}
                         className="font-weight-600 text-uppercase"
                         onClick={openModal}
                       >
@@ -112,7 +112,7 @@ const NossoValor = () => {
       </div>
 
       <ModalVideo
-        channel="vimeo"
+        channel="youtube"
         isOpen={isOpen}
         videoId="34741214"
         onClose={() => setIsOpen(false)}

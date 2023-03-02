@@ -27,7 +27,7 @@ export const getCategory = async (req, res) => {
   }
 };
 
-export const addCategory = (req, res) => {
+export const addCategory = async (req, res) => {
 
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
@@ -35,24 +35,13 @@ export const addCategory = (req, res) => {
   jwt.verify(token, "jwtkey", async (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
-    const q = "SELECT * FROM users WHERE username = ?";
-
+    const q = "INSERT INTO categories(`name`) VALUES (?)";
     try {
-      const data = await db.query(q, [req.body.username]);
-      if (data.length) return res.status(409).json("Area already exists!");
-
-      const q = "INSERT INTO categories(`name`) VALUES (?)";
-      try {
-        await db.query(q, [req.body.name]);
-        return res.json("Category has been created.");
-      } catch (err) {
-        return res.status(500).json(err)
-      }
+      await db.query(q, [req.body.name]);
+      return res.json("Category has been created.");
     } catch (err) {
-      return res.status(500).json(err);
+      return res.status(500).json(err)
     }
-
-
   });
 };
 

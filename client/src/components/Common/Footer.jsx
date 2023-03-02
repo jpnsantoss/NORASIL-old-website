@@ -1,12 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-var bgimage = require('./../../images/background/bg-site.png');
+var bgimage = require("./../../images/background/bg-site.png");
 
 class Footer extends React.Component {
   constructor(props) {
     super(props);
-    this.currentstate = { logo: require('./../../images/logo-dark.png') };
+    this.currentstate = { logo: require("./../../images/logo-dark.png") };
   }
 
   updateFooterLogo = (updatedlogo) => {
@@ -18,7 +18,7 @@ class Footer extends React.Component {
         <footer className="site-footer footer-large  footer-dark	footer-wide">
           <div
             className="container call-to-action-wrap bg-no-repeat bg-center"
-            style={{ backgroundImage: 'url(' + bgimage + ')' }}
+            style={{ backgroundImage: "url(" + bgimage + ")" }}
           >
             <div className="p-a30 bg-primary ">
               <div className="row">
@@ -69,30 +69,39 @@ class Footer extends React.Component {
                   <div className="widget widget_about">
                     {/*<h4 class="widget-title">About Company</h4>*/}
                     <div className="logo-footer clearfix p-b15">
-                      <NavLink to={'./'}>
+                      <NavLink to={"./"}>
                         <img src={this.currentstate.logo} alt="" />
                       </NavLink>
                     </div>
                     <p className="max-w400">
-                      Today we can tell you, thanks to your passion, hard work
-                      creativity, and expertise, you delivered us the most
-                      beautiful house great looks.
+                      Com experiência no mercado, investimos em inovação e
+                      sustentabilidade para garantir construções seguras,
+                      duráveis e únicas.
                     </p>
                     <ul className="social-icons  mt-social-links">
                       <li>
-                        <NavLink to={'#'} className="fa fa-google" />
+                        <NavLink
+                          to={"https://www.instagram.com/norasil1983/"}
+                          target="_blank"
+                          referrerPolicy="noreferrer"
+                          className="fa fa-instagram"
+                        />
                       </li>
                       <li>
-                        <NavLink to={'#'} className="fa fa-rss" />
+                        <NavLink
+                          to={"https://www.facebook.com/norasil.pt"}
+                          target="_blank"
+                          referrerPolicy="noreferrer"
+                          className="fa fa-facebook"
+                        />
                       </li>
                       <li>
-                        <NavLink to={'#'} className="fa fa-facebook" />
-                      </li>
-                      <li>
-                        <NavLink to={'#'} className="fa fa-twitter" />
-                      </li>
-                      <li>
-                        <NavLink to={'#'} className="fa fa-linkedin" />
+                        <NavLink
+                          to={"https://www.linkedin.com/company/norasil"}
+                          target="_blank"
+                          referrerPolicy="noreferrer"
+                          className="fa fa-linkedin"
+                        />
                       </li>
                     </ul>
                   </div>
@@ -114,14 +123,14 @@ class Footer extends React.Component {
                     <h4 className="widget-title">Links Úteis</h4>
                     <ul>
                       <li>
-                        <NavLink to={'/'}>Início</NavLink>
+                        <NavLink to={"/"}>Início</NavLink>
                       </li>
                       <li>
-                        <NavLink to={'/portfolio'}>Portfólio</NavLink>
+                        <NavLink to={"/portfolio"}>Portfólio</NavLink>
                       </li>
                       {/* <li><NavLink to={"/recrutamento"}>Recrutamento</NavLink></li> */}
                       <li>
-                        <NavLink to={'/localizacao'}>Localização</NavLink>
+                        <NavLink to={"/localizacao"}>Localização</NavLink>
                       </li>
                     </ul>
                   </div>
@@ -132,12 +141,12 @@ class Footer extends React.Component {
                     <h4 className="widget-title">Informações Adicionais</h4>
                     <ul>
                       <li>
-                        <NavLink to={'/privacidade'}>
+                        <NavLink to={"/privacidade"}>
                           Política de Privacidade
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to={'/cookies'}>Política de Cookies</NavLink>
+                        <NavLink to={"/cookies"}>Política de Cookies</NavLink>
                       </li>
                       <li>
                         <a
@@ -162,10 +171,10 @@ class Footer extends React.Component {
               <div className="row">
                 <div className="mt-footer-bot-center">
                   <span className="copyrights-text">
-                    © 2023 Norasil - Sociedade de Construção Civil, S.A. <br />{' '}
-                    Desenvolvido por{' '}
+                    © 2023 Norasil - Sociedade de Construção Civil, S.A. <br />{" "}
+                    Desenvolvido por{" "}
                     <a
-                      style={{ color: 'white' }}
+                      style={{ color: "white" }}
                       href="mailto:joaosantos@norasil.pt"
                     >
                       João Santos

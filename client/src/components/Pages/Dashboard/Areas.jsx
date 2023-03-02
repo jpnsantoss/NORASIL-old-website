@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import Header from '../../Common/Header';
-import DashHeader from '../../Common/DashHeader';
-import Footer from '../../Common/Footer';
-import Banner from '../../Elements/Banner';
-import axios from 'axios';
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import React, { useState } from "react";
+import Header from "../../Common/Header";
+import DashHeader from "../../Common/DashHeader";
+import Footer from "../../Common/Footer";
+import Banner from "../../Elements/Banner";
+import axios from "axios";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
-var bnrimg = require('./../../../images/banner.jpg');
+var bnrimg = require("./../../../images/banner.jpg");
 
 const Areas = () => {
   const queryClient = useQueryClient();
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
   const fetchCategories = async () => {
-    const { data } = await axios.get('/categories');
+    const { data } = await axios.get("/categories");
     return data;
   };
 
@@ -22,13 +22,13 @@ const Areas = () => {
     data: cats,
     isLoading,
     error,
-  } = useQuery('categories', fetchCategories);
+  } = useQuery("categories", fetchCategories);
 
   const createCategory = useMutation(
-    (newCategory) => axios.post('/categories', newCategory),
+    (newCategory) => axios.post("/categories", newCategory),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('categories');
+        queryClient.invalidateQueries("categories");
       },
     }
   );
@@ -37,7 +37,7 @@ const Areas = () => {
     (categoryId) => axios.delete(`/categories/${categoryId}`),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('categories');
+        queryClient.invalidateQueries("categories");
       },
     }
   );
@@ -46,7 +46,7 @@ const Areas = () => {
     e.preventDefault();
     try {
       await createCategory.mutateAsync({ name });
-      setName('');
+      setName("");
     } catch (err) {
       console.log(err);
     }
@@ -109,8 +109,8 @@ const Areas = () => {
                     <div className="mt-separator">
                       <h2 className="text-black text-uppercase sep-line-one ">
                         <span className="font-weight-300 text-primary">
-                          Adicionar{' '}
-                        </span>{' '}
+                          Adicionar{" "}
+                        </span>{" "}
                         Área
                       </h2>
                     </div>
@@ -143,8 +143,8 @@ const Areas = () => {
                     <div className="mt-separator">
                       <h2 className="text-black text-uppercase sep-line-one ">
                         <span className="font-weight-300 text-primary">
-                          Lista de{' '}
-                        </span>{' '}
+                          Lista de{" "}
+                        </span>{" "}
                         Áreas
                       </h2>
                     </div>
@@ -175,7 +175,7 @@ const Areas = () => {
                                 type="button"
                                 onClick={() => handleDelete(item.id)}
                               >
-                                <i className="fa fa-close" />{' '}
+                                <i className="fa fa-close" />{" "}
                               </button>
                             </div>
                           </td>
