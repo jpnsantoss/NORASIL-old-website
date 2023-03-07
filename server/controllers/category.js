@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
+import { cleanUnusedImages } from "../deleteImages.js";
 
 export const getCategories = async (req, res) => {
   const q = "SELECT * FROM categories";
@@ -19,7 +20,7 @@ export const getCategory = async (req, res) => {
 
   try {
     const [data] = await db.query(q, [req.params.id]);
-    if (data.length === 0) return res.status(404).json({ error: "Categoria não encontrada" });
+    if (data.length === 0) return res.status(404).json({ message: "Categoria não encontrada" });
 
     return res.status(200).json(data)
   } catch (err) {
@@ -30,10 +31,10 @@ export const getCategory = async (req, res) => {
 export const addCategory = async (req, res) => {
 
   const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not authenticated!");
+  if (!token) return res.status(401).json({ message: "Not authenticated!" });
 
   jwt.verify(token, "jwtkey", async (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
+    if (err) return res.status(403).json({ message: "Token is not valid!" });
 
     const q = "INSERT INTO categories(`name`) VALUES (?)";
     try {
@@ -47,19 +48,24 @@ export const addCategory = async (req, res) => {
 
 export const deleteCategory = (req, res) => {
   const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not authenticated.");
+  if (!token) return res.status(401).json({ message: "Not authenticated." });
   jwt.verify(token, "jwtkey", async (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
+    if (err) return res.status(403).json({ message: "Token is not valid!" });
     const categoryId = req.params.id;
-    const q = "DELETE FROM categories WHERE `id` = ?"
 
     try {
-      await db.query(q, [categoryId]);
+      const categoryBuilds = await db.query('SELECT * FROM builds WHERE category = ?', [categoryId]);
 
-      return res.json("Category has been deleted!");
+      if (categoryBuilds.length > 0) {
+        return res.status(400).json({ message: 'Esta área de intervenção ainda tem obras associadas.' });
+      } else {
+        const q = "DELETE FROM categories WHERE `id` = ?";
+        await db.query(q, [categoryId]);
+        cleanUnusedImages();
+        return res.json("Category has been deleted!");
+      }
     } catch (err) {
       return res.status(500).json(err)
     }
   })
 };
-

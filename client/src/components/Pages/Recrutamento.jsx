@@ -1,9 +1,9 @@
-import React from 'react';
-import Header from '../Common/Header';
-import Footer from '../Common/Footer';
-import Banner from '../Elements/Banner';
+import React from "react";
+import Header from "../Common/Header";
+import Footer from "../Common/Footer";
+import Banner from "../Elements/Banner";
 
-var bnrimg = require('./../../images/banner.jpg');
+var bnrimg = require("./../../images/banner.jpg");
 
 const Recrutamento = () => {
   return (
@@ -12,13 +12,9 @@ const Recrutamento = () => {
       <div className="page-content">
         <Banner title="Recrutamento" pagename="Recrutamento" bgimage={bnrimg} />
 
-        {/* SECTION CONTENTG START */}
         <div className="section-full p-tb80 inner-page-padding">
-          {/* LOCATION BLOCK*/}
           <div className="container">
-            {/* GOOGLE MAP & CONTACT FORM */}
             <div className="section-content">
-              {/* CONTACT FORM*/}
               <div className="row">
                 <div className="col-md-12 col-sm-12">
                   <form
@@ -27,14 +23,13 @@ const Recrutamento = () => {
                     action=""
                   >
                     <div className="contact-one m-b30">
-                      {/* TITLE START */}
                       <div className="section-head">
                         <div className="mt-separator-outer separator-left">
                           <div className="mt-separator">
                             <h2 className="text-uppercase sep-line-one ">
                               <span className="font-weight-300 text-primary">
                                 Junta-te a
-                              </span>{' '}
+                              </span>{" "}
                               Nós
                             </h2>
                           </div>
@@ -65,7 +60,7 @@ const Recrutamento = () => {
                           className="form-control "
                           required
                           placeholder="Message"
-                          defaultValue={''}
+                          defaultValue={""}
                         />
                       </div>
                       <div className="text-right">
@@ -85,7 +80,6 @@ const Recrutamento = () => {
             </div>
           </div>
         </div>
-        {/* SECTION CONTENT END */}
       </div>
 
       <Footer />

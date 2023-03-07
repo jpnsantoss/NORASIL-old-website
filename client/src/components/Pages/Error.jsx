@@ -1,10 +1,10 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Header from './../Common/Header';
-import Footer from './../Common/Footer';
-import Banner from './../Elements/Banner';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import Header from "./../Common/Header";
+import Footer from "./../Common/Footer";
+import Banner from "./../Elements/Banner";
 
-var bnrimg = require('./../../images/banner.jpg');
+var bnrimg = require("./../../images/banner.jpg");
 
 const Error = () => {
   return (
@@ -13,7 +13,6 @@ const Error = () => {
       <div className="page-content">
         <Banner title="Page Not Found" pagename="Error Page" bgimage={bnrimg} />
 
-        {/* SECTION CONTENTG START */}
         <div className="section-full p-tb150">
           <div className="container">
             <div className="section-content">
@@ -32,7 +31,6 @@ const Error = () => {
             </div>
           </div>
         </div>
-        {/* SECTION CONTENT END */}
       </div>
 
       <Footer />

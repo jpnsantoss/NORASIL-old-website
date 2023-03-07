@@ -12,7 +12,6 @@ const Apresentacao = () => {
       <div className="page-content">
         <Banner title="Apresentação" pagename="Empresa" bgimage={bnrimg} />
 
-        {/* SECTION CONTENTG START */}
         <div className="section-full p-tb150">
           <div className="container">
             <div className="section-content">
@@ -74,7 +73,6 @@ const Apresentacao = () => {
             </div>
           </div>
         </div>
-        {/* SECTION CONTENT END */}
       </div>
 
       <Footer />

@@ -60,7 +60,6 @@ const SobreNos = () => {
         style={{ backgroundImage: "url(" + bnr1 + ")" }}
       >
         <div className="container">
-          {/* TITLE START */}
           <div className="section-head">
             <div className="mt-separator-outer separator-center">
               <div className="mt-separator">
@@ -71,7 +70,6 @@ const SobreNos = () => {
               </div>
             </div>
           </div>
-          {/* TITLE END */}
           <div className="section-content">
             <div className="row">
               <div className="col-md-9 col-sm-12">

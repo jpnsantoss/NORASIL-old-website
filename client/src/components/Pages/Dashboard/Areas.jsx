@@ -5,6 +5,7 @@ import Footer from "../../Common/Footer";
 import Banner from "../../Elements/Banner";
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
 
 var bnrimg = require("./../../../images/banner.jpg");
 
@@ -29,6 +30,7 @@ const Areas = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries("categories");
+        toast.success("Área de Intervenção Criada!");
       },
     }
   );
@@ -38,6 +40,7 @@ const Areas = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries("categories");
+        toast.success("Área de Intervenção Apagada!");
       },
     }
   );
@@ -48,7 +51,9 @@ const Areas = () => {
       await createCategory.mutateAsync({ name });
       setName("");
     } catch (err) {
-      console.log(err);
+      toast.error(
+        err.response?.data?.message || err.message || "Ocorreu um erro."
+      );
     }
   };
 
@@ -56,41 +61,11 @@ const Areas = () => {
     try {
       await deleteCategory.mutateAsync(categoryId);
     } catch (err) {
-      console.log(err);
+      toast.error(
+        err.response?.data?.message || err.message || "Ocorreu um erro."
+      );
     }
   };
-
-  // const [cats, setCats] = useState([]);
-  // const [name, setName] = useState('');
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await axios.get(`/categories`);
-  //       setCats(res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // const handleDelete = async (categoryId) => {
-  //   try {
-  //     await axios.delete(`/categories/${categoryId}`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const handleCreate = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.post('/categories', { name });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   return (
     <>
@@ -98,12 +73,10 @@ const Areas = () => {
       <div className="page-content">
         <Banner title="Dashboard" pagename="Dashboard" bgimage={bnrimg} />
         <DashHeader />
-        {/* SECTION CONTENTG START */}
         <div className="section-full p-tb150">
           <div className="container">
             <div className="section-content">
               <div className="section-content m-b50">
-                {/* TITLE START */}
                 <div className="section-head">
                   <div className="mt-separator-outer separator-left">
                     <div className="mt-separator">
@@ -116,27 +89,24 @@ const Areas = () => {
                     </div>
                   </div>
                 </div>
-                {/* TITLE END */}
                 <div className="col-md-6 p-l0">
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control"
-                      required
-                      value={name}
-                      placeholder="Nome"
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                    <span className="input-group-btn">
-                      <button
-                        type="submit"
-                        onClick={handleCreate}
-                        className="site-button green"
-                      >
-                        Criar
-                      </button>
-                    </span>
-                  </div>
+                  <form onSubmit={handleCreate}>
+                    <div className="input-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        required
+                        value={name}
+                        placeholder="Nome"
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      <span className="input-group-btn">
+                        <button type="submit" className="site-button green">
+                          Criar
+                        </button>
+                      </span>
+                    </div>
+                  </form>
                 </div>
                 <div className="section-head m-t150">
                   <div className="mt-separator-outer separator-left">
@@ -188,7 +158,6 @@ const Areas = () => {
             </div>
           </div>
         </div>
-        {/* SECTION CONTENT END */}
       </div>
 
       <Footer />

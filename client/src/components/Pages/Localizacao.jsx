@@ -1,9 +1,9 @@
-import React from 'react';
-import Header from '../Common/Header';
-import Footer from '../Common/Footer';
-import Banner from '../Elements/Banner';
+import React from "react";
+import Header from "../Common/Header";
+import Footer from "../Common/Footer";
+import Banner from "../Elements/Banner";
 
-var bnrimg = require('./../../images/banner.jpg');
+var bnrimg = require("./../../images/banner.jpg");
 
 const Localizacao = () => {
   return (
@@ -16,13 +16,9 @@ const Localizacao = () => {
           bgimage={bnrimg}
         />
 
-        {/* SECTION CONTENTG START */}
         <div className="section-full p-tb80 inner-page-padding">
-          {/* LOCATION BLOCK*/}
           <div className="container">
-            {/* GOOGLE MAP & CONTACT FORM */}
             <div className="section-content">
-              {/* CONTACT FORM*/}
               <div className="row">
                 <div className="col-md-8 col-sm-6">
                   <form
@@ -31,20 +27,18 @@ const Localizacao = () => {
                     action=""
                   >
                     <div className="contact-one m-b30">
-                      {/* TITLE START */}
                       <div className="section-head">
                         <div className="mt-separator-outer separator-left">
                           <div className="mt-separator">
                             <h2 className="text-uppercase sep-line-one ">
                               <span className="font-weight-300 text-primary">
                                 Entre em
-                              </span>{' '}
+                              </span>{" "}
                               Contacto
                             </h2>
                           </div>
                         </div>
                       </div>
-                      {/* TITLE END */}
                       <div className="form-group">
                         <input
                           name="username"
@@ -70,8 +64,8 @@ const Localizacao = () => {
                           className="form-control"
                           required
                           placeholder="Mensagem"
-                          defaultValue={''}
-                          style={{ height: '18vh' }}
+                          defaultValue={""}
+                          style={{ height: "18vh" }}
                         />
                       </div>
                       <div className="text-right">
@@ -89,7 +83,6 @@ const Localizacao = () => {
                 </div>
                 <div className="col-md-4 col-sm-6">
                   <div className="contact-info m-b30">
-                    {/* TITLE START */}
                     <div className="section-head">
                       <div className="mt-separator-outer separator-left">
                         <div className="mt-separator">
@@ -99,7 +92,6 @@ const Localizacao = () => {
                         </div>
                       </div>
                     </div>
-                    {/* TITLE END */}
                     <div className="bg-dark p-a20 text-white">
                       <div className="mt-icon-box-wraper left p-b40">
                         <div className="icon-xs">
@@ -147,7 +139,7 @@ const Localizacao = () => {
                 title="Mapa da Sede"
                 width="100%"
                 height="450"
-                style={{ border: '0' }}
+                style={{ border: "0" }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -155,7 +147,6 @@ const Localizacao = () => {
             </div>
           </div>
         </div>
-        {/* SECTION CONTENT END */}
       </div>
 
       <Footer />

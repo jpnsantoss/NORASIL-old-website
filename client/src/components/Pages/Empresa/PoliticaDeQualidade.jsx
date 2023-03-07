@@ -1,9 +1,9 @@
-import React from 'react';
-import Header from '../../Common/Header';
-import Footer from '../../Common/Footer';
-import Banner from '../../Elements/Banner';
+import React from "react";
+import Header from "../../Common/Header";
+import Footer from "../../Common/Footer";
+import Banner from "../../Elements/Banner";
 
-var bnrimg = require('./../../../images/banner.jpg');
+var bnrimg = require("./../../../images/banner.jpg");
 
 const PoliticaDeQualidade = () => {
   return (
@@ -16,13 +16,11 @@ const PoliticaDeQualidade = () => {
           bgimage={bnrimg}
         />
 
-        {/* SECTION CONTENTG START */}
         <div className="section-full p-tb80 inner-page-padding">
           <div className="container">
             <div className="row">
               <div className="section-content">
                 <div className="m-b50">
-                  {/* TAB DEFAULT */}
                   <div className="section-content">
                     <div className="mt-tabs tabs-default">
                       <ul className="nav nav-tabs">
@@ -109,7 +107,7 @@ const PoliticaDeQualidade = () => {
                             mantendo uma relação de proximidade e
                             disponibilidade. Além disso, a Norasil valoriza a
                             atualização constante de conhecimentos e a
-                            frequência de ações de formação.{' '}
+                            frequência de ações de formação.{" "}
                           </p>
                         </div>
                       </div>
@@ -120,7 +118,6 @@ const PoliticaDeQualidade = () => {
             </div>
           </div>
         </div>
-        {/* SECTION CONTENT END */}
       </div>
 
       <Footer />

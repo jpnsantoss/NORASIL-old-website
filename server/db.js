@@ -36,7 +36,7 @@ export async function runQueries() {
       description TEXT NOT NULL,
       client VARCHAR(255) NOT NULL,
       time VARCHAR(255) NOT NULL,
-      date DATE NOT NULL,
+      date DATETIME NOT NULL,
       category INT NOT NULL,
       FOREIGN KEY (category) REFERENCES categories(id)
     );
@@ -45,22 +45,21 @@ export async function runQueries() {
   const additionalImagesTableQuery = `
     CREATE TABLE IF NOT EXISTS additional_images (
       id INT AUTO_INCREMENT PRIMARY KEY,
-      buildId INT NOT NULL,
-      imageUrl VARCHAR(255) NOT NULL,
-      FOREIGN KEY (buildId) REFERENCES builds(id)
+      build_id INT NOT NULL,
+      image_url VARCHAR(255) NOT NULL,
+      FOREIGN KEY (build_id) REFERENCES builds(id) ON DELETE CASCADE
     );
   `;
+
 
   async function insertAdminUser(username, password) {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
-    // Check if the user already exists
     const [existingUserRows] = await db.query(`SELECT * FROM users WHERE username = ?`, [username]);
     const existingUser = existingUserRows[0];
 
     if (!existingUser) {
-      // Insert the new admin user if they don't already exist
       await db.query(`INSERT INTO users (username, password, admin) VALUES (?, ?, 1)`, [username, hashedPassword]);
     }
   }

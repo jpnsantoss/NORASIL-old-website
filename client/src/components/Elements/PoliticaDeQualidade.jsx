@@ -63,7 +63,6 @@ const PoliticaDeQualidade = () => {
             style={{ backgroundImage: "url(" + img1 + ")" }}
           >
             <div className="container">
-              {/* TITLE START */}
               <div className="section-head text-white">
                 <div className="mt-separator-outer separator-left">
                   <div className="mt-separator">
@@ -77,7 +76,6 @@ const PoliticaDeQualidade = () => {
                 </div>
                 <h3>Comprometidos com a excelência em cada projeto.</h3>
               </div>
-              {/* TITLE END */}
             </div>
           </div>
           <div className="services-half-bottom">

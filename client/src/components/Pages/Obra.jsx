@@ -1,14 +1,14 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Header from '../Common/Header';
-import Footer from '../Common/Footer';
-import Banner from '../Elements/Banner';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
-import ObrasRecentes2 from '../Elements/ObrasRecentes2';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import Header from "../Common/Header";
+import Footer from "../Common/Footer";
+import Banner from "../Elements/Banner";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import ObrasRecentes2 from "../Elements/ObrasRecentes2";
 
-var bnrimg = require('./../../images/banner.jpg');
+var bnrimg = require("./../../images/banner.jpg");
 
 const Obra = () => {
   const options = {
@@ -23,75 +23,68 @@ const Obra = () => {
     ],
     items: 1,
     dots: true,
-    animateOut: 'fadeOut',
+    animateOut: "fadeOut",
   };
   return (
     <>
       <Header />
-      <div className='page-content '>
+      <div className="page-content ">
         <Banner
-          title='Making your vision come true, that is what we do.'
-          pagename='Post Gallery'
+          title="Making your vision come true, that is what we do."
+          pagename="Post Gallery"
           bgimage={bnrimg}
         />
 
-        {/* SECTION CONTENT START */}
-        <div className='section-full p-tb80 square_shape1 square_shape3 inner-page-padding'>
-          <div className='container'>
-            {/* BLOG START */}
-            <div className='blog-post date-style-3 blog-detail text-black'>
-              <div className='mt-post-media'>
-                {/*Fade slider*/}
-
+        <div className="section-full p-tb80 square_shape1 square_shape3 inner-page-padding">
+          <div className="container">
+            <div className="blog-post date-style-3 blog-detail text-black">
+              <div className="mt-post-media">
                 <OwlCarousel
-                  className='owl-carousel owl-fade-slider-one owl-btn-vertical-center owl-dots-bottom-right m-b30'
+                  className="owl-carousel owl-fade-slider-one owl-btn-vertical-center owl-dots-bottom-right m-b30"
                   {...options}
                 >
-                  <div className='item'>
-                    <div className='aon-thum-bx'>
+                  <div className="item">
+                    <div className="aon-thum-bx">
                       <img
-                        src={require('./../../images/blog/default/teste1.jpg')}
-                        alt=''
+                        src={require("./../../images/blog/default/teste1.jpg")}
+                        alt=""
                       />
                     </div>
                   </div>
-                  <div className='item'>
-                    <div className='aon-thum-bx'>
+                  <div className="item">
+                    <div className="aon-thum-bx">
                       <img
-                        src={require('./../../images/blog/default/teste2.jpg')}
-                        alt=''
+                        src={require("./../../images/blog/default/teste2.jpg")}
+                        alt=""
                       />
                     </div>
                   </div>
-                  <div className='item'>
-                    <div className='aon-thum-bx'>
+                  <div className="item">
+                    <div className="aon-thum-bx">
                       <img
-                        src={require('./../../images/blog/default/thum3.jpg')}
-                        alt=''
+                        src={require("./../../images/blog/default/thum3.jpg")}
+                        alt=""
                       />
                     </div>
                   </div>
                 </OwlCarousel>
-                {/*fade slider END*/}
               </div>
-              <div className='mt-post-meta '>
+              <div className="mt-post-meta ">
                 <ul>
-                  <li className='post-date'>
-                    <strong>20 </strong> <span>April 2021</span>{' '}
+                  <li className="post-date">
+                    <strong>20 </strong> <span>April 2021</span>{" "}
                   </li>
-                  <li className='post-author'>
-                    Continental
-                  </li>
-                  <li className='post-category'>Traditional</li>
+                  <li className="post-author">Continental</li>
+                  <li className="post-category">Traditional</li>
                 </ul>
               </div>
-              <div className='mt-post-title '>
-                <h2 className='post-title font-weight-600'>
+              <div className="mt-post-title ">
+                <h2 className="post-title font-weight-600">
                   From complete turn key to project manager. Leave the building
                   to the professionals.
                 </h2>
               </div>
-              <div className='mt-post-text'>
+              <div className="mt-post-text">
                 <p>
                   Duis vestibulum quis quam vel accumsan. Nunc a vulputate
                   lectus. Vestibulum eleifend nisl sed massa sagittis
@@ -113,40 +106,40 @@ const Obra = () => {
                   beatae vitae ipsa quae ab illo inventore dicta sunt explicabo.
                 </p>
               </div>
-              <div className='autor-post-tag-share bdr-t-1 bdr-solid bdr-gray p-t20'>
-                <div className='row'>
-                  <div className='col-md-6 col-sm-6'>
-                    <div className='widget widget_tag_cloud'>
-                      <h4 className='tagcloud'>Tags</h4>
-                      <div className='tagcloud'>
-                        <NavLink to={'#'}>First tag</NavLink>&nbsp;
-                        <NavLink to={'#'}>Second tag</NavLink>&nbsp;
-                        <NavLink to={'#'}>Three tag</NavLink>&nbsp;
-                        <NavLink to={'#'}>Four tag</NavLink>&nbsp;
-                        <NavLink to={'#'}>Five tag</NavLink>
+              <div className="autor-post-tag-share bdr-t-1 bdr-solid bdr-gray p-t20">
+                <div className="row">
+                  <div className="col-md-6 col-sm-6">
+                    <div className="widget widget_tag_cloud">
+                      <h4 className="tagcloud">Tags</h4>
+                      <div className="tagcloud">
+                        <NavLink to={"#"}>First tag</NavLink>&nbsp;
+                        <NavLink to={"#"}>Second tag</NavLink>&nbsp;
+                        <NavLink to={"#"}>Three tag</NavLink>&nbsp;
+                        <NavLink to={"#"}>Four tag</NavLink>&nbsp;
+                        <NavLink to={"#"}>Five tag</NavLink>
                       </div>
                     </div>
                   </div>
-                  <div className='col-md-6 col-sm-6'>
-                    <div className='mt-box'>
-                      <div className='clearfix'>
+                  <div className="col-md-6 col-sm-6">
+                    <div className="mt-box">
+                      <div className="clearfix">
                         <h4>Share this Post:</h4>
-                        <div className='widget_social_inks'>
-                          <ul className='social-icons social-md social-square social-dark m-b0'>
+                        <div className="widget_social_inks">
+                          <ul className="social-icons social-md social-square social-dark m-b0">
                             <li>
-                              <NavLink to={'#'} className='fa fa-facebook' />
+                              <NavLink to={"#"} className="fa fa-facebook" />
                             </li>
                             <li>
-                              <NavLink to={'#'} className='fa fa-twitter' />
+                              <NavLink to={"#"} className="fa fa-twitter" />
                             </li>
                             <li>
-                              <NavLink to={'#'} className='fa fa-rss' />
+                              <NavLink to={"#"} className="fa fa-rss" />
                             </li>
                             <li>
-                              <NavLink to={'#'} className='fa fa-youtube' />
+                              <NavLink to={"#"} className="fa fa-youtube" />
                             </li>
                             <li>
-                              <NavLink to={'#'} className='fa fa-instagram' />
+                              <NavLink to={"#"} className="fa fa-instagram" />
                             </li>
                           </ul>
                         </div>
@@ -156,10 +149,9 @@ const Obra = () => {
                 </div>
               </div>
             </div>
-            <ObrasRecentes2 bgcolor='bg-gray' />
+            <ObrasRecentes2 bgcolor="bg-gray" />
           </div>
         </div>
-        {/* SECTION CONTENT END */}
       </div>
 
       <Footer />

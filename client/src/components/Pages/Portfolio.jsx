@@ -1,98 +1,98 @@
-import React, { useEffect } from 'react';
-import Header from '../Common/Header';
-import Footer from '../Common/Footer';
-import Banner from '../Elements/Banner';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from "react";
+import Header from "../Common/Header";
+import Footer from "../Common/Footer";
+import Banner from "../Elements/Banner";
+import { NavLink } from "react-router-dom";
 
-var bnrimg = require('./../../images/banner.jpg');
+var bnrimg = require("./../../images/banner.jpg");
 
 const Portfolio = () => {
   const filters = [
-    { label: 'Educação e Saúde', filter: '.cat-1' },
-    { label: 'Comércio e Serviços', filter: '.cat-2' },
-    { label: 'Industrial', filter: '.cat-3' },
-    { label: 'Escritórios', filter: '.cat-4' },
-    { label: 'Habitação', filter: '.cat-5' },
-    { label: 'Diversos', filter: '.cat-6' },
+    { label: "Educação e Saúde", filter: ".cat-1" },
+    { label: "Comércio e Serviços", filter: ".cat-2" },
+    { label: "Industrial", filter: ".cat-3" },
+    { label: "Escritórios", filter: ".cat-4" },
+    { label: "Habitação", filter: ".cat-5" },
+    { label: "Diversos", filter: ".cat-6" },
   ];
 
   const projects = [
     {
-      thumb: require('./../../images/projects/portrait/pic1.jpg'),
-      image: require('./../../images/projects/portrait/pic4.jpg'),
-      title: 'Life style building',
+      thumb: require("./../../images/projects/portrait/pic1.jpg"),
+      image: require("./../../images/projects/portrait/pic4.jpg"),
+      title: "Life style building",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      areaintervencao: 'Educação e Saúde',
-      client: 'Continental',
-      prazo: '2 Meses',
-      filter: 'cat-1',
+      areaintervencao: "Educação e Saúde",
+      client: "Continental",
+      prazo: "2 Meses",
+      filter: "cat-1",
     },
     {
-      thumb: require('./../../images/projects/portrait/pic2.jpg'),
-      image: require('./../../images/projects/portrait/pic9.jpg'),
-      title: 'Central City Building',
+      thumb: require("./../../images/projects/portrait/pic2.jpg"),
+      image: require("./../../images/projects/portrait/pic9.jpg"),
+      title: "Central City Building",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: 'cat-2',
+      filter: "cat-2",
     },
     {
-      thumb: require('./../../images/projects/portrait/pic3.jpg'),
-      image: require('./../../images/projects/portrait/pic6.jpg'),
-      title: 'Nathan Brooke House',
+      thumb: require("./../../images/projects/portrait/pic3.jpg"),
+      image: require("./../../images/projects/portrait/pic6.jpg"),
+      title: "Nathan Brooke House",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: 'cat-3',
+      filter: "cat-3",
     },
     {
-      thumb: require('./../../images/projects/portrait/pic4.jpg'),
-      image: require('./../../images/projects/portrait/pic5.jpg'),
-      title: 'Metropolitan Museum',
+      thumb: require("./../../images/projects/portrait/pic4.jpg"),
+      image: require("./../../images/projects/portrait/pic5.jpg"),
+      title: "Metropolitan Museum",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: 'cat-4',
+      filter: "cat-4",
     },
     {
-      thumb: require('./../../images/projects/portrait/pic5.jpg'),
-      image: require('./../../images/projects/portrait/pic7.jpg'),
-      title: 'Art Family Residence',
+      thumb: require("./../../images/projects/portrait/pic5.jpg"),
+      image: require("./../../images/projects/portrait/pic7.jpg"),
+      title: "Art Family Residence",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: 'cat-5',
+      filter: "cat-5",
     },
     {
-      thumb: require('./../../images/projects/portrait/pic6.jpg'),
-      image: require('./../../images/projects/portrait/pic8.jpg'),
-      title: 'Office Partition Walls',
+      thumb: require("./../../images/projects/portrait/pic6.jpg"),
+      image: require("./../../images/projects/portrait/pic8.jpg"),
+      title: "Office Partition Walls",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: 'cat-4',
+      filter: "cat-4",
     },
     {
-      thumb: require('./../../images/projects/portrait/pic7.jpg'),
-      image: require('./../../images/projects/portrait/pic10.jpg'),
-      title: 'Glass Office Screen',
+      thumb: require("./../../images/projects/portrait/pic7.jpg"),
+      image: require("./../../images/projects/portrait/pic10.jpg"),
+      title: "Glass Office Screen",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: 'cat-3',
+      filter: "cat-3",
     },
     {
-      thumb: require('./../../images/projects/portrait/pic8.jpg'),
-      image: require('./../../images/projects/portrait/pic1.jpg'),
-      title: 'State Hermitage Museum',
+      thumb: require("./../../images/projects/portrait/pic8.jpg"),
+      image: require("./../../images/projects/portrait/pic1.jpg"),
+      title: "State Hermitage Museum",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: 'cat-2',
+      filter: "cat-2",
     },
     {
-      thumb: require('./../../images/projects/portrait/pic9.jpg'),
-      image: require('./../../images/projects/portrait/pic5.jpg'),
-      title: 'Central Florida University',
+      thumb: require("./../../images/projects/portrait/pic9.jpg"),
+      image: require("./../../images/projects/portrait/pic5.jpg"),
+      title: "Central Florida University",
       description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: 'cat-1',
+      filter: "cat-1",
     },
   ];
 
   const loadScript = (src) => {
     return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
+      const script = document.createElement("script");
       script.src = src;
-      script.addEventListener('load', () => {
+      script.addEventListener("load", () => {
         resolve();
       });
-      script.addEventListener('error', (e) => {
+      script.addEventListener("error", (e) => {
         reject(e);
       });
       document.body.appendChild(script);
@@ -101,7 +101,7 @@ const Portfolio = () => {
   };
 
   useEffect(() => {
-    loadScript('./assets/js/masonary.js');
+    loadScript("./assets/js/masonary.js");
   }, []);
 
   return (
@@ -110,21 +110,19 @@ const Portfolio = () => {
       <div className="page-content">
         <Banner title="Portfólio" pagename="Portfólio" bgimage={bnrimg} />
 
-        {/* SECTION CONTENT START */}
         <div className="section-full p-tb80 inner-page-padding">
           <div className="container">
-            {/* PAGINATION START */}
             <div className="filter-wrap p-b30 text-center">
               <ul className="filter-navigation inline-navigation masonry-filter link-style  text-uppercase">
                 <li className="active">
-                  <NavLink to={'#'} data-filter="*" data-hover="All">
+                  <NavLink to={"#"} data-filter="*" data-hover="All">
                     Geral
                   </NavLink>
                 </li>
                 {filters.map((item, index) => (
                   <li key={index}>
                     <NavLink
-                      to={'#'}
+                      to={"#"}
                       data-filter={item.filter}
                       data-hover={item.label}
                     >
@@ -151,8 +149,6 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-            {/* PAGINATION END */}
-            {/* GALLERY CONTENT START */}
             <div className="portfolio-wrap mfp-gallery work-grid row clearfix">
               {projects.map((item, index) => (
                 <div
@@ -162,7 +158,7 @@ const Portfolio = () => {
                   <div className="image-effect-two hover-shadow">
                     <img src={item.thumb} alt="" />
                     <div className="figcaption">
-                      <h4 className="mt-title" style={{ fontSize: '24px' }}>
+                      <h4 className="mt-title" style={{ fontSize: "24px" }}>
                         {item.title}
                       </h4>
                       <ul className="portfolio-card">
@@ -184,15 +180,13 @@ const Portfolio = () => {
                 </div>
               ))}
             </div>
-            {/* GALLERY CONTENT END */}
             <div className="m-t50 text-center">
-              <NavLink to={'#'} className="site-button btn-effect">
+              <NavLink to={"#"} className="site-button btn-effect">
                 Load More
               </NavLink>
             </div>
           </div>
         </div>
-        {/* SECTION CONTENT END  */}
       </div>
 
       <Footer />

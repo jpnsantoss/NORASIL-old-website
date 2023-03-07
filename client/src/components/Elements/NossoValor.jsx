@@ -36,7 +36,6 @@ const NossoValor = () => {
           <div className="section-content">
             <div className="row">
               <div className="col-md-6 col-sm-12">
-                {/* TITLE START */}
                 <div className="section-head">
                   <div className="mt-separator-outer separator-left">
                     <div className="mt-separator">
@@ -57,7 +56,6 @@ const NossoValor = () => {
                     </p>
                   </div>
                 </div>
-                {/* TITLE END */}
                 <div className="col-md-4 mt-count m-b30 text-white mt-icon-box-wraper center  bg-dark p-a20">
                   <div className="counter font-30 font-weight-800 m-b15 text-primary">
                     <CountUp end={676} duration={3} />

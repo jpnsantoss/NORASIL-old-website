@@ -19,10 +19,10 @@ export const getUser = (req, res) => {
 
 export const addUser = (req, res) => {
   const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not authenticated!");
+  if (!token) return res.status(401).json({ message: "Not authenticated!" });
 
   jwt.verify(token, "jwtkey", async (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
+    if (err) return res.status(403).json({ message: "Token is not valid!" });
     try {
       const [data] = await db.query("SELECT * FROM users WHERE username = ?", [req.body.username]);
       if (data.length) return res.status(409).json(data)
@@ -47,9 +47,9 @@ export const addUser = (req, res) => {
 
 export const deleteUser = (req, res) => {
   const token = req.cookies.access_token;
-  if (!token) return res.status(401).json("Not authenticated.");
+  if (!token) return res.status(401).json({ message: "Not authenticated." });;
   jwt.verify(token, "jwtkey", async (err, userInfo) => {
-    if (err) return res.status(403).json("Token is not valid!");
+    if (err) return res.status(403).json({ message: "Token is not valid!" });
     const q = "DELETE FROM users WHERE `id` = ?"
 
     try {

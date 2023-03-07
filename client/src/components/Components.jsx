@@ -1,23 +1,23 @@
-import React, { useContext } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Home from './Pages/Home';
-import Error from './Pages/Error';
-import Localizacao from './Pages/Localizacao';
-import Obra from './Pages/Obra';
-import ObraVideo from './Pages/ObraVideo';
-import Portfolio from './Pages/Portfolio';
-import Apresentacao from './Pages/Empresa/Apresentacao';
-import PoliticaDeQualidade from './Pages/Empresa/PoliticaDeQualidade';
-import Sqa from './Pages/Empresa/Sqa';
-import PropostaDeValor from './Pages/Empresa/PropostaDeValor';
-import Recrutamento from './Pages/Recrutamento';
-import Login from './Pages/Login';
-import Dashboard from './Pages/Dashboard/Dashboard';
-import Users from './Pages/Dashboard/Users';
-import Areas from './Pages/Dashboard/Areas';
-import CreateBuild from './Pages/Dashboard/Forms/CreateBuild';
-import { AuthContext } from '../context/authContext';
-import ScrollToTop from './Common/ScrollToTop';
+import React, { useContext } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Error from "./Pages/Error";
+import Localizacao from "./Pages/Localizacao";
+import Obra from "./Pages/Obra";
+import ObraVideo from "./Pages/ObraVideo";
+import Portfolio from "./Pages/Portfolio";
+import Apresentacao from "./Pages/Empresa/Apresentacao";
+import PoliticaDeQualidade from "./Pages/Empresa/PoliticaDeQualidade";
+import Sqa from "./Pages/Empresa/Sqa";
+import PropostaDeValor from "./Pages/Empresa/PropostaDeValor";
+import Recrutamento from "./Pages/Recrutamento";
+import Login from "./Pages/Login";
+import Obras from "./Pages/Dashboard/Obras";
+import Users from "./Pages/Dashboard/Users";
+import Areas from "./Pages/Dashboard/Areas";
+import { AuthContext } from "../context/authContext";
+import ScrollToTop from "./Common/ScrollToTop";
+import Imagens from "./Pages/Dashboard/Imagens";
 
 const Components = () => {
   const ProtectedRoute = ({ children }) => {
@@ -53,7 +53,6 @@ const Components = () => {
           <Route path="/recrutamento" exact element={<Recrutamento />} />
 
           <Route path="/login" element={<Login />} />
-          <Route path="/admin" exact element={<Dashboard />} />
           <Route path="*" element={<Error />} />
 
           <Route path="empresa">
@@ -72,8 +71,8 @@ const Components = () => {
               index
               element={
                 <ProtectedRoute>
-                  {' '}
-                  <Dashboard />{' '}
+                  {" "}
+                  <Obras />{" "}
                 </ProtectedRoute>
               }
             />
@@ -83,17 +82,17 @@ const Components = () => {
                 index
                 element={
                   <ProtectedRoute>
-                    {' '}
-                    <Dashboard />{' '}
+                    {" "}
+                    <Obras />{" "}
                   </ProtectedRoute>
                 }
               />
               <Route
-                path="editor"
+                path=":id"
                 element={
                   <ProtectedRoute>
-                    {' '}
-                    <CreateBuild />{' '}
+                    {" "}
+                    <Imagens />{" "}
                   </ProtectedRoute>
                 }
               />
@@ -103,8 +102,8 @@ const Components = () => {
               path="users"
               element={
                 <AdminRoute>
-                  {' '}
-                  <Users />{' '}
+                  {" "}
+                  <Users />{" "}
                 </AdminRoute>
               }
             />
@@ -113,8 +112,8 @@ const Components = () => {
               path="areas"
               element={
                 <ProtectedRoute>
-                  {' '}
-                  <Areas />{' '}
+                  {" "}
+                  <Areas />{" "}
                 </ProtectedRoute>
               }
             />

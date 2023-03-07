@@ -6139,10 +6139,6 @@ label {
   border-top-color: #e7ecf1;
 }
 
-.form-group {
-  margin-bottom: 25px;
-}
-
 .form-control {
   border-color: #e1e6eb;
   box-shadow: none;
@@ -7537,14 +7533,16 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 
 .date-style-2 .post-date {
   color: #fff;
+  color: #fff;
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 0px;
+  top: 0px;
   text-align: center;
   text-transform: uppercase;
   background-color: #ffc800;
   z-index: 1;
-  padding: 15px;
+  padding: 10px;
+  float: right;
 }
 
 .date-style-2 .post-date strong,
@@ -7554,14 +7552,12 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 .date-style-2 .post-date strong {
-  font-size: 30px;
-  line-height: 36px;
   padding: 0px;
   position: relative;
 }
 
 .date-style-2 .post-date span {
-  font-size: 12px;
+  font-size: 24px;
   font-weight: 500;
   padding: 0px;
 }
@@ -7570,7 +7566,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .date-style-2 .post-date .fa,
 .date-style-outline .post-date:after,
 .date-style-outline2 .post-date:after {
-  display: none;
+  font-size: 12px;
 }
 
 @media only screen and (max-width: 380px) {
@@ -9744,15 +9740,15 @@ HEADER (top part of page)
 
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   margin-left: 0;
 }
 
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .pagination > li > a,
@@ -9762,13 +9758,14 @@ HEADER (top part of page)
   color: #767676;
   font-weight: 600;
   font-size: 12px;
+  padding: 10px 16px;
 }
 
 .pagination > li > a:hover,
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  background-color: #000;
+  background-color: #999;
   border-color: transparent;
   color: #fff;
 }
@@ -13619,7 +13616,6 @@ Background Effects
 }
 
 .image-hover-block:hover img {
-  zoom: 1;
   filter: alpha(opacity=20);
   -webkit-opacity: 0.2;
   opacity: 0.2;
@@ -14171,7 +14167,6 @@ Background Effects
 }
 
 .image-effect-one:hover img {
-  zoom: 1;
   filter: alpha(opacity=30);
   -webkit-opacity: 0.3;
   opacity: 0.3;
@@ -14947,14 +14942,9 @@ Image Effect Two
   vertical-align: middle;
 }
 
-.form-group label {
-  font-size: 1.2em;
-  margin-right: 20px;
-}
-
 .form-group select {
   width: 100%;
-  padding: 8px 10px;
+  padding: 12px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -14968,16 +14958,13 @@ Image Effect Two
 }
 
 .form-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .form-label {
-  font-size: 16px;
+  font-size: 20px;
   margin-right: 1rem;
+  margin-bottom: 15px;
 }
 
 .react-datepicker__month-container {
@@ -14988,7 +14975,6 @@ Image Effect Two
 .form-group input[type="file"] {
   display: block;
   width: 100%;
-  margin-top: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -15011,4 +14997,83 @@ Image Effect Two
   .operation-button {
     padding: 4px 10px;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.nav-ex2 button {
+  background-color: #f5f5f5;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-ex2 button:hover:not([disabled]) {
+  background-color: #ddd;
+}
+
+.nav-ex2 button[disabled] {
+  background-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.notification {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.notification--success {
+  background-color: #48bb78;
+}
+
+.notification--error {
+  background-color: #f56565;
+}
+
+.notification__icon {
+  margin-right: 0.5rem;
+}
+
+.notification__close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.imagens-dash img {
+  display: block;
+  margin: 0;
+  width: 100%;
+  height: 25vh;
+  background-size: cover;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  -o-transition: all 0.25s;
 }

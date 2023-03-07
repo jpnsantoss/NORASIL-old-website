@@ -71,7 +71,6 @@ class Header extends React.Component {
                     </NavLink>
                   </div>
                 </div>
-                {/* NAV Toggle Button */}
                 <button
                   data-target=".header-nav"
                   data-toggle="collapse"
@@ -83,7 +82,6 @@ class Header extends React.Component {
                   <span className="icon-bar" />
                   <span className="icon-bar" />
                 </button>
-                {/* ETRA Nav */}
                 <div className="extra-nav">
                   <div className="extra-cell">
                     <NavLink
@@ -95,8 +93,6 @@ class Header extends React.Component {
                     </NavLink>
                   </div>
                 </div>
-                {/* ETRA Nav */}
-                {/* Contact Nav */}
                 <div
                   className="contact-slide-hide "
                   style={{
@@ -188,7 +184,6 @@ class Header extends React.Component {
                     </div>
                   </div>
                 </div>
-                {/* MAIN Vav */}
                 <Navigation />
               </div>
             </div>

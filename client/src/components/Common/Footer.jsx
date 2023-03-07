@@ -59,15 +59,12 @@ class Footer extends React.Component {
               </div>
             </div>
           </div>
-          {/* FOOTER BLOCKES START */}
           <div className="footer-top overlay-wraper">
             <div className="overlay-main" />
             <div className="container">
               <div className="row">
-                {/* ABOUT COMPANY */}
                 <div className="col-lg-3 col-md-6 col-sm-6">
                   <div className="widget widget_about">
-                    {/*<h4 class="widget-title">About Company</h4>*/}
                     <div className="logo-footer clearfix p-b15">
                       <NavLink to={"./"}>
                         <img src={this.currentstate.logo} alt="" />
@@ -106,7 +103,6 @@ class Footer extends React.Component {
                     </ul>
                   </div>
                 </div>
-                {/* RESENT POST */}
                 <div className="col-lg-3 col-md-6 col-sm-6">
                   <div className="widget widget_address_outer">
                     <h4 className="widget-title">Contacte-nos</h4>
@@ -117,7 +113,6 @@ class Footer extends React.Component {
                     </ul>
                   </div>
                 </div>
-                {/* USEFUL LINKS */}
                 <div className="col-lg-3 col-md-6 col-sm-6 footer-col-3">
                   <div className="widget widget_services inline-links">
                     <h4 className="widget-title">Links Úteis</h4>
@@ -128,14 +123,12 @@ class Footer extends React.Component {
                       <li>
                         <NavLink to={"/portfolio"}>Portfólio</NavLink>
                       </li>
-                      {/* <li><NavLink to={"/recrutamento"}>Recrutamento</NavLink></li> */}
                       <li>
                         <NavLink to={"/localizacao"}>Localização</NavLink>
                       </li>
                     </ul>
                   </div>
                 </div>
-                {/* TAGS */}
                 <div className="col-lg-3 col-md-6 col-sm-6 footer-col-3">
                   <div className="widget widget_services inline-links">
                     <h4 className="widget-title">Informações Adicionais</h4>
@@ -160,11 +153,9 @@ class Footer extends React.Component {
                     </ul>
                   </div>
                 </div>
-                {/* NEWSLETTER */}
               </div>
             </div>
           </div>
-          {/* FOOTER COPYRIGHT */}
           <div className="footer-bottom overlay-wraper">
             <div className="overlay-main" />
             <div className="container">

@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth.js";
 import buildRoutes from "./routes/builds.js";
 import categoryRoutes from "./routes/categories.js";
 import userRoutes from "./routes/users.js";
+import imageRoutes from "./routes/images.js";
 
 import multer from "multer";
 
@@ -52,6 +53,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/builds", buildRoutes);
+app.use("/api/images", imageRoutes);
+
+app.use('/uploads', express.static('uploads'));
+
 
 app.listen(8800, () => {
   console.log("Server running on port 8800!");
