@@ -18,17 +18,16 @@
     "react-modal-video": "^2.0.0",
     "react-owl-carousel": "^2.3.3",
     "react-query": "^3.39.3",
-    "react-query-devtools": "^2.6.3",
     "react-router-dom": "^6.8.0",
     "react-scripts": "^5.0.1",
-    "react-toastify": "^9.1.1",
-    "web-vitals": "^3.0.4"
+    "react-toastify": "^9.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "purgecss": "purgecss --config ./purgecss.config.js --output ./dist/css"
   },
   "eslintConfig": {
     "extends": [
@@ -48,5 +47,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8800/api/"
+  "proxy": "http://localhost:8800/api/",
+  "devDependencies": {}
 }

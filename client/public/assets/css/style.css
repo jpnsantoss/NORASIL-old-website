@@ -5552,16 +5552,6 @@ button.site-button-link {
   transform: scale(2);
 }
 
-/*image-zoom-slow */
-
-.mt-img-effect.zoom:hover img {
-  -moz-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  -o-transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
 /*image-shrink */
 
 .mt-img-effect.shrink:hover img {
@@ -7744,6 +7734,8 @@ recent-posts-entry-date .mt-post-info .post-title {
 }
 .date-style-1 .mt-post-media img {
   width: 100%;
+  height: 25vh;
+  object-fit: cover;
 }
 
 .date-style-1 .mt-post-meta .post-date strong {
@@ -15076,4 +15068,9 @@ Image Effect Two
   -moz-transition: all 0.25s;
   -webkit-transition: all 0.25s;
   -o-transition: all 0.25s;
+}
+
+.portfolio-image {
+  height: 50vh;
+  object-fit: cover;
 }

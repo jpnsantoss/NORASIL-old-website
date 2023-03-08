@@ -5,7 +5,7 @@ import { cleanUnusedImages } from "../deleteImages.js";
 
 export const getBuilds = async (req, res) => {
   const page = req.query.page ? parseInt(req.query.page) : 1;
-  const limit = 10;
+  const limit = req.query.limit ? parseInt(req.query.limit) : 10;
   const searchTerm = req.query.search ? `%${req.query.search}%` : "%";
   const category = req.query.category ? `%${req.query.category}%` : "%";
 

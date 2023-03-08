@@ -6,10 +6,10 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 
 const images = [
   require("./../../images/gallery/pic1.jpg"),
-  require("./../../images/gallery/pic8.jpg"),
-  require("./../../images/gallery/pic9.jpg"),
-  require("./../../images/gallery/pic6.jpg"),
   require("./../../images/gallery/pic2.jpg"),
+  require("./../../images/gallery/pic3.jpg"),
+  require("./../../images/gallery/pic4.jpg"),
+  require("./../../images/gallery/pic5.jpg"),
 ];
 
 var bnr1 = require("./../../images/background/bg-6.png");
@@ -79,7 +79,7 @@ const SobreNos = () => {
                 >
                   {images.map((item, index) => (
                     <div className="item" key={index}>
-                      <div className="mt-img-effect zoom-slow">
+                      <div className="mt-img-effect">
                         <NavLink to="/empresa/apresentacao">
                           <img src={item} alt="" />
                         </NavLink>

@@ -1,89 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Common/Header";
 import Footer from "../Common/Footer";
 import Banner from "../Elements/Banner";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { useQuery } from "react-query";
+import Loader from "../Elements/Loader";
+import { toast } from "react-toastify";
 
 var bnrimg = require("./../../images/banner.jpg");
 
 const Portfolio = () => {
-  const filters = [
-    { label: "Educação e Saúde", filter: ".cat-1" },
-    { label: "Comércio e Serviços", filter: ".cat-2" },
-    { label: "Industrial", filter: ".cat-3" },
-    { label: "Escritórios", filter: ".cat-4" },
-    { label: "Habitação", filter: ".cat-5" },
-    { label: "Diversos", filter: ".cat-6" },
-  ];
-
-  const projects = [
-    {
-      thumb: require("./../../images/projects/portrait/pic1.jpg"),
-      image: require("./../../images/projects/portrait/pic4.jpg"),
-      title: "Life style building",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      areaintervencao: "Educação e Saúde",
-      client: "Continental",
-      prazo: "2 Meses",
-      filter: "cat-1",
-    },
-    {
-      thumb: require("./../../images/projects/portrait/pic2.jpg"),
-      image: require("./../../images/projects/portrait/pic9.jpg"),
-      title: "Central City Building",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: "cat-2",
-    },
-    {
-      thumb: require("./../../images/projects/portrait/pic3.jpg"),
-      image: require("./../../images/projects/portrait/pic6.jpg"),
-      title: "Nathan Brooke House",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: "cat-3",
-    },
-    {
-      thumb: require("./../../images/projects/portrait/pic4.jpg"),
-      image: require("./../../images/projects/portrait/pic5.jpg"),
-      title: "Metropolitan Museum",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: "cat-4",
-    },
-    {
-      thumb: require("./../../images/projects/portrait/pic5.jpg"),
-      image: require("./../../images/projects/portrait/pic7.jpg"),
-      title: "Art Family Residence",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: "cat-5",
-    },
-    {
-      thumb: require("./../../images/projects/portrait/pic6.jpg"),
-      image: require("./../../images/projects/portrait/pic8.jpg"),
-      title: "Office Partition Walls",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: "cat-4",
-    },
-    {
-      thumb: require("./../../images/projects/portrait/pic7.jpg"),
-      image: require("./../../images/projects/portrait/pic10.jpg"),
-      title: "Glass Office Screen",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: "cat-3",
-    },
-    {
-      thumb: require("./../../images/projects/portrait/pic8.jpg"),
-      image: require("./../../images/projects/portrait/pic1.jpg"),
-      title: "State Hermitage Museum",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: "cat-2",
-    },
-    {
-      thumb: require("./../../images/projects/portrait/pic9.jpg"),
-      image: require("./../../images/projects/portrait/pic5.jpg"),
-      title: "Central Florida University",
-      description: `We are so busy watching out for what's just ahead of us that we don't take the time to enjoy where we are.`,
-      filter: "cat-1",
-    },
-  ];
+  const [limit, setLimit] = useState(9);
+  const [category, setCat] = useState(null);
 
   const loadScript = (src) => {
     return new Promise((resolve, reject) => {
@@ -104,6 +33,50 @@ const Portfolio = () => {
     loadScript("./assets/js/masonary.js");
   }, []);
 
+  //FILTERS
+  const fetchCategories = async () => {
+    const { data } = await axios.get("/categories");
+    return data;
+  };
+
+  const {
+    data: filters,
+    isLoading: loadingCats,
+    isError: isCatsError,
+    error: catsError,
+  } = useQuery("filters", fetchCategories);
+
+  //BUILDS
+
+  const fetchBuilds = async (limitParam, categoryParam) => {
+    const url = categoryParam
+      ? `/builds?limit=${limitParam}&category=${categoryParam}`
+      : `/builds?limit=${limitParam}`;
+    const response = await axios.get(url);
+    return response.data;
+  };
+
+  const {
+    data: builds,
+    isLoading: loadingBuilds,
+    isError: isBuildsError,
+    error: buildsError,
+    isPreviousData,
+    refetch,
+  } = useQuery(["portfolio", category], () => fetchBuilds(limit, category), {
+    keepPreviousData: true,
+  });
+
+  useEffect(() => {
+    console.log(category);
+    refetch();
+  }, [category]);
+
+  if (loadingCats) return <Loader />;
+  if (loadingBuilds) return <Loader />;
+  if (isBuildsError) toast.error(buildsError.message);
+  if (isCatsError) toast.error(catsError.message);
+
   return (
     <>
       <Header />
@@ -115,18 +88,22 @@ const Portfolio = () => {
             <div className="filter-wrap p-b30 text-center">
               <ul className="filter-navigation inline-navigation masonry-filter link-style  text-uppercase">
                 <li className="active">
-                  <NavLink to={"#"} data-filter="*" data-hover="All">
+                  <NavLink
+                    data-hover="Geral"
+                    to={"#"}
+                    onClick={() => setCat(null)}
+                  >
                     Geral
                   </NavLink>
                 </li>
                 {filters.map((item, index) => (
                   <li key={index}>
                     <NavLink
+                      data-hover={item.name}
+                      onClick={() => setCat(item.id)}
                       to={"#"}
-                      data-filter={item.filter}
-                      data-hover={item.label}
                     >
-                      {item.label}
+                      {item.name}
                     </NavLink>
                   </li>
                 ))}
@@ -150,21 +127,25 @@ const Portfolio = () => {
               </div>
             </div>
             <div className="portfolio-wrap mfp-gallery work-grid row clearfix">
-              {projects.map((item, index) => (
+              {builds.data.map((build, index) => (
                 <div
                   key={index}
-                  className={`${item.filter} masonry-item col-md-4 col-sm-6 m-b30`}
+                  className={`masonry-item col-md-4 col-sm-6 m-b30`}
                 >
                   <div className="image-effect-two hover-shadow">
-                    <img src={item.thumb} alt="" />
+                    <img
+                      className="portfolio-image"
+                      src={`http://localhost:8800/uploads/${build.mainImage}`}
+                      alt=""
+                    />
                     <div className="figcaption">
                       <h4 className="mt-title" style={{ fontSize: "24px" }}>
-                        {item.title}
+                        {build.title}
                       </h4>
                       <ul className="portfolio-card">
-                        <li>{item.areaintervencao}</li>
-                        <li>{item.client}</li>
-                        <li>Prazo: {item.prazo}</li>
+                        <li>{build.category_name}</li>
+                        <li>{build.client}</li>
+                        <li>Prazo: {build.time}</li>
                       </ul>
                       <NavLink
                         to="/obra"
@@ -172,7 +153,10 @@ const Portfolio = () => {
                       >
                         Ver Mais
                       </NavLink>
-                      <a className="mfp-link" href={item.image}>
+                      <a
+                        className="mfp-link"
+                        href={`http://localhost:8800/uploads/${build.mainImage}`}
+                      >
                         <i className="fa fa-arrows-alt" />
                       </a>
                     </div>

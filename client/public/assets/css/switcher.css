@@ -57,7 +57,7 @@
 	
 }
 .switch-btn:hover {
-	color:#FFC800;
+	color:#f5bf23;
 }
 
 .layout-view,
@@ -120,7 +120,7 @@ border: 1px solid #494848;
 	border-radius:100%;
 }
 
-.color-skins li .skin-1 {  background-color:#FFC800; }
+.color-skins li .skin-1 {  background-color:#F5BF23; }
 .color-skins li .skin-2 {  background-color:#E63F75; }
 .color-skins li .skin-3 {  background-color:#1BBCE8; }
 .color-skins li .skin-4 {  background-color:#1ABC9C; }

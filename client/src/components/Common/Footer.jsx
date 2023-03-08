@@ -47,7 +47,7 @@ class Footer extends React.Component {
                             />
                             <span className="input-group-btn">
                               <button type="submit" className="site-button">
-                                <i className="fa fa-paper-plane-o" />
+                                <i className="fa fa-paper-plane" />
                               </button>
                             </span>
                           </div>
