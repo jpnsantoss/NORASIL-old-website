@@ -14,7 +14,7 @@ import Recrutamento from "./Pages/Recrutamento";
 import Login from "./Pages/Login";
 import Obras from "./Pages/Dashboard/Obras";
 import Users from "./Pages/Dashboard/Users";
-import Areas from "./Pages/Dashboard/Areas";
+// import Areas from "./Pages/Dashboard/Areas";
 import { AuthContext } from "../context/authContext";
 import ScrollToTop from "./Common/ScrollToTop";
 import Imagens from "./Pages/Dashboard/Imagens";
@@ -108,7 +108,7 @@ const Components = () => {
               }
             />
 
-            <Route
+            {/* <Route
               path="areas"
               element={
                 <ProtectedRoute>
@@ -116,7 +116,7 @@ const Components = () => {
                   <Areas />{" "}
                 </ProtectedRoute>
               }
-            />
+            /> */}
           </Route>
         </Routes>
       </div>

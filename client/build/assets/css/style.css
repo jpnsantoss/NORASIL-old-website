@@ -7734,6 +7734,8 @@ recent-posts-entry-date .mt-post-info .post-title {
 }
 .date-style-1 .mt-post-media img {
   width: 100%;
+  height: 25vh;
+  object-fit: cover;
 }
 
 .date-style-1 .mt-post-meta .post-date strong {
@@ -13889,7 +13891,7 @@ Background Effects
   z-index: 1;
   overflow: hidden;
   bottom: -120px;
-  margin-top: -105px;
+  margin-top: -8.8%;
 }
 
 .video-section-full-v2 .video-section-full {
@@ -14957,11 +14959,6 @@ Image Effect Two
   margin-bottom: 15px;
 }
 
-.react-datepicker__month-container {
-  font-size: 1.1rem;
-  line-height: 2;
-}
-
 .form-group input[type="file"] {
   display: block;
   width: 100%;
@@ -15069,6 +15066,6 @@ Image Effect Two
 }
 
 .portfolio-image {
-  height: 50vh;
+  height: 40vh;
   object-fit: cover;
 }

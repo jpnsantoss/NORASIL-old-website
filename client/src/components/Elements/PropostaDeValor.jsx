@@ -1,7 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-var bnr1 = require("./../../images/background/bg-5.png");
+import bnr1 from "./../../images/background/bg-5.png";
+
+import pic1 from "../../images/pic1.jpg";
+import pic2 from "../../images/pic2.jpg";
+import pic3 from "../../images/pic3.jpg";
 
 const Specialization = () => {
   return (
@@ -15,7 +19,7 @@ const Specialization = () => {
             <div className="row">
               <div className="col-lg-3 col-md-4 col-sm-6 m-b30">
                 <div className="image-effect-one hover-shadow">
-                  <img src={require("../../images/pic1.jpg")} alt="" />
+                  <img src={pic1} alt="" />
                   <div className="figcaption">
                     <h4>Vocação</h4>
                     <p>Prestação de Serviço de Excelência.</p>
@@ -27,7 +31,7 @@ const Specialization = () => {
               </div>
               <div className="col-lg-3 col-md-4  col-sm-6 m-b30">
                 <div className="image-effect-one hover-shadow">
-                  <img src={require("../../images/pic2.jpg")} alt="" />
+                  <img src={pic2} alt="" />
                   <div className="figcaption">
                     <h4>Competência</h4>
                     <p>Melhores Regras e Processos Construtivos.</p>
@@ -39,7 +43,7 @@ const Specialization = () => {
               </div>
               <div className="col-lg-3 col-md-4  col-sm-6 m-b30">
                 <div className="image-effect-one hover-shadow">
-                  <img src={require("../../images/pic3.jpg")} alt="" />
+                  <img src={pic3} alt="" />
                   <div className="figcaption bg-dark">
                     <h4>Qualidade</h4>
                     <p>Em permanência e em todas as suas vertentes.</p>

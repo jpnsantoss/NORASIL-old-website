@@ -14,8 +14,8 @@ export const getBuilds = async (req, res) => {
       `
       SELECT b.*, c.name AS category_name, DATE_FORMAT(DATE(b.date), '%d/%m/%y') AS formatted_date
       FROM builds b
-      JOIN categories c ON b.category = c.id
-      WHERE (c.name LIKE ?)
+      JOIN categories c ON b.category = c.slug
+      WHERE (c.slug LIKE ?)
       AND (b.title LIKE ? OR b.client LIKE ? OR b.description LIKE ?)
       ORDER BY b.date DESC
       LIMIT ? OFFSET ?
@@ -25,11 +25,9 @@ export const getBuilds = async (req, res) => {
 
     const [total] = await db.query(
       `
-      SELECT COUNT(*) AS total
-      FROM builds b
-      JOIN categories c ON b.category = c.id
-      WHERE (c.name LIKE ?)
-      AND (b.title LIKE ? OR b.client LIKE ? OR b.description LIKE ?)
+      SELECT COUNT(*) FROM builds
+      WHERE category = ?
+      AND (title LIKE ? OR client LIKE ? OR description LIKE ?)
       `,
       [category, searchTerm, searchTerm, searchTerm]
     );
@@ -49,7 +47,7 @@ export const getBuild = async (req, res) => {
   const q = `
     SELECT b.*, c.name AS category_name, DATE_FORMAT(DATE(b.date), '%d/%m/%y') AS formatted_date
     FROM builds b
-    JOIN categories c ON b.category = c.id
+    JOIN categories c ON b.category = c.slug
     WHERE b.id = ?
   `;
 

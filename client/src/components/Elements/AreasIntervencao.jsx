@@ -39,8 +39,8 @@ const services = [
   },
 ];
 
-var img1 = require("./../../images/background/bg-5.png");
-var img2 = require("./../../images/background/line.png");
+import img1 from "./../../images/background/bg-5.png";
+import img2 from "./../../images/background/line.png";
 
 const AreasIntervencao = () => {
   useEffect(() => {

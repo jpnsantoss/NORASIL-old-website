@@ -23,7 +23,6 @@ export const login = async (req, res) => {
 
     res.header("Access-Control-Allow-Credentials", "true");
     res.cookie("access_token", token, {
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
       httpOnly: true,
       sameSite: 'lax',
     });

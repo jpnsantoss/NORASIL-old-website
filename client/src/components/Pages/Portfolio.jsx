@@ -8,10 +8,9 @@ import { useQuery } from "react-query";
 import Loader from "../Elements/Loader";
 import { toast } from "react-toastify";
 
-var bnrimg = require("./../../images/banner.jpg");
+import bnrimg from "./../../images/banner.jpg";
 
 const Portfolio = () => {
-  const [limit, setLimit] = useState(9);
   const [category, setCat] = useState(null);
 
   const loadScript = (src) => {
@@ -63,7 +62,7 @@ const Portfolio = () => {
     error: buildsError,
     isPreviousData,
     refetch,
-  } = useQuery(["portfolio", category], () => fetchBuilds(limit, category), {
+  } = useQuery(["portfolio", category], () => fetchBuilds(10, category), {
     keepPreviousData: true,
   });
 
@@ -85,8 +84,8 @@ const Portfolio = () => {
 
         <div className="section-full p-tb80 inner-page-padding">
           <div className="container">
-            <div className="filter-wrap p-b30 text-center">
-              <ul className="filter-navigation inline-navigation masonry-filter link-style  text-uppercase">
+            <div className="p-b30 text-center">
+              <ul className="filter-navigation inline-navigation link-style  text-uppercase">
                 <li className="active">
                   <NavLink
                     data-hover="Geral"

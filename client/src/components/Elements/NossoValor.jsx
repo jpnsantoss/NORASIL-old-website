@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 import ModalVideo from "react-modal-video";
 import "../../../node_modules/react-modal-video/css/modal-video.min.css";
 
-var img1 = require("./../../images/video-bg.jpg");
+import img1 from "./../../images/video-bg.jpg";
 
 const NossoValor = () => {
   const [isOpen, setIsOpen] = useState(false);

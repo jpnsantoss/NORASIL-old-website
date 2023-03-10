@@ -11,7 +11,40 @@ import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import ConfirmButton from "react-confirm-button";
 
-var bnrimg = require("./../../../images/banner.jpg");
+import bnrimg from "./../../../images/banner.jpg";
+
+const cats = [
+  {
+    id: 1,
+    name: "Educação e Saúde",
+    slug: "educacao",
+  },
+  {
+    id: 2,
+    name: "Comércio e Serviços",
+    slug: "comercio",
+  },
+  {
+    id: 3,
+    name: "Industrial",
+    slug: "industrial",
+  },
+  {
+    id: 4,
+    name: "Escritórios",
+    slug: "escritorios",
+  },
+  {
+    id: 5,
+    name: "Habitação",
+    slug: "habitacao",
+  },
+  {
+    id: 6,
+    name: "Diversos",
+    slug: "diversos",
+  },
+];
 
 const Dashboard = () => {
   const queryClient = useQueryClient();
@@ -21,7 +54,7 @@ const Dashboard = () => {
     time: "",
     description: "",
     mainImage: "",
-    category: "",
+    category: cats[0].slug,
     date: "",
   });
   const [file, setFile] = useState("");
@@ -43,7 +76,7 @@ const Dashboard = () => {
   });
 
   const createBuild = useMutation(
-    (newBuild) => axios.post("/builds", newBuild),
+    (newBuild) => axios.post("/builds", newBuild, { withCredentials: true }),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("builds");
@@ -77,30 +110,26 @@ const Dashboard = () => {
     }
   );
 
-  const fetchCategories = async () => {
-    const { data } = await axios.get("/categories");
-    return data;
-  };
+  // const fetchCategories = async () => {
+  //   const { data } = await axios.get("/categories");
+  //   return data;
+  // };
 
-  const {
-    data: cats,
-    isLoading: loadingCats,
-    isError: isCatsError,
-    error: catsError,
-    isSuccess: catsSuccess,
-  } = useQuery("buildcats", fetchCategories);
-
-  useEffect(() => {
-    if (catsSuccess && cats.length > 0) {
-      setInputs((inputs) => ({ ...inputs, category: cats[0].id }));
-    }
-  }, [catsSuccess, cats]);
+  // const {
+  //   data: cats,
+  //   isLoading: loadingCats,
+  //   isError: isCatsError,
+  //   error: catsError,
+  //   isSuccess: catsSuccess,
+  // } = useQuery("buildcats", fetchCategories);
 
   const upload = async () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("/upload", formData);
+      const res = await axios.post("/upload", formData, {
+        withCredentials: true,
+      });
       return res.data;
     } catch (err) {
       console.log(err);
@@ -109,14 +138,6 @@ const Dashboard = () => {
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSelect = (event) => {
-    const categoryId = parseInt(event.target.value);
-    setInputs((inputs) => ({
-      ...inputs,
-      category: categoryId,
-    }));
   };
 
   const handleCreate = async (e) => {
@@ -151,7 +172,6 @@ const Dashboard = () => {
 
   if (loadingBuilds) return <Loader />;
   if (isBuildsError) toast.error(buildsError.message);
-  if (isCatsError) toast.error(catsError.message);
 
   const nextPage = () => setPage((prev) => prev + 1);
   const prevPage = () => setPage((prev) => prev - 1);
@@ -234,21 +254,17 @@ const Dashboard = () => {
                         <label className="form-label">
                           Área de Intervenção:
                         </label>
-                        {loadingCats ? (
-                          <div>Loading...</div>
-                        ) : (
-                          <select
-                            name="category"
-                            onChange={handleSelect}
-                            value={inputs.category}
-                          >
-                            {cats.map((item) => (
-                              <option key={item.id} value={item.id}>
-                                {item.name}
-                              </option>
-                            ))}
-                          </select>
-                        )}
+                        <select
+                          name="category"
+                          onChange={handleChange}
+                          value={inputs.category}
+                        >
+                          {cats.map((item) => (
+                            <option key={item.id} value={item.slug}>
+                              {item.name}
+                            </option>
+                          ))}
+                        </select>
                       </div>
 
                       <div className="form-group m-t50">

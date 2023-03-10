@@ -12,13 +12,6 @@ export const db = createPool({
 
 export async function runQueries() {
 
-  const categoriesTableQuery = `
-    CREATE TABLE IF NOT EXISTS categories (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      name VARCHAR(255) NOT NULL
-    );
-  `;
-
   const usersTableQuery = `
     CREATE TABLE IF NOT EXISTS users (
       id INT AUTO_INCREMENT PRIMARY KEY,
@@ -28,19 +21,28 @@ export async function runQueries() {
     );
   `;
 
+  const categoriesTableQuery = `
+  CREATE TABLE IF NOT EXISTS categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) NOT NULL,
+    INDEX idx_categories_slug(slug) -- add index on slug column
+  );
+`;
+
   const buildsTableQuery = `
     CREATE TABLE IF NOT EXISTS builds (
-      id INT AUTO_INCREMENT PRIMARY KEY,
-      mainImage VARCHAR(255) NOT NULL,
-      title VARCHAR(255) NOT NULL,
-      description TEXT NOT NULL,
-      client VARCHAR(255) NOT NULL,
-      time VARCHAR(255) NOT NULL,
-      date DATETIME NOT NULL,
-      category INT NOT NULL,
-      FOREIGN KEY (category) REFERENCES categories(id)
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        mainImage VARCHAR(255) NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        description TEXT NOT NULL,
+        client VARCHAR(255) NOT NULL,
+        time VARCHAR(255) NOT NULL,
+        date DATETIME NOT NULL,
+        category VARCHAR(255) NOT NULL,
+        FOREIGN KEY (category) REFERENCES categories(slug)
     );
-  `;
+`;
 
   const additionalImagesTableQuery = `
     CREATE TABLE IF NOT EXISTS additional_images (
@@ -50,6 +52,41 @@ export async function runQueries() {
       FOREIGN KEY (build_id) REFERENCES builds(id) ON DELETE CASCADE
     );
   `;
+
+  async function createCategories() {
+    await db.query(categoriesTableQuery);
+
+    await db.query(`
+      INSERT INTO categories (name, slug)
+      SELECT 'Educação e Saúde', 'educacao'
+      WHERE NOT EXISTS (SELECT 1 FROM categories WHERE slug = 'educacao')
+    `);
+    await db.query(`
+      INSERT INTO categories (name, slug)
+      SELECT 'Comércio e Serviços', 'comercio'
+      WHERE NOT EXISTS (SELECT 1 FROM categories WHERE slug = 'comercio')
+    `);
+    await db.query(`
+      INSERT INTO categories (name, slug)
+      SELECT 'Industrial', 'industrial'
+      WHERE NOT EXISTS (SELECT 1 FROM categories WHERE slug = 'industrial')
+    `);
+    await db.query(`
+      INSERT INTO categories (name, slug)
+      SELECT 'Escritórios', 'escritorios'
+      WHERE NOT EXISTS (SELECT 1 FROM categories WHERE slug = 'escritorios')
+    `);
+    await db.query(`
+      INSERT INTO categories (name, slug)
+      SELECT 'Habitação', 'habitacao'
+      WHERE NOT EXISTS (SELECT 1 FROM categories WHERE slug = 'habitacao')
+    `);
+    await db.query(`
+      INSERT INTO categories (name, slug)
+      SELECT 'Diversos', 'diversos'
+      WHERE NOT EXISTS (SELECT 1 FROM categories WHERE slug = 'diversos')
+    `);
+  }
 
 
   async function insertAdminUser(username, password) {
@@ -65,10 +102,10 @@ export async function runQueries() {
   }
 
   try {
-    await db.query(categoriesTableQuery)
-    await db.query(usersTableQuery)
-    await db.query(buildsTableQuery)
-    await db.query(additionalImagesTableQuery)
+    await createCategories();
+    await db.query(usersTableQuery);
+    await db.query(buildsTableQuery);
+    await db.query(additionalImagesTableQuery);
     insertAdminUser(process.env.ADMIN_USERNAME, process.env.ADMIN_PASSWORD);
   } catch (error) {
     console.error(error);

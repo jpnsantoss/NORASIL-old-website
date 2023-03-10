@@ -2,33 +2,33 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const blogs = [
-  {
-    image: require("./../../images/blog/latest-blog/pic1.jpg"),
-    title: "Commercial design for project",
-    description:
-      "Which is the same as saying through shrinking from toil and pain.",
-    date: "14",
-    month: "April",
-    year: "2021",
-  },
-  {
-    image: require("./../../images/blog/latest-blog/pic2.jpg"),
-    title: "Our interior design prediction",
-    description:
-      "Today we can tell you, thanks to your passion, hard work creativity, and expertise.",
-    date: "16",
-    month: "Feb",
-    year: "2021",
-  },
-  {
-    image: require("./../../images/blog/latest-blog/pic3.jpg"),
-    title: "Low cost interior designing ideas",
-    description:
-      "Every pleasure is to be welcomed every pain avoided. in certain circumstances obligations.",
-    date: "18",
-    month: "Jan",
-    year: "2021",
-  },
+  // {
+  //   image: require("./../../images/blog/latest-blog/pic1.jpg"),
+  //   title: "Commercial design for project",
+  //   description:
+  //     "Which is the same as saying through shrinking from toil and pain.",
+  //   date: "14",
+  //   month: "April",
+  //   year: "2021",
+  // },
+  // {
+  //   image: require("./../../images/blog/latest-blog/pic2.jpg"),
+  //   title: "Our interior design prediction",
+  //   description:
+  //     "Today we can tell you, thanks to your passion, hard work creativity, and expertise.",
+  //   date: "16",
+  //   month: "Feb",
+  //   year: "2021",
+  // },
+  // {
+  //   image: require("./../../images/blog/latest-blog/pic3.jpg"),
+  //   title: "Low cost interior designing ideas",
+  //   description:
+  //     "Every pleasure is to be welcomed every pain avoided. in certain circumstances obligations.",
+  //   date: "18",
+  //   month: "Jan",
+  //   year: "2021",
+  // },
 ];
 
 const ObrasRecentes2 = (props) => {

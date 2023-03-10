@@ -33,7 +33,9 @@ const Imagens = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("/upload", formData);
+      const res = await axios.post("/upload", formData, {
+        withCredentials: true,
+      });
       return res.data;
     } catch (err) {
       console.log(err);
@@ -41,10 +43,14 @@ const Imagens = () => {
   };
 
   const addImage = useMutation((imgUrl) =>
-    axios.post("/images", {
-      buildId,
-      imgUrl,
-    })
+    axios.post(
+      "/images",
+      {
+        buildId,
+        imgUrl,
+      },
+      { withCredentials: true }
+    )
   );
 
   const deleteImage = useMutation(

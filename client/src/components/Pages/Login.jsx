@@ -5,7 +5,7 @@ import Banner from "../Elements/Banner";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 
-var bnrimg = require("./../../images/banner.jpg");
+import bnrimg from "./../../images/banner.jpg";
 
 const Login = () => {
   const [inputs, setInputs] = useState({

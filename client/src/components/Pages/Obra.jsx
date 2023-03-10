@@ -8,7 +8,11 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import ObrasRecentes2 from "../Elements/ObrasRecentes2";
 
-var bnrimg = require("./../../images/banner.jpg");
+import thumb1 from "./../../images/blog/default/teste1.jpg";
+import thumb2 from "./../../images/blog/default/teste2.jpg";
+import thumb3 from "./../../images/blog/default/thum3.jpg";
+
+import bnrimg from "./../../images/banner.jpg";
 
 const Obra = () => {
   const options = {
@@ -45,26 +49,17 @@ const Obra = () => {
                 >
                   <div className="item">
                     <div className="aon-thum-bx">
-                      <img
-                        src={require("./../../images/blog/default/teste1.jpg")}
-                        alt=""
-                      />
+                      <img src={thumb1} alt="" />
                     </div>
                   </div>
                   <div className="item">
                     <div className="aon-thum-bx">
-                      <img
-                        src={require("./../../images/blog/default/teste2.jpg")}
-                        alt=""
-                      />
+                      <img src={thumb2} alt="" />
                     </div>
                   </div>
                   <div className="item">
                     <div className="aon-thum-bx">
-                      <img
-                        src={require("./../../images/blog/default/thum3.jpg")}
-                        alt=""
-                      />
+                      <img src={thumb3} alt="" />
                     </div>
                   </div>
                 </OwlCarousel>

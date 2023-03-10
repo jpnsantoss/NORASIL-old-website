@@ -3,7 +3,7 @@ import Header from "../Common/Header";
 import Footer from "../Common/Footer";
 import Banner from "../Elements/Banner";
 
-var bnrimg = require("./../../images/banner.jpg");
+import bnrimg from "./../../images/banner.jpg";
 
 const Recrutamento = () => {
   return (

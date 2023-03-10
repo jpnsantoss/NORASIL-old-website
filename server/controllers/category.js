@@ -15,7 +15,7 @@ export const getCategories = async (req, res) => {
 
 export const getCategory = async (req, res) => {
   const q = `
-  SELECT * FROM categories WHERE id = ?
+  SELECT * FROM categories WHERE slug = ?
   `;
 
   try {
@@ -26,46 +26,4 @@ export const getCategory = async (req, res) => {
   } catch (err) {
     return res.status(500).json(err)
   }
-};
-
-export const addCategory = async (req, res) => {
-
-  const token = req.cookies.access_token;
-  if (!token) return res.status(401).json({ message: "Not authenticated!" });
-
-  jwt.verify(token, "jwtkey", async (err, userInfo) => {
-    if (err) return res.status(403).json({ message: "Token is not valid!" });
-
-    const q = "INSERT INTO categories(`name`) VALUES (?)";
-    try {
-      await db.query(q, [req.body.name]);
-      return res.json("Category has been created.");
-    } catch (err) {
-      return res.status(500).json(err)
-    }
-  });
-};
-
-export const deleteCategory = (req, res) => {
-  const token = req.cookies.access_token;
-  if (!token) return res.status(401).json({ message: "Not authenticated." });
-  jwt.verify(token, "jwtkey", async (err, userInfo) => {
-    if (err) return res.status(403).json({ message: "Token is not valid!" });
-    const categoryId = req.params.id;
-
-    try {
-      const categoryBuilds = await db.query('SELECT * FROM builds WHERE category = ?', [categoryId]);
-
-      if (categoryBuilds.length > 0) {
-        return res.status(400).json({ message: 'Esta área de intervenção ainda tem obras associadas.' });
-      } else {
-        const q = "DELETE FROM categories WHERE `id` = ?";
-        await db.query(q, [categoryId]);
-        cleanUnusedImages();
-        return res.json("Category has been deleted!");
-      }
-    } catch (err) {
-      return res.status(500).json(err)
-    }
-  })
 };

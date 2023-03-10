@@ -7,7 +7,7 @@ import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 
-var bnrimg = require("./../../../images/banner.jpg");
+import bnrimg from "./../../../images/banner.jpg";
 
 const Users = () => {
   const queryClient = useQueryClient();
@@ -24,12 +24,15 @@ const Users = () => {
 
   const { data: users, isLoading, error } = useQuery("users", fetchUsers);
 
-  const createUser = useMutation((newUser) => axios.post("/users", newUser), {
-    onSuccess: () => {
-      queryClient.invalidateQueries("users");
-      toast.success("Usuário Criado!");
-    },
-  });
+  const createUser = useMutation(
+    (newUser) => axios.post("/users", newUser, { withCredentials: true }),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("users");
+        toast.success("Usuário Criado!");
+      },
+    }
+  );
 
   const deleteUser = useMutation((userId) => axios.delete(`/users/${userId}`), {
     onSuccess: () => {

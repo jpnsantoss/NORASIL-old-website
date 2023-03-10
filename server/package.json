@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon -r newrelic index.js"
   },
   "keywords": [],
   "author": "João Santos",

@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+import slide1 from "./../../images/main-slider/slider1/slide1.jpg";
+import slide2 from "./../../images/main-slider/slider1/slide2.jpg";
+import slide3 from "./../../images/main-slider/slider1/slide3.jpg";
+
 const Slider = () => {
   useEffect(() => {
     function loadScript(src) {
@@ -20,7 +24,6 @@ const Slider = () => {
 
     loadScript("./assets/js/rev-script-1.js");
   }, []);
-
   return (
     <>
       <div
@@ -46,7 +49,7 @@ const Slider = () => {
               data-easein="default"
               data-easeout="default"
               data-masterspeed="default"
-              data-thumb={require("./../../images/main-slider/slider1/slide1.jpg")}
+              data-thumb={slide1}
               data-rotate={0}
               data-fstransition="fade"
               data-fsmasterspeed={300}
@@ -66,9 +69,9 @@ const Slider = () => {
               data-description
             >
               <img
-                src={require("./../../images/main-slider/slider1/slide1.jpg")}
+                src={slide1}
                 alt=""
-                data-lazyload={require("./../../images/main-slider/slider1/slide1.jpg")}
+                data-lazyload={slide1}
                 data-bgposition="center center"
                 data-bgfit="cover"
                 data-bgparallax={4}
@@ -239,7 +242,7 @@ const Slider = () => {
               data-easein="default"
               data-easeout="default"
               data-masterspeed="default"
-              data-thumb={require("./../../images/main-slider/slider1/slide2.jpg")}
+              data-thumb={slide2}
               data-rotate={0}
               data-fstransition="fade"
               data-fsmasterspeed={300}
@@ -259,9 +262,9 @@ const Slider = () => {
               data-description
             >
               <img
-                src={require("./../../images/main-slider/slider1/slide2.jpg")}
+                src={slide2}
                 alt=""
-                data-lazyload={require("./../../images/main-slider/slider1/slide2.jpg")}
+                data-lazyload={slide2}
                 data-bgposition="center center"
                 data-bgfit="cover"
                 data-bgparallax={4}
@@ -432,7 +435,7 @@ const Slider = () => {
               data-easein="default"
               data-easeout="default"
               data-masterspeed="default"
-              data-thumb={require("./../../images/main-slider/slider1/slide3.jpg")}
+              data-thumb={slide3}
               data-rotate={0}
               data-fstransition="fade"
               data-fsmasterspeed={300}
@@ -452,9 +455,9 @@ const Slider = () => {
               data-description
             >
               <img
-                src={require("./../../images/main-slider/slider1/slide3.jpg")}
+                src={slide3}
                 alt=""
-                data-lazyload={require("./../../images/main-slider/slider1/slide3.jpg")}
+                data-lazyload={slide3}
                 data-bgposition="center center"
                 data-bgfit="cover"
                 data-bgparallax={4}

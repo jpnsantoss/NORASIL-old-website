@@ -5,7 +5,7 @@ import Footer from "../Common/Footer";
 import Banner from "../Elements/Banner";
 import ObrasRecentes2 from "../Elements/ObrasRecentes2";
 
-var bnrimg = require("./../../images/banner.jpg");
+import bnrimg from "./../../images/banner.jpg";
 
 const PostVideo = () => {
   return (

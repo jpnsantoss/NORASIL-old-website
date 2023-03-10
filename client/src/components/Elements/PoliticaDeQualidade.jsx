@@ -1,38 +1,43 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+import missao from "./../../images/icon/crane-1.png";
+import visao from "./../../images/icon/renovation.png";
+import valores from "./../../images/icon/toolbox.png";
+import estrategia from "./../../images/icon/compass.png";
+
 const services = [
   {
     count: 1,
     title: `Missão`,
-    icon: require("./../../images/icon/crane-1.png"),
+    icon: missao,
     description:
       "A nossa missão é oferecer soluções inovadoras, combinando qualidade e eficiência para a realização de projetos de sucesso.",
   },
   {
     count: 2,
     title: "Visão",
-    icon: require("./../../images/icon/renovation.png"),
+    icon: visao,
     description:
       "A nossa visão é ser reconhecidos como uma empresa que oferece soluções de alta qualidade, visando o sucesso dos nossos clientes.",
   },
   {
     count: 3,
     title: "Valores e Objetivos",
-    icon: require("./../../images/icon/toolbox.png"),
+    icon: valores,
     description:
       "Na Norasil, o nosso objetivo é sempre alcançar a excelência em tudo o que fazemos, preservando os nossos valores éticos e profissionais.",
   },
   {
     count: 4,
     title: "Estratégia",
-    icon: require("./../../images/icon/compass.png"),
+    icon: estrategia,
     description:
       "Na Norasil, trabalhamos na promoção e valorização da sua imagem, consolidando-se como referência no mercado da construção civil.",
   },
 ];
 
-var img1 = require("./../../images/background/bg-6.png");
+import img1 from "./../../images/background/bg-6.png";
 
 const PoliticaDeQualidade = () => {
   useEffect(() => {
