@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Header from "../Common/Header";
 import Footer from "../Common/Footer";
 import Banner from "../Elements/Banner";
@@ -13,8 +13,86 @@ import thumb2 from "./../../images/blog/default/teste2.jpg";
 import thumb3 from "./../../images/blog/default/thum3.jpg";
 
 import bnrimg from "./../../images/banner.jpg";
+import { useQuery } from "react-query";
+import Loader from "../Elements/Loader";
+import axios from "axios";
+
+const cats = [
+  {
+    id: 1,
+    name: "Educação e Saúde",
+    slug: "educacao",
+  },
+  {
+    id: 2,
+    name: "Comércio e Serviços",
+    slug: "comercio",
+  },
+  {
+    id: 3,
+    name: "Industrial",
+    slug: "industrial",
+  },
+  {
+    id: 4,
+    name: "Escritórios",
+    slug: "escritorios",
+  },
+  {
+    id: 5,
+    name: "Habitação",
+    slug: "habitacao",
+  },
+  {
+    id: 6,
+    name: "Diversos",
+    slug: "diversos",
+  },
+];
 
 const Obra = () => {
+  const location = useLocation();
+  const buildId = location.pathname.split("/")[2];
+
+  const fetchBuild = async () => {
+    const { data } = await axios.get(`/builds/${buildId}`);
+    const dateParts = data.formatted_date.split("/");
+    const day = dateParts[0];
+    const monthNumber = dateParts[1];
+    const year = dateParts[2];
+    const monthNames = [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ];
+    const month = monthNames[parseInt(monthNumber) - 1];
+    return {
+      ...data,
+      day,
+      month,
+      year,
+    };
+  };
+
+  const {
+    data: build,
+    isLoading,
+    isError,
+    error,
+  } = useQuery(["build", buildId], () => fetchBuild());
+
+  if (isLoading) return <Loader />;
+  if (isError) toast.error(error.message);
+
   const options = {
     loop: false,
     autoplay: false,
@@ -34,12 +112,12 @@ const Obra = () => {
       <Header />
       <div className="page-content ">
         <Banner
-          title="Making your vision come true, that is what we do."
-          pagename="Post Gallery"
-          bgimage={bnrimg}
+          title={build.title}
+          pagename="Portfolio"
+          bgimage={`http://localhost:8800/uploads/${build.mainImage}`}
         />
 
-        <div className="section-full p-tb80 square_shape1 square_shape3 inner-page-padding">
+        <div className="section-full p-tb100 square_shape1 square_shape3 inner-page-padding">
           <div className="container">
             <div className="blog-post date-style-3 blog-detail text-black">
               <div className="mt-post-media">
@@ -49,98 +127,49 @@ const Obra = () => {
                 >
                   <div className="item">
                     <div className="aon-thum-bx">
-                      <img src={thumb1} alt="" />
+                      <img
+                        src={`http://localhost:8800/uploads/${build.mainImage}`}
+                        alt=""
+                      />
                     </div>
                   </div>
-                  <div className="item">
-                    <div className="aon-thum-bx">
-                      <img src={thumb2} alt="" />
+                  {build.additional_images.map((item) => (
+                    <div className="item" key={item.id}>
+                      <div className="aon-thum-bx">
+                        <img
+                          src={`http://localhost:8800/uploads/${item.image_url}`}
+                          alt=""
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="item">
-                    <div className="aon-thum-bx">
-                      <img src={thumb3} alt="" />
-                    </div>
-                  </div>
+                  ))}
                 </OwlCarousel>
               </div>
               <div className="mt-post-meta ">
                 <ul>
                   <li className="post-date">
-                    <strong>20 </strong> <span>April 2021</span>{" "}
+                    <strong>{build.day} </strong>{" "}
+                    <span>
+                      {build.month} 20{build.year}
+                    </span>{" "}
                   </li>
-                  <li className="post-author">Continental</li>
-                  <li className="post-category">Traditional</li>
+                  <li className="post-category">{build.category_name}</li>
                 </ul>
               </div>
-              <div className="mt-post-title ">
-                <h2 className="post-title font-weight-600">
-                  From complete turn key to project manager. Leave the building
-                  to the professionals.
-                </h2>
-              </div>
-              <div className="mt-post-text">
-                <p>
-                  Duis vestibulum quis quam vel accumsan. Nunc a vulputate
-                  lectus. Vestibulum eleifend nisl sed massa sagittis
-                  vestibulum. Vestibulum pretium blandit tellus, sodales
-                  volutpat sapien varius vel. Phasellus tristique cursus erat, a
-                  placerat tellus laoreet eget. Fusce vitae dui sit amet lacus
-                  rutrum convallis. Vivamus sit amet lectus venenatis est
-                  rhoncus interdum a vitae velit.Lorem ipsum dolor sit amet,
-                  consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum. Sed
-                  ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae ipsa quae ab illo inventore dicta sunt explicabo.
-                </p>
-              </div>
-              <div className="autor-post-tag-share bdr-t-1 bdr-solid bdr-gray p-t20">
-                <div className="row">
-                  <div className="col-md-6 col-sm-6">
-                    <div className="widget widget_tag_cloud">
-                      <h4 className="tagcloud">Tags</h4>
-                      <div className="tagcloud">
-                        <NavLink to={"#"}>First tag</NavLink>&nbsp;
-                        <NavLink to={"#"}>Second tag</NavLink>&nbsp;
-                        <NavLink to={"#"}>Three tag</NavLink>&nbsp;
-                        <NavLink to={"#"}>Four tag</NavLink>&nbsp;
-                        <NavLink to={"#"}>Five tag</NavLink>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-sm-6">
-                    <div className="mt-box">
-                      <div className="clearfix">
-                        <h4>Share this Post:</h4>
-                        <div className="widget_social_inks">
-                          <ul className="social-icons social-md social-square social-dark m-b0">
-                            <li>
-                              <NavLink to={"#"} className="fa fa-facebook" />
-                            </li>
-                            <li>
-                              <NavLink to={"#"} className="fa fa-twitter" />
-                            </li>
-                            <li>
-                              <NavLink to={"#"} className="fa fa-rss" />
-                            </li>
-                            <li>
-                              <NavLink to={"#"} className="fa fa-youtube" />
-                            </li>
-                            <li>
-                              <NavLink to={"#"} className="fa fa-instagram" />
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="post-description-size">
+                <div className="mt-post-title ">
+                  <h2 className="post-title font-weight-600">{build.title}</h2>
+                </div>
+                <div>
+                  <ul>
+                    <strong>Client</strong>: {build.client}
+                  </ul>
+                  <ul>
+                    <strong>Prazo</strong>: {build.time}
+                  </ul>
+                </div>
+                <div className="mt-post-text">
+                  <p>{build.description}</p>
                 </div>
               </div>
             </div>

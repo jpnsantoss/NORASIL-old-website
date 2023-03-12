@@ -6,35 +6,41 @@ import { BsHouseDoor } from "react-icons/bs";
 import { FaRegBuilding, FaRegHospital } from "react-icons/fa";
 import { MdOutlineOtherHouses } from "react-icons/md";
 
-const services = [
+const cats = [
   {
     count: 1,
     title: "Educação e Saúde",
+    slug: "educacao",
     icon: <FaRegHospital />,
   },
   {
     count: 2,
     title: "Comércio e Serviços",
+    slug: "comercio",
     icon: <RiStore2Line />,
   },
   {
     count: 3,
     title: "Industrial",
+    slug: "industrial",
     icon: <TbBuildingFactory2 />,
   },
   {
     count: 4,
     title: "Escritórios",
+    slug: "escritorios",
     icon: <FaRegBuilding />,
   },
   {
     count: 5,
     title: "Habitação",
+    slug: "habitacao",
     icon: <BsHouseDoor />,
   },
   {
     count: 6,
     title: "Diversos",
+    slug: "diversos",
     icon: <MdOutlineOtherHouses />,
   },
 ];
@@ -79,7 +85,7 @@ const AreasIntervencao = () => {
           </div>
           <div className="section-content">
             <div className="row">
-              {services.map((item, index) => (
+              {cats.map((item, index) => (
                 <div key={index} className="col-md-4 col-sm-6">
                   <div className="mt-icon-box-wraper p-a30 center m-b30 box-shadow bg-white">
                     <div
@@ -95,7 +101,7 @@ const AreasIntervencao = () => {
                         {item.title}
                       </h4>
                       <NavLink
-                        to={"/portfolio"}
+                        to={`/portfolio?cat=${item.slug}`}
                         className="site-button-link"
                         data-hover="Read More"
                       >

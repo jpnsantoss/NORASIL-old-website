@@ -56,7 +56,12 @@ const Users = () => {
     try {
       await createUser.mutateAsync(inputs);
     } catch (err) {
-      toast.eorr(err.message);
+      toast.error(
+        err.response?.data?.message || err.message || "Ocorreu um erro."
+      );
+      if (err.response.data.message == "Not authenticated!") {
+        navigate("/login");
+      }
     }
   };
 
@@ -67,6 +72,9 @@ const Users = () => {
       toast.error(
         err.response?.data?.message || err.message || "Ocorreu um erro."
       );
+      if (err.response.data.message == "Not authenticated!") {
+        navigate("/login");
+      }
     }
   };
 

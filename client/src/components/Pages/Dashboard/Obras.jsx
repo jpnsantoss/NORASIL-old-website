@@ -7,7 +7,7 @@ import Loader from "../../Elements/Loader";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import moment from "moment";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ConfirmButton from "react-confirm-button";
 
@@ -48,6 +48,7 @@ const cats = [
 
 const Dashboard = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     title: "",
     client: "",
@@ -57,11 +58,18 @@ const Dashboard = () => {
     category: cats[0].slug,
     date: "",
   });
+
   const [file, setFile] = useState("");
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
 
-  const fetchBuildsPage = async (pageParam = 1) => {
-    const response = await axios.get(`/builds?page=${pageParam}`);
+  const fetchBuildsPage = async (pageParam = 1, searchParam) => {
+    let url = `/builds?page=${pageParam}`;
+
+    if (searchParam) {
+      url += `&search=${searchParam}`;
+    }
+    const response = await axios.get(url);
     return response.data;
   };
 
@@ -71,7 +79,7 @@ const Dashboard = () => {
     isError: isBuildsError,
     error: buildsError,
     isPreviousData,
-  } = useQuery(["builds", page], () => fetchBuildsPage(page), {
+  } = useQuery(["builds", page, search], () => fetchBuildsPage(page, search), {
     keepPreviousData: true,
   });
 
@@ -110,19 +118,6 @@ const Dashboard = () => {
     }
   );
 
-  // const fetchCategories = async () => {
-  //   const { data } = await axios.get("/categories");
-  //   return data;
-  // };
-
-  // const {
-  //   data: cats,
-  //   isLoading: loadingCats,
-  //   isError: isCatsError,
-  //   error: catsError,
-  //   isSuccess: catsSuccess,
-  // } = useQuery("buildcats", fetchCategories);
-
   const upload = async () => {
     try {
       const formData = new FormData();
@@ -157,6 +152,9 @@ const Dashboard = () => {
       toast.error(
         err.response?.data?.message || err.message || "Ocorreu um erro."
       );
+      if (err.response.data.message == "Not authenticated!") {
+        navigate("/login");
+      }
     }
   };
 
@@ -167,7 +165,16 @@ const Dashboard = () => {
       toast.error(
         err.response?.data?.message || err.message || "Ocorreu um erro."
       );
+      if (err.response.data.message == "Not authenticated!") {
+        navigate("/login");
+      }
     }
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchInput = e.target.elements.searchInput;
+    setSearch(searchInput.value);
   };
 
   if (loadingBuilds) return <Loader />;
@@ -301,80 +308,148 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </div>
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Título</th>
-                      <th>Cliente</th>
-                      <th>Data</th>
-                      <th className="text-center">Operações</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {builds.data.map((build) => (
-                      <tr key={build.id}>
-                        <td>{build.title}</td>
-                        <td>{build.client}</td>
-                        <td className="col-md-2 text-center">
-                          {build.formatted_date}
-                        </td>
-                        <td className="col-md-2">
-                          <div className="botoes">
-                            <NavLink
-                              to={`/admin/obras/${build.id}`}
-                              className="site-button text-uppercase operation-button  blue m-r5"
-                              type="button"
+                <div className="p-b30 text-center">
+                  <div className="container m-t50 p-l0">
+                    <div className="col-md-6 p-l0">
+                      <form onSubmit={handleSearch}>
+                        <div className="input-group">
+                          <input
+                            name="searchInput"
+                            className="form-control"
+                            placeholder="Procurar Obra"
+                            type="text"
+                          />
+                          <span className="input-group-btn">
+                            <button type="submit" className="site-button">
+                              <i className="fa fa-search" />
+                            </button>
+                          </span>
+                        </div>
+                      </form>
+                    </div>
+                    <div className="col-md-6">
+                      {builds.total_pages > 1 && (
+                        <ul className="pagination m-tb0">
+                          <li>
+                            <button onClick={prevPage} disabled={page === 1}>
+                              «
+                            </button>
+                          </li>
+                          {pagesArray.map((pg) => (
+                            <li key={pg}>
+                              <button
+                                disabled={pg === builds.page}
+                                onClick={() => setPage(pg)}
+                              >
+                                {pg}
+                              </button>
+                            </li>
+                          ))}
+                          <li>
+                            <button
+                              onClick={nextPage}
+                              disabled={page === builds.total_pages}
                             >
-                              <i className="fa fa-image" />{" "}
-                            </NavLink>
-
-                            <ConfirmButton
-                              className="site-button operation-button text-uppercase red"
-                              onConfirm={() => handleDelete(build.id)}
-                              confirming={{
-                                text: "?",
-                                className:
-                                  "site-button operation-button text-uppercase orange",
-                              }}
-                            >
-                              <i className="fa fa-close" />{" "}
-                            </ConfirmButton>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {builds.total_pages > 1 && (
-                  <ul className="pagination m-tb0">
-                    <li>
-                      <NavLink
-                        onClick={prevPage}
-                        disabled={isPreviousData || page === 1}
-                      >
-                        «
-                      </NavLink>
-                    </li>
-                    {pagesArray.map((pg) => (
-                      <li key={pg}>
-                        <NavLink
-                          disabled={pg === builds.page}
-                          onClick={() => setPage(pg)}
-                        >
-                          {pg}
-                        </NavLink>
-                      </li>
-                    ))}
-                    <li>
-                      <NavLink
-                        onClick={nextPage}
-                        disabled={isPreviousData || page === builds.total_pages}
-                      >
-                        »
-                      </NavLink>
-                    </li>
-                  </ul>
+                              »
+                            </button>
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                {search && (
+                  <div className="m-b50">
+                    <h4>
+                      Resultados da pesquisa: <b>{search}</b>
+                    </h4>
+                    <button
+                      className="site-button outline"
+                      onClick={() => setSearch("")}
+                    >
+                      Clear
+                    </button>
+                  </div>
                 )}
+                {builds.data.length > 0 ? (
+                  <table className="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Título</th>
+                        <th>Cliente</th>
+                        <th>Data</th>
+                        <th className="text-center">Operações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {builds.data.map((build) => (
+                        <tr key={build.id}>
+                          <td>{build.title}</td>
+                          <td>{build.client}</td>
+                          <td className="col-md-2 text-center">
+                            {build.formatted_date}
+                          </td>
+                          <td className="col-md-2">
+                            <div className="botoes">
+                              <NavLink
+                                to={`/admin/obras/${build.id}`}
+                                className="site-button text-uppercase operation-button  blue m-r5"
+                                type="button"
+                              >
+                                <i className="fa fa-image" />{" "}
+                              </NavLink>
+
+                              <ConfirmButton
+                                className="site-button operation-button text-uppercase red"
+                                onConfirm={() => handleDelete(build.id)}
+                                confirming={{
+                                  text: "?",
+                                  className:
+                                    "site-button operation-button text-uppercase orange",
+                                }}
+                              >
+                                <i className="fa fa-close" />{" "}
+                              </ConfirmButton>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : (
+                  <div className="m-b100">
+                    <h4 className="text-center">Nenhuma obra encontrada.</h4>
+                  </div>
+                )}
+                <div className="m-b20">
+                  {builds.total_pages > 1 && (
+                    <ul className="pagination m-tb0">
+                      <li>
+                        <button onClick={prevPage} disabled={page === 1}>
+                          «
+                        </button>
+                      </li>
+                      {pagesArray.map((pg) => (
+                        <li key={pg}>
+                          <button
+                            disabled={pg === builds.page}
+                            onClick={() => setPage(pg)}
+                          >
+                            {pg}
+                          </button>
+                        </li>
+                      ))}
+                      <li>
+                        <button
+                          onClick={nextPage}
+                          disabled={page === builds.total_pages}
+                        >
+                          »
+                        </button>
+                      </li>
+                    </ul>
+                  )}
+                </div>
               </div>
             </div>
           </div>

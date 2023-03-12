@@ -47,9 +47,11 @@ const Components = () => {
           <Route path="/" exact element={<Home />} />
           <Route path="/error" exact element={<Error />} />
           <Route path="/localizacao" exact element={<Localizacao />} />
-          <Route path="/obra" exact element={<Obra />} />
           <Route path="/obravideo" exact element={<ObraVideo />} />
-          <Route path="/portfolio" exact element={<Portfolio />} />
+          <Route path="/portfolio">
+            <Route index element={<Portfolio />} />
+            <Route path="/portfolio/:id" element={<Obra />} />
+          </Route>
           <Route path="/recrutamento" exact element={<Recrutamento />} />
 
           <Route path="/login" element={<Login />} />

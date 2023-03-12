@@ -9,6 +9,7 @@ import Loader from "./Loader";
 const ObrasRecentes = () => {
   const fetchRecentBuilds = async () => {
     const { data } = await axios.get(`/builds?limit=3`);
+    const maxDescriptionLength = 120;
     const formattedBuilds = data.data.map((build) => {
       const dateParts = build.formatted_date.split("/");
       const day = dateParts[0];
@@ -29,11 +30,16 @@ const ObrasRecentes = () => {
         "Dezembro",
       ];
       const month = monthNames[parseInt(monthNumber) - 1];
+      const truncatedDescription =
+        build.description.length > maxDescriptionLength
+          ? build.description.slice(0, maxDescriptionLength) + "..."
+          : build.description;
       return {
         ...build,
         day,
         month,
         year,
+        description: truncatedDescription,
       };
     });
     return formattedBuilds;
@@ -85,10 +91,12 @@ const ObrasRecentes = () => {
                                 {build.day}
                               </strong>{" "}
                               <span>
-                                {build.month} {build.year}
+                                {build.month} 20{build.year}
                               </span>
                             </li>
-                            <li className="post-author">Continental</li>
+                            <li className="post-author">
+                              {build.category_name}
+                            </li>
                           </ul>
                         </div>
                         <div className="mt-post-title ">

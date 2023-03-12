@@ -4,10 +4,11 @@ import fs from "fs";
 import { cleanUnusedImages } from "../deleteImages.js";
 
 export const getBuilds = async (req, res) => {
+
   const page = req.query.page ? parseInt(req.query.page) : 1;
-  const limit = req.query.limit ? parseInt(req.query.limit) : 10;
+  const limit = req.query.limit ? parseInt(req.query.limit) : 9;
   const searchTerm = req.query.search ? `%${req.query.search}%` : "%";
-  const category = req.query.category ? `%${req.query.category}%` : "%";
+  const category = req.query.cat || "%";
 
   try {
     const [data] = await db.query(
@@ -23,17 +24,17 @@ export const getBuilds = async (req, res) => {
       [category, searchTerm, searchTerm, searchTerm, limit, (page - 1) * limit]
     );
 
-    const [total] = await db.query(
-      `
-      SELECT COUNT(*) FROM builds
-      WHERE category = ?
-      AND (title LIKE ? OR client LIKE ? OR description LIKE ?)
-      `,
-      [category, searchTerm, searchTerm, searchTerm]
-    );
+    const q = req.query.cat ? `SELECT COUNT(*) FROM builds
+    WHERE category = ?
+    AND (title LIKE ? OR client LIKE ? OR description LIKE ?)`
+      : `SELECT COUNT(*) FROM builds
+    WHERE (title LIKE? OR client LIKE? OR description LIKE?)`;
 
-    const total_pages = Math.ceil(total[0].total / limit);
+    const values = req.query.cat ? [category, searchTerm, searchTerm, searchTerm] : [searchTerm, searchTerm, searchTerm];
+    const [total] = await db.query(q, values);
 
+    const total_pages = Math.ceil(total[0]['COUNT(*)'] / limit);
+    console.log(total_pages);
     return res.status(200).json({ data, page, total: total[0].total, per_page: limit, total_pages });
   } catch (err) {
     return res.status(500).json(err);

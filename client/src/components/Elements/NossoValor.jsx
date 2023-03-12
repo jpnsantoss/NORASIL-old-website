@@ -86,7 +86,7 @@ const NossoValor = () => {
                       <NavLink
                         to={"#"}
                         className="play-now"
-                        onClick={openModal}
+                        // onClick={openModal}
                       >
                         <i className="icon fa fa-play" />
                         <span className="ripple" />
@@ -96,9 +96,9 @@ const NossoValor = () => {
                       <NavLink
                         to={"#"}
                         className="font-weight-600 text-uppercase"
-                        onClick={openModal}
+                        // onClick={openModal}
                       >
-                        Video Presentation
+                        Brevemente...
                       </NavLink>
                     </div>
                   </div>
