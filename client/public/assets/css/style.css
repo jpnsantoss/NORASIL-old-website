@@ -3103,6 +3103,7 @@ ol.list-num-count.list-outline-none > li:before {
   display: table-cell;
   vertical-align: middle;
   font-size: 36px;
+  padding-top: 8px;
 }
 
 /*-------------------------------------
@@ -8386,7 +8387,6 @@ HEADER (top part of page)
     display: block;
     float: none;
     padding: 0px;
-    margin-bottom: 10px;
   }
   .header-style-1 .top-bar .row .mt-topbar-left {
     text-align: left;
@@ -9648,6 +9648,9 @@ HEADER (top part of page)
 
 .owl-carousel .owl-item img {
   transform-style: inherit;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
 }
 
 .owl-carousel .owl-item .aon-thum-bx img {
@@ -13893,6 +13896,7 @@ Background Effects
   overflow: hidden;
   bottom: -120px;
   margin-top: -8.8%;
+  background-position: center;
 }
 
 .video-section-full-v2 .video-section-full {
@@ -14913,10 +14917,20 @@ Image Effect Two
 
 .empresa-text {
   font-size: 16px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .empresa-text li {
-  padding: 5px;
+  padding: 10px;
+}
+
+.empresa-text ol li {
+  margin-left: 5%;
+}
+
+.empresa-text p {
+  line-height: 30px;
 }
 
 .botoes {

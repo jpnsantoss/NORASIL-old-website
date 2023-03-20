@@ -45,7 +45,7 @@ const PoliticaDeQualidade = () => {
                           </a>
                         </li>
                       </ul>
-                      <div className="tab-content">
+                      <div className="container tab-content empresa-text">
                         <div id="cat1" className="tab-pane active">
                           <p className="empresa-text m-t50">
                             A missão da Norasil é oferecer serviços de

@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 import ModalVideo from "react-modal-video";
 import "../../../node_modules/react-modal-video/css/modal-video.min.css";
 
-import img1 from "./../../images/video-bg.jpg";
+import img1 from "./../../images/brevemente.png";
 
 const NossoValor = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +46,7 @@ const NossoValor = () => {
                         Valor
                       </h2>
                     </div>
-                    <p>
+                    <p style={{ textAlign: "justify" }}>
                       Na Norasil, o valor está na construção de relações
                       duradouras com os nossos clientes, baseadas na confiança e
                       no compromisso com a excelência, refletido em cada etapa
@@ -98,7 +98,7 @@ const NossoValor = () => {
                         className="font-weight-600 text-uppercase"
                         // onClick={openModal}
                       >
-                        Brevemente...
+                        Apresentação
                       </NavLink>
                     </div>
                   </div>

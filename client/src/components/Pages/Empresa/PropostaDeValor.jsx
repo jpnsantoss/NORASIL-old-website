@@ -20,7 +20,10 @@ const PropostaDeValor = () => {
                 </div>
               </div>
               <div>
-                <p className="empresa-text text-center m-b100">
+                <p
+                  style={{ textAlign: "center" }}
+                  className="empresa-text  m-b100"
+                >
                   É a nossa ambição e empreendedorismo que nos tem permitido um
                   crescimento constante, consolidado e sustentado. Mantendo esta
                   nossa postura como base; o nosso compromisso, integridade,

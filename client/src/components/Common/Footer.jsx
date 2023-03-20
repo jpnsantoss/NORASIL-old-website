@@ -11,10 +11,11 @@ const Footer = () => {
       <footer className="site-footer footer-large  footer-dark	footer-wide">
         <div
           className="container call-to-action-wrap bg-no-repeat bg-center"
-          style={{ backgroundImage: "url(" + bgimage + ")" }}
+          // style={{ backgroundImage: "url(" + bgimage + ")" }}
         >
-          <div className="p-a30 bg-primary ">
-            <div className="row">
+          <div className="p-a10 m-t50 bg-primary ">
+            {/* remove m-t50 and set p-a30 */}
+            {/* <div className="row">
               <div className="col-md-8 col-sm-8">
                 <div className="call-to-action-left text-black">
                   <h4 className="text-uppercase m-b10 m-t0">
@@ -49,7 +50,7 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="footer-top overlay-wraper">

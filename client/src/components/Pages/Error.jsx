@@ -17,15 +17,18 @@ const Error = () => {
           <div className="container">
             <div className="section-content">
               <div className="page-notfound text-center">
-                <strong>Page Not Found</strong>
+                <strong>Página não encontrada!</strong>
                 <span className="title">404</span>
-                <p>The webpage you are looking for is not here!</p>
+                <p>
+                  A página solicitada não foi encontrada. Por favor, verifique o
+                  endereço e tente novamente.
+                </p>
                 <NavLink
                   to="/"
-                  title="Back to home"
+                  title="Voltar ao início"
                   className="site-button btn-effect"
                 >
-                  Back to home
+                  Voltar ao início
                 </NavLink>
               </div>
             </div>

@@ -57,7 +57,7 @@ const ObrasRecentes = () => {
 
   return (
     <>
-      <div className="section-full mobile-page-padding p-t80 p-b30 bg-white">
+      <div className="section-full mobile-page-padding p-t100 p-b30 bg-white">
         <div className="container">
           <div className="section-head ">
             <div className="mt-separator-outer separator-center">

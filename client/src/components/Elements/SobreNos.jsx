@@ -4,12 +4,10 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-import pic1 from "./../../images/gallery/pic1.jpg";
-import pic2 from "./../../images/gallery/pic2.jpg";
-import pic3 from "./../../images/gallery/pic3.jpg";
-import pic4 from "./../../images/gallery/pic4.jpg";
-import pic5 from "./../../images/gallery/pic5.jpg";
-const images = [pic1, pic2, pic3, pic4, pic5];
+import pic1 from "./../../images/empresa/pic1.jpg";
+import pic2 from "./../../images/empresa/pic2.jpg";
+import pic3 from "./../../images/empresa/pic3.jpg";
+const images = [pic1, pic2, pic3];
 
 import bnr1 from "./../../images/background/bg-6.png";
 

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-import slide1 from "./../../images/main-slider/slider1/slide1.jpg";
-import slide2 from "./../../images/main-slider/slider1/slide2.jpg";
-import slide3 from "./../../images/main-slider/slider1/slide3.jpg";
+import slide1 from "./../../images/slider/slide1.jpg";
+import slide2 from "./../../images/slider/slide2.jpg";
+import slide3 from "./../../images/slider/slide3.jpg";
 
 const Slider = () => {
   useEffect(() => {
@@ -103,7 +103,6 @@ const Slider = () => {
                 data-paddingleft="[0,0,0,0]"
                 style={{
                   zIndex: 1,
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
                   borderColor: "rgba(0, 0, 0, 0)",
                   borderWidth: 0,
                 }}
@@ -132,7 +131,7 @@ const Slider = () => {
                   zIndex: 13,
                   whiteSpace: "normal",
                   fontWeight: 700,
-                  color: "#111",
+                  color: "#fff",
                   borderWidth: 0,
                   fontFamily: '"Poppins", sans-serif',
                   textTransform: "uppercase",
@@ -194,7 +193,7 @@ const Slider = () => {
                   zIndex: 13,
                   whiteSpace: "normal",
                   fontWeight: 500,
-                  color: "#111",
+                  color: "#fff",
                   borderWidth: 0,
                   fontFamily: '"Poppins", sans-serif',
                 }}
@@ -296,7 +295,6 @@ const Slider = () => {
                 data-paddingleft="[0,0,0,0]"
                 style={{
                   zIndex: 1,
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
                   borderColor: "rgba(0, 0, 0, 0)",
                   borderWidth: 0,
                 }}
@@ -325,7 +323,7 @@ const Slider = () => {
                   zIndex: 13,
                   whiteSpace: "normal",
                   fontWeight: 700,
-                  color: "#111",
+                  color: "#fff",
                   borderWidth: 0,
                   fontFamily: '"Poppins", sans-serif',
                   textTransform: "uppercase",
@@ -387,7 +385,7 @@ const Slider = () => {
                   zIndex: 13,
                   whiteSpace: "normal",
                   fontWeight: 500,
-                  color: "#111",
+                  color: "#fff",
                   borderWidth: 0,
                   fontFamily: '"Poppins", sans-serif',
                 }}
@@ -489,7 +487,6 @@ const Slider = () => {
                 data-paddingleft="[0,0,0,0]"
                 style={{
                   zIndex: 1,
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
                   borderColor: "rgba(0, 0, 0, 0)",
                   borderWidth: 0,
                 }}

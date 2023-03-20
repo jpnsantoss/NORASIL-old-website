@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import missao from "./../../images/icon/crane-1.png";
-import visao from "./../../images/icon/renovation.png";
-import valores from "./../../images/icon/toolbox.png";
+import visao from "./../../images/icon/idea.png";
+import valores from "./../../images/icon/engineer.png";
 import estrategia from "./../../images/icon/compass.png";
 
 const services = [
@@ -61,7 +61,7 @@ const PoliticaDeQualidade = () => {
 
   return (
     <>
-      <div className="section-full mobile-page-padding  p-b150  square_shape2">
+      <div className="section-full mobile-page-padding  p-b100  square_shape2">
         <div className="section-content">
           <div
             className="Service-half-top p-t80  bg-dark bg-moving"

@@ -20,7 +20,7 @@ const Sqa = () => {
           <div className="container">
             <div className="row">
               <div className="section-content">
-                <div className="m-b50">
+                <div className="container m-b50">
                   <div className="mt-tabs vertical tabs-default">
                     <ul className="nav nav-tabs">
                       <li className="active">
@@ -39,9 +39,9 @@ const Sqa = () => {
                         </a>
                       </li>
                     </ul>
-                    <div className="tab-content">
+                    <div className="tab-content empresa-text">
                       <div id="seguranca" className="tab-pane active">
-                        <p className="m-b0 empresa-text">
+                        <p className="m-b0 ">
                           Um dos nossos objectivos prioritários é a
                           implementação de medidas de prevenção e protecção
                           tendentes a evitar os riscos e a zelar pela segurança
@@ -49,7 +49,7 @@ const Sqa = () => {
                         </p>
                       </div>
                       <div id="qualidade" className="tab-pane">
-                        <p className="m-b0 empresa-text">
+                        <p className="m-b0">
                           Em 2001 a NORASIL obteve a certificação do Sistema de
                           Gestão de Qualidade segundo a NP EN ISO 9001. <br />
                           <br /> Neste contexto, está naturalmente
@@ -62,7 +62,7 @@ const Sqa = () => {
                         </p>
                       </div>
                       <div id="ambiente" className="tab-pane">
-                        <p className="m-b0 empresa-text">
+                        <p className="m-b0">
                           Pela importância que lhe atribuímos, desde há muito
                           desenvolvemos, caso a caso, um plano de gestão
                           ambiental tendo como objectivo concreto a minimização

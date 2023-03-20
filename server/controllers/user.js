@@ -13,10 +13,6 @@ export const getUsers = async (req, res) => {
   }
 };
 
-export const getUser = (req, res) => {
-  console.log("In construction");
-};
-
 export const addUser = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json({ message: "Not authenticated!" });

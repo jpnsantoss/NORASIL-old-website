@@ -34,7 +34,6 @@ export const getBuilds = async (req, res) => {
     const [total] = await db.query(q, values);
 
     const total_pages = Math.ceil(total[0]['COUNT(*)'] / limit);
-    console.log(total_pages);
     return res.status(200).json({ data, page, total: total[0].total, per_page: limit, total_pages });
   } catch (err) {
     return res.status(500).json(err);

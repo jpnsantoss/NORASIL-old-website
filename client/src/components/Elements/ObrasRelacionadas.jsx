@@ -4,9 +4,9 @@ import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
 import Loader from "./Loader";
 
-const ObrasRecentes2 = (props) => {
+const ObrasRelacionadas = (props) => {
   const fetchRecentBuilds = async () => {
-    const { data } = await axios.get(`/builds?limit=3`);
+    const { data } = await axios.get(`/builds?limit=3&cat=${props.category}`);
     const maxDescriptionLength = 120;
     const formattedBuilds = data.data.map((build) => {
       const dateParts = build.formatted_date.split("/");
@@ -48,7 +48,7 @@ const ObrasRecentes2 = (props) => {
     isLoading,
     isError,
     error,
-  } = useQuery(["recentbuilds"], () => fetchRecentBuilds());
+  } = useQuery(["relatedbuilds"], () => fetchRecentBuilds());
 
   if (isLoading) return <Loader />;
   if (isError) toast.error(error.message);
@@ -60,7 +60,7 @@ const ObrasRecentes2 = (props) => {
           <div className="mt-separator">
             <h2 className="text-uppercase sep-line-one ">
               <span className="font-weight-300 text-primary">Obras</span>{" "}
-              Recentes
+              Semelhantes
             </h2>
           </div>
         </div>
@@ -70,14 +70,14 @@ const ObrasRecentes2 = (props) => {
           {builds.map((build) => (
             <div className="col-md-4 col-sm-6" key={build.id}>
               <div className="mt-box blog-post latest-blog-3 date-style-1 bg-white m-b30">
-                <div className="mt-post-media mt-img-overlay7">
-                  <NavLink to={`/portfolio/${build.id}`}>
+                <NavLink to={`/portfolio/${build.id}`}>
+                  <div className="mt-post-media mt-img-overlay7">
                     <img
                       src={`http://localhost:8800/uploads/${build.mainImage}`}
                       alt=""
                     />
-                  </NavLink>
-                </div>
+                  </div>
+                </NavLink>
                 <div
                   className={
                     props.bgcolor !== ""
@@ -106,7 +106,7 @@ const ObrasRecentes2 = (props) => {
                     <div className="readmore-line">
                       <span>
                         <NavLink
-                          to="/blog-grid"
+                          to={`/portfolio/${build.id}`}
                           className="site-button-link"
                           data-hover="Read More"
                         >
@@ -126,4 +126,4 @@ const ObrasRecentes2 = (props) => {
   );
 };
 
-export default ObrasRecentes2;
+export default ObrasRelacionadas;

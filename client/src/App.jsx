@@ -1,29 +1,27 @@
-import React from 'react';
-import Components from './components/Components';
-import Loader from './components/Elements/Loader';
-import { ToastContainer } from 'react-toastify';
-import ScrolToTop from './components/Elements/ScrolToTop';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import Components from "./components/Components";
+import Loader from "./components/Elements/Loader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   return (
     <div className="App">
       <Loader />
       <ToastContainer
         position="top-right"
-        autoClose={ 3000 }
-        hideProgressBar={ false }
-        newestOnTop={ false }
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
         closeOnClick
-        rtl={ false }
+        rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
         theme="light"
       />
       <Components />
-      <ScrolToTop />
     </div>
   );
-}
+};
 
 export default App;

@@ -4,13 +4,11 @@ import Home from "./Pages/Home";
 import Error from "./Pages/Error";
 import Localizacao from "./Pages/Localizacao";
 import Obra from "./Pages/Obra";
-import ObraVideo from "./Pages/ObraVideo";
 import Portfolio from "./Pages/Portfolio";
 import Apresentacao from "./Pages/Empresa/Apresentacao";
 import PoliticaDeQualidade from "./Pages/Empresa/PoliticaDeQualidade";
 import Sqa from "./Pages/Empresa/Sqa";
 import PropostaDeValor from "./Pages/Empresa/PropostaDeValor";
-import Recrutamento from "./Pages/Recrutamento";
 import Login from "./Pages/Login";
 import Obras from "./Pages/Dashboard/Obras";
 import Users from "./Pages/Dashboard/Users";
@@ -18,6 +16,8 @@ import Users from "./Pages/Dashboard/Users";
 import { AuthContext } from "../context/authContext";
 import ScrollToTop from "./Common/ScrollToTop";
 import Imagens from "./Pages/Dashboard/Imagens";
+import PoliticaDePrivacidade from "./Pages/PoliticaDePrivacidade";
+import PoliticaDeCookies from "./Pages/PoliticaDeCookies";
 
 const Components = () => {
   const ProtectedRoute = ({ children }) => {
@@ -47,16 +47,20 @@ const Components = () => {
           <Route path="/" exact element={<Home />} />
           <Route path="/error" exact element={<Error />} />
           <Route path="/localizacao" exact element={<Localizacao />} />
-          <Route path="/obravideo" exact element={<ObraVideo />} />
+          {/* <Route path="/obravideo" exact element={<ObraVideo />} /> */}
+          <Route
+            path="/privacidade"
+            exact
+            element={<PoliticaDePrivacidade />}
+          />
+          <Route path="/cookies" exact element={<PoliticaDeCookies />} />
+          {/* <Route path="/recrutamento" exact element={<Recrutamento />} /> */}
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Error />} />
           <Route path="/portfolio">
             <Route index element={<Portfolio />} />
             <Route path="/portfolio/:id" element={<Obra />} />
           </Route>
-          <Route path="/recrutamento" exact element={<Recrutamento />} />
-
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Error />} />
-
           <Route path="empresa">
             <Route index element={<Apresentacao />} />
             <Route path="apresentacao" element={<Apresentacao />} />
@@ -109,16 +113,6 @@ const Components = () => {
                 </AdminRoute>
               }
             />
-
-            {/* <Route
-              path="areas"
-              element={
-                <ProtectedRoute>
-                  {" "}
-                  <Areas />{" "}
-                </ProtectedRoute>
-              }
-            /> */}
           </Route>
         </Routes>
       </div>

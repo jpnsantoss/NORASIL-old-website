@@ -6,49 +6,11 @@ import Banner from "../Elements/Banner";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import ObrasRecentes2 from "../Elements/ObrasRecentes2";
+import ObrasRelacionadas from "../Elements/ObrasRelacionadas";
 
-import thumb1 from "./../../images/blog/default/teste1.jpg";
-import thumb2 from "./../../images/blog/default/teste2.jpg";
-import thumb3 from "./../../images/blog/default/thum3.jpg";
-
-import bnrimg from "./../../images/banner.jpg";
 import { useQuery } from "react-query";
 import Loader from "../Elements/Loader";
 import axios from "axios";
-
-const cats = [
-  {
-    id: 1,
-    name: "Educação e Saúde",
-    slug: "educacao",
-  },
-  {
-    id: 2,
-    name: "Comércio e Serviços",
-    slug: "comercio",
-  },
-  {
-    id: 3,
-    name: "Industrial",
-    slug: "industrial",
-  },
-  {
-    id: 4,
-    name: "Escritórios",
-    slug: "escritorios",
-  },
-  {
-    id: 5,
-    name: "Habitação",
-    slug: "habitacao",
-  },
-  {
-    id: 6,
-    name: "Diversos",
-    slug: "diversos",
-  },
-];
 
 const Obra = () => {
   const location = useLocation();
@@ -162,7 +124,7 @@ const Obra = () => {
                 </div>
                 <div>
                   <ul>
-                    <strong>Client</strong>: {build.client}
+                    <strong>Cliente</strong>: {build.client}
                   </ul>
                   <ul>
                     <strong>Prazo</strong>: {build.time}
@@ -173,7 +135,7 @@ const Obra = () => {
                 </div>
               </div>
             </div>
-            <ObrasRecentes2 bgcolor="bg-gray" />
+            <ObrasRelacionadas category={build.category} bgcolor="bg-gray" />
           </div>
         </div>
       </div>
