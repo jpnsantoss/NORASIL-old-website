@@ -20,7 +20,7 @@ const Banner = (props) => {
             <div>
               <ul className="mt-breadcrumb breadcrumb-style-2">
                 <li>
-                  <NavLink to={"/"}>Home</NavLink>
+                  <NavLink to={"/"}>Início</NavLink>
                 </li>
                 <li>{props.pagename}</li>
               </ul>

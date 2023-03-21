@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 import bnr1 from "./../../images/background/bg-5.png";
 
-import pic1 from "../../images/pic1.jpg";
-import pic2 from "../../images/pic2.jpg";
-import pic3 from "../../images/pic3.jpg";
+import pic1 from "../../images/propostadevalor/pic1.jpg";
+import pic2 from "../../images/propostadevalor/pic2.jpg";
+import pic3 from "../../images/propostadevalor/pic3.jpg";
 
 const Specialization = () => {
   return (

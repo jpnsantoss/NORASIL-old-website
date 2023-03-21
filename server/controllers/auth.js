@@ -22,10 +22,11 @@ export const login = async (req, res) => {
     const { password, ...other } = data[0];
 
     res.header("Access-Control-Allow-Credentials", "true");
-    res.cookie("access_token", token, {
+    res.cookie('access_token', token, {
       httpOnly: true,
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // Expires in 7 days
+      secure: true,
+      sameSite: 'none',
+      maxAge: 7 * 24 * 60 * 60 * 1000 // Expires in 7 days
     });
     res.status(200).json(other);
   } catch (err) {

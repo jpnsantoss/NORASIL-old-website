@@ -4,12 +4,14 @@ import Footer from "../../Common/Footer";
 import Banner from "../../Elements/Banner";
 import DashHeader from "../../Common/DashHeader";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Loader from "../../Elements/Loader";
+import { AuthContext } from "../../../context/authContext";
 
 const Imagens = () => {
+  const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const [files, setFiles] = useState([]);
 
@@ -54,7 +56,7 @@ const Imagens = () => {
   );
 
   const deleteImage = useMutation(
-    (imageId) => axios.delete(`/images/${imageId}`),
+    (imageId) => axios.delete(`/images/${imageId}`, { withCredentials: true }),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("build");
@@ -65,6 +67,7 @@ const Imagens = () => {
 
   const handleCreate = async (e) => {
     e.preventDefault();
+    <DashHeader />;
 
     for (let i = 0; i < files.length; i++) {
       const imgUrl = await upload(files[i]);
@@ -99,12 +102,18 @@ const Imagens = () => {
       <div className="page-content">
         <Banner
           title={build.title}
-          pagename="Obras"
+          pagename="Dashboard"
           bgimage={`http://localhost:8800/uploads/${build.mainImage}`}
         />
-        <DashHeader />
-
-        <div className="section-full p-tb150">
+        {currentUser.admin == 1 && <DashHeader />}
+        <div className="container m-tb50">
+          <h4>
+            <NavLink to="/admin">
+              <i className="fa fa-angle-left arrow-animation m-r10" /> Voltar
+            </NavLink>
+          </h4>
+        </div>
+        <div className="section-full p-b100">
           <div className="container">
             <div className="section-head">
               <div className="mt-separator-outer separator-left">

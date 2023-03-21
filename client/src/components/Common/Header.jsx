@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navigation from "../Common/Navigation";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/authContext";
 
 import bnr from "./../../images/background/bg-5.png";
 import img from "./../../images/logo-light.png";
 const Header = () => {
+  const { currentUser } = useContext(AuthContext);
   const [logo, setLogo] = useState(img);
   const [isQuoteActive, setIsQuoteActive] = useState(false);
 
@@ -89,6 +91,14 @@ const Header = () => {
                     <i className="fa fa-angle-left arrow-animation" />
                   </NavLink>
                 </div>
+                {currentUser && (
+                  <div className="extra-cell">
+                    Olá {currentUser.username},
+                    <NavLink to={"/admin"} className="contact-slide-show">
+                      <br /> Ir para o Dashboard
+                    </NavLink>
+                  </div>
+                )}
               </div>
               <div
                 className="contact-slide-hide "

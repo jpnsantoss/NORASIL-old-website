@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../Common/Header";
 import DashHeader from "../../Common/DashHeader";
 import Footer from "../../Common/Footer";
@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import ConfirmButton from "react-confirm-button";
 
 import bnrimg from "./../../../images/banner.jpg";
+import { AuthContext } from "../../../context/authContext";
 
 const cats = [
   {
@@ -47,6 +48,7 @@ const cats = [
 ];
 
 const Dashboard = () => {
+  const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
@@ -104,7 +106,7 @@ const Dashboard = () => {
   );
 
   const deleteBuild = useMutation(
-    (buildId) => axios.delete(`/builds/${buildId}`),
+    (buildId) => axios.delete(`/builds/${buildId}`, { withCredentials: true }),
     {
       onSuccess: () => {
         const newTotal = builds.total - 1;
@@ -192,7 +194,7 @@ const Dashboard = () => {
       <Header />
       <div className="page-content">
         <Banner title="Dashboard" pagename="Dashboard" bgimage={bnrimg} />
-        <DashHeader />
+        {currentUser.admin == 1 && <DashHeader />}
         <div className="section-full p-tb150">
           <div className="container">
             <div className="section-content">

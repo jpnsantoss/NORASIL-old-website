@@ -36,7 +36,7 @@ const Areas = () => {
   );
 
   const deleteCategory = useMutation(
-    (categoryId) => axios.delete(`/categories/${categoryId}`),
+    (categoryId) => axios.delete(`/categories/${categoryId}`, {withCredentials: true}),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("categories");

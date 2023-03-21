@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../../Common/Header";
 import DashHeader from "../../Common/DashHeader";
 import Footer from "../../Common/Footer";
@@ -8,8 +8,10 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 
 import bnrimg from "./../../../images/banner.jpg";
+import { AuthContext } from "../../../context/authContext";
 
 const Users = () => {
+  const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const [inputs, setInputs] = useState({
     username: "",
@@ -34,12 +36,15 @@ const Users = () => {
     }
   );
 
-  const deleteUser = useMutation((userId) => axios.delete(`/users/${userId}`), {
-    onSuccess: () => {
-      queryClient.invalidateQueries("users");
-      toast.success("Usuário Apagado!");
-    },
-  });
+  const deleteUser = useMutation(
+    (userId) => axios.delete(`/users/${userId}`, { withCredentials: true }),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("users");
+        toast.success("Usuário Apagado!");
+      },
+    }
+  );
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -83,7 +88,7 @@ const Users = () => {
       <Header />
       <div className="page-content">
         <Banner title="Dashboard" pagename="Dashboard" bgimage={bnrimg} />
-        <DashHeader />
+        {currentUser.admin == 1 && <DashHeader />}
         <div className="section-full p-tb150">
           <div className="container">
             <div className="section-content">

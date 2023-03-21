@@ -29,8 +29,7 @@ const Login = () => {
       await login(inputs);
       navigate("/admin");
     } catch (err) {
-      console.error(err);
-      setError(err.response.data);
+      setError(err.response?.data?.message || err.message);
     }
   };
 
@@ -47,7 +46,7 @@ const Login = () => {
                 <div className="col-md-6 col-sm-12 col-md-offset-3">
                   <form
                     className="contact-form cons-contact-form"
-                    method="post"
+                    onSubmit={handleSubmit}
                   >
                     <div className="contact-one m-b30">
                       <div className="form-group">
@@ -72,7 +71,7 @@ const Login = () => {
                       </div>
                       <div className="text-center">
                         <button
-                          onClick={handleSubmit}
+                          type="submit"
                           className="site-button btn-effect"
                         >
                           submit
