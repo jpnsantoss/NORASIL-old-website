@@ -5,7 +5,6 @@ import { db, runQueries } from "./db.js";
 
 import authRoutes from "./routes/auth.js";
 import buildRoutes from "./routes/builds.js";
-import categoryRoutes from "./routes/categories.js";
 import userRoutes from "./routes/users.js";
 import imageRoutes from "./routes/images.js";
 
@@ -53,7 +52,6 @@ app.post('/api/upload', upload.single('file'), function (req, res) {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/categories", categoryRoutes);
 app.use("/api/builds", buildRoutes);
 app.use("/api/images", imageRoutes);
 

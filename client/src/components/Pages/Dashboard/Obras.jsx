@@ -154,7 +154,7 @@ const Dashboard = () => {
       toast.error(
         err.response?.data?.message || err.message || "Ocorreu um erro."
       );
-      if (err.response.data.message == "Not authenticated!") {
+      if (err.response.data.message == "Não autenticado!") {
         navigate("/login");
       }
     }
@@ -167,7 +167,7 @@ const Dashboard = () => {
       toast.error(
         err.response?.data?.message || err.message || "Ocorreu um erro."
       );
-      if (err.response.data.message == "Not authenticated!") {
+      if (err.response.data.message == "Não autenticado!") {
         navigate("/login");
       }
     }
@@ -314,7 +314,7 @@ const Dashboard = () => {
                   <div className="container m-t50 p-l0">
                     <div className="col-md-6 p-l0">
                       <form onSubmit={handleSearch}>
-                        <div className="input-group">
+                        <div className="input-group m-b20">
                           <input
                             name="searchInput"
                             className="form-control"
@@ -369,7 +369,7 @@ const Dashboard = () => {
                       className="site-button outline"
                       onClick={() => setSearch("")}
                     >
-                      Clear
+                      Limpar
                     </button>
                   </div>
                 )}

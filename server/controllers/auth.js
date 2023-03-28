@@ -8,7 +8,7 @@ export const login = async (req, res) => {
   try {
     const [data] = await db.query(q, [req.body.username]);
 
-    if (data.length === 0) return res.status(404).json("User not found!");
+    if (data.length === 0) return res.status(404).json("User não encontrado!");
 
     const isPasswordCorrect = bcrypt.compareSync(
       req.body.password,
@@ -16,7 +16,7 @@ export const login = async (req, res) => {
     );
 
     if (!isPasswordCorrect)
-      return res.status(400).json({ message: "Wrong username or password!" });
+      return res.status(400).json({ message: "Username ou password incorretos!" });
 
     const token = jwt.sign({ id: data[0].id }, "jwtkey");
     const { password, ...other } = data[0];
@@ -38,7 +38,7 @@ export const logout = (req, res) => {
   res.clearCookie("access_token", {
     sameSite: "lax",
     secure: true
-  }).status(200).json("O usuário desconectou-se.")
+  }).status(200).json("Logout concluido.")
 };
 
 

@@ -620,7 +620,7 @@ All JavaScript fuctions Start
 			//________accordion active calss function by = custom.js ________//	
 			accordion_active(),
 			//________ Nav submenu on off function by = custome.js________//	
-			mobile_nav(),
+			// mobile_nav(),
 			//________Home page testimonial function by = owl.carousel.js________//	
 			testimonial_home(),
 			//________Home page testimonial function by = owl.carousel.js________//	

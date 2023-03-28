@@ -67,7 +67,6 @@ const Imagens = () => {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    <DashHeader />;
 
     for (let i = 0; i < files.length; i++) {
       const imgUrl = await upload(files[i]);
@@ -106,7 +105,7 @@ const Imagens = () => {
           bgimage={`http://localhost:8800/uploads/${build.mainImage}`}
         />
         {currentUser.admin == 1 && <DashHeader />}
-        <div className="container m-tb50">
+        <div className="container m-t100 m-b50">
           <h4>
             <NavLink to="/admin">
               <i className="fa fa-angle-left arrow-animation m-r10" /> Voltar

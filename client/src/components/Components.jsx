@@ -18,6 +18,7 @@ import ScrollToTop from "./Common/ScrollToTop";
 import Imagens from "./Pages/Dashboard/Imagens";
 import PoliticaDePrivacidade from "./Pages/PoliticaDePrivacidade";
 import PoliticaDeCookies from "./Pages/PoliticaDeCookies";
+import Perfil from "./Pages/Dashboard/Perfil";
 
 const Components = () => {
   const ProtectedRoute = ({ children }) => {
@@ -104,15 +105,26 @@ const Components = () => {
               />
             </Route>
 
-            <Route
-              path="users"
-              element={
-                <AdminRoute>
-                  {" "}
-                  <Users />{" "}
-                </AdminRoute>
-              }
-            />
+            <Route path="users">
+              <Route
+                index
+                element={
+                  <AdminRoute>
+                    {" "}
+                    <Users />{" "}
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path=":id"
+                element={
+                  <ProtectedRoute>
+                    {" "}
+                    <Perfil />{" "}
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
           </Route>
         </Routes>
       </div>

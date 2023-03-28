@@ -72,7 +72,7 @@ const ObrasRecentes = () => {
           <div className="section-content">
             <div className="row">
               {builds.map((build) => (
-                <div className="col-md-4 col-sm-6" key={build.id}>
+                <div className="col-md-4 col-sm-12" key={build.id}>
                   <div className="mt-box blog-post latest-blog-3 date-style-1 bg-gray m-b30 box-shadow">
                     <NavLink to={`/portfolio/${build.id}`}>
                       <div className="mt-post-media mt-img-overlay2">

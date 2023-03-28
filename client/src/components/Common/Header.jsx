@@ -9,6 +9,7 @@ const Header = () => {
   const { currentUser } = useContext(AuthContext);
   const [logo, setLogo] = useState(img);
   const [isQuoteActive, setIsQuoteActive] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const handleQuoteToggle = () => {
     setIsQuoteActive(!isQuoteActive);
@@ -40,6 +41,16 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 768);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <header className="site-header header-style-1">
@@ -53,7 +64,7 @@ const Header = () => {
                   </li>
                   <li>
                     <i className="fa fa-phone" />
-                    (351) 229 399 250
+                    (+351) 229 399 250
                   </li>
                 </ul>
               </div>
@@ -82,21 +93,38 @@ const Header = () => {
                 <span className="icon-bar" />
               </button>
               <div className="extra-nav">
-                <div className="extra-cell">
+                <div className="extra-cell p-4">
                   <NavLink
                     to={"#"}
                     className="contact-slide-show"
                     onClick={handleQuoteToggle}
                   >
-                    <i className="fa fa-angle-left arrow-animation" />
+                    <div style={{ padding: "10px" }}>
+                      <i className="fa fa-angle-left arrow-animation" />
+                    </div>
                   </NavLink>
                 </div>
                 {currentUser && (
                   <div className="extra-cell">
-                    Olá {currentUser.username},
-                    <NavLink to={"/admin"} className="contact-slide-show">
-                      <br /> Ir para o Dashboard
-                    </NavLink>
+                    {isMobile ? (
+                      <NavLink to={`/admin/users/${currentUser.id}`}>
+                        <i className="fa fa-user" />
+                      </NavLink>
+                    ) : (
+                      <>
+                        Olá{" "}
+                        <NavLink
+                          to={`/admin/users/${currentUser.id}`}
+                          style={{ fontSize: "14px" }}
+                        >
+                          {currentUser.username}
+                        </NavLink>
+                        ,
+                        <NavLink to={"/admin"} className="contact-slide-show">
+                          <br /> Ir para o Dashboard
+                        </NavLink>
+                      </>
+                    )}
                   </div>
                 )}
               </div>
@@ -125,7 +153,7 @@ const Header = () => {
                           <h5 className="m-t0 font-weight-500">
                             Telefone (Sede)
                           </h5>
-                          <p>(351) 229 399 250</p>
+                          <p>(+351) 229 399 250</p>
                         </div>
                       </div>
                       <div className="mt-icon-box-wraper center p-b30">

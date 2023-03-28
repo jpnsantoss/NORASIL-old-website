@@ -54,7 +54,7 @@ export const getBuild = async (req, res) => {
   try {
     const [data] = await db.query(q, [req.params.id]);
 
-    if (data.length === 0) return res.status(404).json({ message: "Build not found." });
+    if (data.length === 0) return res.status(404).json({ message: "Obra não encontrada." });
 
     const q2 = `
       SELECT id, image_url
@@ -83,10 +83,10 @@ export const getBuild = async (req, res) => {
 
 export const addBuild = (req, res) => {
   const token = req.cookies.access_token;
-  if (!token) return res.status(401).json({ message: "Not authenticated!" });
+  if (!token) return res.status(401).json({ message: "Não autenticado!" });
 
   jwt.verify(token, "jwtkey", async (err, userInfo) => {
-    if (err) return res.status(403).json({ message: "Token is not valid!" });
+    if (err) return res.status(403).json({ message: "Token inválido!" });
 
     const q = "INSERT INTO builds(`title`, `description`, `client`, `time`, `date`, `category`, `mainImage`) VALUES (?)";
 
@@ -101,7 +101,7 @@ export const addBuild = (req, res) => {
     ]
     try {
       await db.query(q, [values]);
-      return res.json("Build has been created.");
+      return res.json("Obra criada.");
     } catch (err) {
       return res.status(500).json(err)
     }
@@ -110,9 +110,9 @@ export const addBuild = (req, res) => {
 
 export const deleteBuild = async (req, res) => {
   const token = req.cookies.access_token;
-  if (!token) return res.status(401).json({ message: "Not authenticated." });
+  if (!token) return res.status(401).json({ message: "Não autenticado!" });
   jwt.verify(token, "jwtkey", async (err, userInfo) => {
-    if (err) return res.status(403).json({ message: "Token is not valid!" });
+    if (err) return res.status(403).json({ message: "Token inválido!" });
     const buildId = req.params.id;
     const q = "SELECT mainImage FROM builds WHERE `id` = ?"
 
@@ -122,7 +122,7 @@ export const deleteBuild = async (req, res) => {
       await db.query("DELETE FROM builds WHERE `id` = ?", [buildId]);
       fs.unlinkSync(`./uploads/${mainImage}`);
       cleanUnusedImages();
-      return res.json("Build has been deleted!");
+      return res.json("Obra eliminada!");
     } catch (err) {
       console.log(err);
       return res.status(500).json(err)

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-import slide1 from "./../../images/slider/slide1.jpg";
+import slide1 from "./../../images/slider/slide1.png";
 import slide2 from "./../../images/slider/slide2.jpg";
-import slide3 from "./../../images/slider/slide3.jpg";
+import slide3 from "./../../images/slider/slide3.png";
 
 const Slider = () => {
   useEffect(() => {
@@ -224,10 +224,7 @@ const Slider = () => {
                 data-paddingleft="[0,0,0,0]"
                 style={{ zIndex: 100, textTransform: "uppercase" }}
               >
-                <NavLink
-                  to="/portfolio"
-                  className="site-button-secondry btn-effect"
-                >
+                <NavLink to="/portfolio" className="site-button btn-effect">
                   Ver Obras
                 </NavLink>
               </div>
@@ -416,10 +413,7 @@ const Slider = () => {
                 data-paddingleft="[0,0,0,0]"
                 style={{ zIndex: 100, textTransform: "uppercase" }}
               >
-                <NavLink
-                  to="/portfolio"
-                  className="site-button-secondry btn-effect"
-                >
+                <NavLink to="/portfolio" className="site-button btn-effect">
                   Ver Obras
                 </NavLink>
               </div>
@@ -608,10 +602,7 @@ const Slider = () => {
                 data-paddingleft="[0,0,0,0]"
                 style={{ zIndex: 100, textTransform: "uppercase" }}
               >
-                <NavLink
-                  to="/portfolio"
-                  className="site-button-secondry btn-effect"
-                >
+                <NavLink to="/portfolio" className="site-button btn-effect">
                   Ver Obras
                 </NavLink>
               </div>

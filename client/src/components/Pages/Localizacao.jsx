@@ -26,7 +26,7 @@ const Localizacao = () => {
                       <div className="mt-separator-outer separator-left">
                         <div className="mt-separator">
                           <h2 className="text-uppercase sep-line-one ">
-                            Contactos
+                            Informações
                           </h2>
                         </div>
                       </div>

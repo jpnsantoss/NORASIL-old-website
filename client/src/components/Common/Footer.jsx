@@ -103,7 +103,7 @@ const Footer = () => {
                   <ul className="widget_address">
                     <li>Rua de Brito Capelo 598, Matosinhos</li>
                     <li>norasil@norasil.pt</li>
-                    <li>(351) 229 399 250</li>
+                    <li>(+351) 229 399 250</li>
                   </ul>
                 </div>
               </div>
@@ -123,7 +123,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="col-lg-3 col-md-6 col-sm-6 footer-col-3">
+              <div className="col-lg-3 col-md-6 col-sm-6 footer-col-4">
                 <div className="widget widget_services inline-links">
                   <h4 className="widget-title">Informações Adicionais</h4>
                   <ul>

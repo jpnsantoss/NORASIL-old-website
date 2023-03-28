@@ -211,7 +211,7 @@ const Portfolio = () => {
                   className="site-button outline"
                   onClick={() => setSearch("")}
                 >
-                  Clear
+                  Limpar
                 </button>
               </div>
             )}

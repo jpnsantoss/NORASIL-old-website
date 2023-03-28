@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 
 import bnrimg from "./../../../images/banner.jpg";
 import { AuthContext } from "../../../context/authContext";
+import { NavLink } from "react-router-dom";
 
 const Users = () => {
   const { currentUser } = useContext(AuthContext);
@@ -64,7 +65,7 @@ const Users = () => {
       toast.error(
         err.response?.data?.message || err.message || "Ocorreu um erro."
       );
-      if (err.response.data.message == "Not authenticated!") {
+      if (err.response.data.message == "Não autenticado!") {
         navigate("/login");
       }
     }
@@ -77,7 +78,7 @@ const Users = () => {
       toast.error(
         err.response?.data?.message || err.message || "Ocorreu um erro."
       );
-      if (err.response.data.message == "Not authenticated!") {
+      if (err.response.data.message == "Não autenticado!") {
         navigate("/login");
       }
     }
@@ -186,12 +187,13 @@ const Users = () => {
                           <td>{item.username}</td>
                           <td className="col-md-2">
                             <div className="botoes">
-                              <button
+                              <NavLink
+                                to={`/admin/users/${item.id}`}
                                 className="site-button text-uppercase operation-button  blue m-r5"
                                 type="button"
                               >
                                 <i className="fa fa-pencil" />{" "}
-                              </button>
+                              </NavLink>
                               <button
                                 className="site-button operation-button text-uppercase red"
                                 type="button"

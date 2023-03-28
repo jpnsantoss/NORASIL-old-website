@@ -70,11 +70,14 @@ const PoliticaDeCookies = () => {
                   não podendo ser manipuladas por terceiros.
                 </p>
                 <p>
-                  A NORASIL - SOCIEDADE DE CONSTRUÇÃO CIVIL, S.A. utiliza ainda,
-                  de forma direta ou indireta, serviços de analítica para aferir
-                  a eficácia dos nossos conteúdos e as preferências dos
-                  Utilizadores, permitindo contribuir para a otimização do
-                  funcionamento do nosso website.
+                  Usamos cookies analíticos para monitorizar e melhorar o nosso
+                  site. Esses cookies são fornecidos pelo Google Analytics 4, um
+                  serviço de análise do Google. Desta forma, recolhemos
+                  informações sobre como os utilizadores interagem no nosso
+                  site, como páginas visitadas, tempo gasto, fontes de tráfego,
+                  cliques e outras métricas. Essas informações são totalmente
+                  anónimas, ou seja, não permitem a identificação de
+                  utilizadores individuais.
                 </p>
                 <br />
                 <li>
