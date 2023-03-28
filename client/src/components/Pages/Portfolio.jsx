@@ -156,7 +156,7 @@ const Portfolio = () => {
               <div className="container m-t50 p-l0">
                 <div className="col-md-6 p-l0">
                   <form onSubmit={handleSearch}>
-                    <div className="input-group">
+                    <div className="input-group m-b20">
                       <input
                         name="searchInput"
                         className="form-control"
