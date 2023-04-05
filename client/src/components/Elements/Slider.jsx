@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import slide1 from "./../../images/slider/slide1.png";
 import slide2 from "./../../images/slider/slide2.jpg";
 import slide3 from "./../../images/slider/slide3.png";
+import thumb1 from "./../../images/slider/thumb1.png";
+import thumb2 from "./../../images/slider/thumb2.jpg";
+import thumb3 from "./../../images/slider/thumb3.png";
 
 const Slider = () => {
   useEffect(() => {
@@ -49,12 +52,12 @@ const Slider = () => {
               data-easein="default"
               data-easeout="default"
               data-masterspeed="default"
-              data-thumb={slide1}
+              data-thumb={thumb1}
               data-rotate={0}
               data-fstransition="fade"
               data-fsmasterspeed={300}
               data-fsslotamount={7}
-              data-saveperformance="off"
+              data-saveperformance="on"
               data-title="Imagem 1"
               data-param1
               data-param2
@@ -238,7 +241,7 @@ const Slider = () => {
               data-easein="default"
               data-easeout="default"
               data-masterspeed="default"
-              data-thumb={slide2}
+              data-thumb={thumb2}
               data-rotate={0}
               data-fstransition="fade"
               data-fsmasterspeed={300}
@@ -427,7 +430,7 @@ const Slider = () => {
               data-easein="default"
               data-easeout="default"
               data-masterspeed="default"
-              data-thumb={slide3}
+              data-thumb={thumb3}
               data-rotate={0}
               data-fstransition="fade"
               data-fsmasterspeed={300}

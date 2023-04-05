@@ -9,7 +9,6 @@ import axios from "axios";
 import moment from "moment";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import ConfirmButton from "react-confirm-button";
 
 import bnrimg from "./../../../images/banner.jpg";
 import { AuthContext } from "../../../context/authContext";
@@ -401,17 +400,12 @@ const Dashboard = () => {
                                 <i className="fa fa-image" />{" "}
                               </NavLink>
 
-                              <ConfirmButton
+                              <button
                                 className="site-button operation-button text-uppercase red"
-                                onConfirm={() => handleDelete(build.id)}
-                                confirming={{
-                                  text: "?",
-                                  className:
-                                    "site-button operation-button text-uppercase orange",
-                                }}
+                                onClick={() => handleDelete(build.id)}
                               >
                                 <i className="fa fa-close" />{" "}
-                              </ConfirmButton>
+                              </button>
                             </div>
                           </td>
                         </tr>
