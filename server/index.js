@@ -2,6 +2,9 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { db, runQueries } from "./db.js";
+import sharp from "sharp";
+import path from "path";
+
 
 import authRoutes from "./routes/auth.js";
 import buildRoutes from "./routes/builds.js";
@@ -15,7 +18,7 @@ const app = express();
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["http://localhost:3000", "https://norasil.pt", "http://localhost:5173", "http://localhost:4173", "https://norasil.vercel.app"],
+  origin: ["https://norasil.pt"],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
@@ -45,19 +48,29 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage })
 
-app.post('/api/upload', upload.single('file'), function (req, res) {
-  const file = req.file;
-  res.status(200).json(file.filename)
+app.post('/upload', upload.single('file'), function (req, res) {
+  const filePath = req.file.path;
+
+  sharp(filePath)
+    .resize({ width: 780 })
+    .webp()
+    .toFile(`${path.parse(filePath).dir}/${path.parse(filePath).name}.webp`, (err) => {
+      if (err) {
+        console.error(err);
+        return res.sendStatus(500);
+      }
+      res.status(200).json(`${path.parse(req.file.filename).name}.webp`);
+    });
 })
 
-app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/builds", buildRoutes);
-app.use("/api/images", imageRoutes);
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+app.use("/builds", buildRoutes);
+app.use("/images", imageRoutes);
 
 app.use('/uploads', express.static('uploads'));
 
 
 app.listen(8800, () => {
-  console.log("Server running on port 8800!");
+  console.log("Server running!");
 })

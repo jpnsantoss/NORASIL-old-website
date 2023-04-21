@@ -13,8 +13,8 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      "/api": {
-        target: "http://localhost:8800",
+      "/": {
+        target: "https://api.norasil.pt",
         changeOrigin: true,
         secure: false,
       },

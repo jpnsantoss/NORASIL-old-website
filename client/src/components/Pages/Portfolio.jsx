@@ -226,7 +226,7 @@ const Portfolio = () => {
                     <div className="image-effect-two hover-shadow">
                       <img
                         className="portfolio-image"
-                        src={`http://localhost:8800/uploads/${build.mainImage}`}
+                        src={`https://api.norasil.pt/uploads/${build.mainImage}`}
                         alt=""
                       />
                       <div className="figcaption">
@@ -246,7 +246,7 @@ const Portfolio = () => {
                         </NavLink>
                         <a
                           className="mfp-link"
-                          href={`http://localhost:8800/uploads/${build.mainImage}`}
+                          href={`https://api.norasil.pt/uploads/${build.mainImage}`}
                         >
                           <i className="fa fa-arrows-alt" />
                         </a>

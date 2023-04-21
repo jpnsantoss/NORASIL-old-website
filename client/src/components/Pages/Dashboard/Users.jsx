@@ -125,7 +125,7 @@ const Users = () => {
                           name="password"
                           value={inputs.password}
                           onChange={handleChange}
-                          type="text"
+                          type="password"
                           className="form-control"
                           required
                           placeholder="Password"

@@ -76,7 +76,7 @@ const Obra = () => {
         <Banner
           title={build.title}
           pagename="Portfolio"
-          bgimage={`http://localhost:8800/uploads/${build.mainImage}`}
+          bgimage={`https://api.norasil.pt/uploads/${build.mainImage}`}
         />
 
         <div className="section-full p-tb100 square_shape1 square_shape3 inner-page-padding">
@@ -90,7 +90,7 @@ const Obra = () => {
                   <div className="item">
                     <div className="aon-thum-bx">
                       <img
-                        src={`http://localhost:8800/uploads/${build.mainImage}`}
+                        src={`https://api.norasil.pt/uploads/${build.mainImage}`}
                         alt=""
                       />
                     </div>
@@ -99,7 +99,7 @@ const Obra = () => {
                     <div className="item" key={item.id}>
                       <div className="aon-thum-bx">
                         <img
-                          src={`http://localhost:8800/uploads/${item.image_url}`}
+                          src={`https://api.norasil.pt/uploads/${item.image_url}`}
                           alt=""
                         />
                       </div>

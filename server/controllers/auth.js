@@ -1,6 +1,8 @@
 import { db } from "../db.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const login = async (req, res) => {
   const q = "SELECT * FROM users WHERE username = ?";
@@ -18,7 +20,7 @@ export const login = async (req, res) => {
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Username ou password incorretos!" });
 
-    const token = jwt.sign({ id: data[0].id }, "jwtkey");
+    const token = jwt.sign({ id: data[0].id }, process.env.JWT_KEY);
     const { password, ...other } = data[0];
 
     res.header("Access-Control-Allow-Credentials", "true");

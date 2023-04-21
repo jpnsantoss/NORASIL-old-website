@@ -73,7 +73,7 @@ const ObrasRelacionadas = (props) => {
                 <NavLink to={`/portfolio/${build.id}`}>
                   <div className="mt-post-media mt-img-overlay7">
                     <img
-                      src={`http://localhost:8800/uploads/${build.mainImage}`}
+                      src={`https://api.norasil.pt/uploads/${build.mainImage}`}
                       alt=""
                     />
                   </div>

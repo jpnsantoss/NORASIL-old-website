@@ -102,7 +102,7 @@ const Imagens = () => {
         <Banner
           title={build.title}
           pagename="Dashboard"
-          bgimage={`http://localhost:8800/uploads/${build.mainImage}`}
+          bgimage={`https://api.norasil.pt/uploads/${build.mainImage}`}
         />
         {currentUser.admin == 1 && <DashHeader />}
         <div className="container m-t100 m-b50">
@@ -174,10 +174,10 @@ const Imagens = () => {
                       <div className="mt-post-media imagens-dash">
                         <a
                           className="mfp-link"
-                          href={`http://localhost:8800/uploads/${item.image_url}`}
+                          href={`https://api.norasil.pt/uploads/${item.image_url}`}
                         >
                           <img
-                            src={`http://localhost:8800/uploads/${item.image_url}`}
+                            src={`https://api.norasil.pt/uploads/${item.image_url}`}
                             alt=""
                           />
                         </a>
